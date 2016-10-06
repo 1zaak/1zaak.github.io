@@ -36,15 +36,43 @@
                 </div>
             </div>
         </header>
+
+        <!-- modal -->
+        <div class="ui modal">
+            <i class="close icon"></i>
+            <div class="header">
+                Member Rebate
+            </div>
+            <div class="image content">
+                <div class="ui medium image">
+                    <img src="/images/avatar/large/chris.jpg">
+                </div>
+                <div class="description">
+                    <div class="ui header">.</div>
+                    <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                    <p>Is it okay to use this photo?</p>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Nope
+                </div>
+                <div class="ui positive right labeled icon button">
+                    Yep, that's me
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+
         <!-- the main menu-->
         <div class="ui teal inverted menu">
             <div class="bigcontainer">
                 <div class="right menu">
-                  <a class="active item" href="./index.html"><i class="home icon"></i>Home</a>
-                  <a class="item" href="./profile.html"><i class="user icon"></i>Profile</a>
-                  <a class="item" href="./profile.html"><i class="payment icon"></i>Payment History</a>
-                  <a class="item" href="./profile.html"><i class="users icon"></i>Renew Membership</a>
-                  <a class="item" href="./enquiry.html"><i class="info icon"></i>Help</a>
+                    <a class="active item" href="./index.html"><i class="home icon"></i>Home</a>
+                    <a class="item" href="./profile.html"><i class="user icon"></i>Profile</a>
+                    <a class="item" href="./profile.html"><i class="payment icon"></i>Payment History</a>
+                    <a class="item" href="./profile.html"><i class="users icon"></i>Renew Membership</a>
+                    <a class="item" href="./enquiry.html"><i class="info icon"></i>Help</a>
                 </div>
             </div>
         </div>
@@ -87,18 +115,18 @@
                             <i class="key icon"></i>
                         </span>
                         </a>
-                        <a id="deviceQuickButton" class="ui red small labeled icon button" href="./devices_list.html">
+                        <a id="deviceQuickButton" class="ui red small labeled icon button" href="./index.html">
                             <i class="filter icon"></i>Filter
                         </a>
                     </div>
                 </div>
             </div>
-            <!--device list-->
+            <!--subscription info-->
             <div class="ui three column grid" id="indexList">
                 <div class="row">
                     <div class="column">
                         <div class="ui blue segment">
-                            <a href="./device.html" class="content">
+                            <a href="./index.html" class="content">
                                 <h4 class="deviceName"><i class="users icon"></i>Subscription <span class="ui type red label">Expired</span></h4>
                                 <br/>
                                 <p class="deviceId"> Subscription ended 14 August, 2016</p>
@@ -141,13 +169,14 @@
                         </div>
                     </div>
                     <div class="column">
+                      <div class="content">
                         <div class="ui blue segment">
-                          <h4 class="highlights"><i class="calendar icon"></i> Highlights</h4>
+                            <h4 class="highlights"><i class="calendar icon"></i> Highlights</h4>
                             <div class="ui relaxed divided list">
                                 <div class="item">
                                     <i class="large pin middle aligned icon"></i>
                                     <div class="content">
-                                        <a class="header">Grief Response and Organ Donation</a>
+                                        <a class="header">Annual General Meeting</a>
                                         <div class="description">Mon, Jul 25</div>
                                     </div>
                                 </div>
@@ -167,9 +196,42 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div>
+                <!-- second row -->
+
                 <div class="row">
+                  <div class="column">
+                    <div class="content">
+                      <div class="ui blue segment">
+                          <h4 class="highlights"><i class="large folder open outline middle aligned icon"></i> Resources </h4>
+                          <div class="ui relaxed divided list">
+                              <div class="item">
+                                  <i class="large file text outline middle aligned icon"></i>
+                                  <div class="content">
+                                      <a href="http://www.msqh.com.my/msqh/download?download=3:medical-clinic-accreditation-standards" class="header">Standards – Joint Commission International Accreditation</a>
+                                      <!-- <div class="description">Mon, Jul 25</div> -->
+                                  </div>
+                              </div>
+                              <div class="item">
+                                  <i class="large file text outline middle aligned icon"></i>
+                                  <div class="content">
+                                      <a href="http://www.msqh.com.my/msqh/download?download=1:msqh-4th-edition-standards" class="header">ISQua Surveyor Training Standards Programme 2nd Edition, August 2011</a>
+                                      <!-- <div class="description">Tue, Aug 9</div> -->
+                                  </div>
+                              </div>
+                              <div class="item">
+                                  <i class="large file text outline middle aligned icon"></i>
+                                  <div class="content">
+                                      <a href="http://www.msqh.com.my/msqh/download?download=29:standards-for-clinical-research-centre-crc" class="header">MOH – Quality Manual Nosocomial Infection Control MOH/P/PAK/19.99(QAP)</a>
+                                      <!-- <div class="description">Mon, Sep 26</div> -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
                     <div class="column">
                         <div class="ui blue segment">
                             <a class="content" href="./profile.html">
@@ -212,6 +274,9 @@
 
             $('.ui.dropdown')
                 .dropdown();
+
+            $('.ui.modal')
+                .modal('show');
         });
     </script>
 </body>

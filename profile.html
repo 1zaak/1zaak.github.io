@@ -56,23 +56,23 @@
                 <div class="four wide column">
                     <div class="verticalMenu">
                         <div class="ui vertical pointing menu fluid">
-                          <a class="item" href="./index.html">
-                              <i class="home icon"></i> Home
-                          </a>
-                          <a class="active teal item" href="./profile.html">
-                              <i class="user icon"></i> Profile
-                          </a>
-                          <a class="item" href="./profile.html">
-                              <i class="payment icon"></i> Payment History
-                          </a>
+                            <a class="item" href="./index.html">
+                                <i class="home icon"></i> Home
+                            </a>
+                            <a class="active teal item" href="./profile.html">
+                                <i class="user icon"></i> Profile
+                            </a>
+                            <a class="item" href="./profile.html">
+                                <i class="payment icon"></i> Payment History
+                            </a>
 
-                          <a class="item" href="./profile.html">
-                              <i class="users icon"></i> Renew Membership
-                          </a>
+                            <a class="item" href="./profile.html">
+                                <i class="users icon"></i> Renew Membership
+                            </a>
 
-                          <a class="item" href="./enquiry.html">
-                              <i class="info icon"></i> Help
-                          </a>
+                            <a class="item" href="./enquiry.html">
+                                <i class="info icon"></i> Help
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -92,11 +92,14 @@
 
 
                     <div class="ui top attached tabular menu">
-                        <div class="active item">Profile</div>
-                        <div class="item">CV</div>
-                        <div class="item">Parent Account</div>
+                        <a class="item active" data-tab="profile">Profile</a>
+                        <a class="item" data-tab="cv">CV</a>
+                        <a class="item" data-tab="parent-account">Parent Account</a>
+                        <a class="item" data-tab="cert">Member Certificate</a>
+                    </div>
+                    <div class="ui bottom attached tab segment active" data-tab="profile">
                         <!--another device content-->
-                        <div class="ui device two column middle aligned vertical grid segment">
+                        <div class="ui device two column middle aligned vertical grid segment" data-tab="profile">
                             <div class="column verborder">
                                 <div class="ui info segment">
                                     <h5 class="ui header">Profile
@@ -117,37 +120,45 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--another device content-->
-                    <div class="ui device two column middle aligned vertical grid segment">
-                        <div class="column verborder">
-                            <div class="ui info segment">
-                                <h5 class="ui header">Contact Information
+
+                        <!--another device content-->
+                        <div class="ui device two column middle aligned vertical grid segment">
+                            <div class="column verborder">
+                                <div class="ui info segment">
+                                    <h5 class="ui header">Contact Information
                                 </h5>
-                                <p>Mailing Address： B.6-1, Level 6, Menara Wisma Sejarah, <br/> 230 Jalan Tun Razak, <br/>50400 Kuala Lumpur</p>
-                                <p>Title： Assoc. Prof. Dr</p>
-                                <p>Name： Kadar Marikar</p>
-                                <p>NRIC：789456123
-                                </p>
+                                    <p>Mailing Address： B.6-1, Level 6, Menara Wisma Sejarah, <br/> 230 Jalan Tun Razak, <br/>50400 Kuala Lumpur</p>
+                                    <p>Title： Assoc. Prof. Dr</p>
+                                    <p>Name： Kadar Marikar</p>
+                                    <p>NRIC：789456123
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui info segment">
+                                    <p>Date of Birth： MM DD YYYY</p>
+                                    <p>Gender: Male</p>
+                                    <p>Race: Malay</p>
+                                    <p>Nationality: Malaysia</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="column">
-                            <div class="ui info segment">
-                                <p>Date of Birth： MM DD YYYY</p>
-                                <p>Gender: Male</p>
-                                <p>Race: Malay</p>
-                                <p>Nationality: Malaysia</p>
+                        <!--the device content-->
+                        <div class="ui device two column middle aligned vertical grid segment">
+                            <div class="column verborder">
+                                <div class="ui info segment">
+                                    <p>Professional Designation： Chief Executive Officer, MSQH</p>
+                                    <p>Qualification: Qualification Here</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--the device content-->
-                    <div class="ui device two column middle aligned vertical grid segment">
-                        <div class="column verborder">
-                            <div class="ui info segment">
-                                <p>Professional Designation： Chief Executive Officer, MSQH</p>
-                                <p>Qualification: Qualification Here</p>
-                            </div>
-                        </div>
+                    <div class="ui bottom attached tab segment" data-tab="cv">
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="parent-account">
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="cert">
+                      <button class="positive ui button">Positive Button</button>
                     </div>
                 </div>
             </div>
@@ -183,6 +194,9 @@
                 .popup({
                     content: '哎呀，这个传感器异常。'
                 });
+
+            $('.menu .item')
+                .tab();
         });
     </script>
 </body>
