@@ -117,7 +117,7 @@ header{
 	float:left;
 	width:180px;
 	height:72px;
-	background: url(../images/logo.png) left center no-repeat;
+	background: url(../images/logo-main.png) left center no-repeat;
 }
 #logo a{
 	display:block;
@@ -404,7 +404,7 @@ footer {
 #copyrights .logo {
 	width:164px;
 	height:40px;
-	background:url(../images/logo_footer.png);
+	/*background:url(../images/logo-main.png);*/
 	text-indent:-999em;
 }
 #copyrights p {
