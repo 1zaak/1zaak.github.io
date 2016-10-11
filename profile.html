@@ -8,6 +8,7 @@
     <title>Membership Page | MSQH</title>
     <link type="text/css" rel="stylesheet" href="resource/css/framework.css" />
     <link type="text/css" rel="stylesheet" href="resource/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./semantic/dist/components/dropdown.css">
 </head>
 
 <body>
@@ -98,8 +99,8 @@
                         <a href="http://www.msqh.com.my/msqh/form?download=11:membership-application-form" class="blue ui button small" data-tab="cert"><i class="small download icon"></i>Member Certificate</a>
                     </div>
                     <div class="ui bottom attached tab segment active" data-tab="profile">
-                        <!--another device content-->
-                        <div class="ui device two column middle aligned vertical grid segment" data-tab="profile">
+                        <!--Profile 1st row-->
+                        <div class="ui device two column middle aligned vertical grid segment">
                             <div class="column verborder">
                                 <div class="ui info segment">
                                     <h5 class="ui header">Profile
@@ -121,7 +122,7 @@
                             </div>
                         </div>
 
-                        <!--another device content-->
+                        <!--Profile 2nd row-->
                         <div class="ui device two column middle aligned vertical grid segment">
                             <div class="column verborder">
                                 <div class="ui info segment">
@@ -143,7 +144,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--the device content-->
+                        <!--Profile 3rd row-->
                         <div class="ui device two column middle aligned vertical grid segment">
                             <div class="column verborder">
                                 <div class="ui info segment">
@@ -153,16 +154,73 @@
                             </div>
                         </div>
                     </div>
+                    <!-- CV tab -->
                     <div class="ui bottom attached tab segment" data-tab="cv">
+                        <!-- CV 1st row -->
+                        <div class="ui device two column middle aligned vertical grid segment">
+                            <div class="column verborder">
+                                <div class="ui info segment">
+                                    <h5 class="ui header">Current CV
+                                      </h5>
+                                    <a href="http://www.msqh.com.my/msqh/download?download=3:medical-clinic-accreditation-standards" class="ui labeled icon positive small ui button"><i class="download icon"></i>Download</a>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui info segment">
+                                    <h5 class="ui header">Upload New CV
+                                    </h5>
+                                    <input type="file" accept=".pdf" class="ui input">
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="ui bottom attached tab segment" data-tab="parent-account">
+                        <!-- Parent-account 1st row -->
+                        <!--Profile 1st row-->
+                        <div class="ui device one column middle aligned vertical grid segment">
+                            <div class="column verborder">
+                                <div class="ui info segment">
+                                    <p><span class="stress">Parent Account ：</span>Malaysian Society for Quality in Health</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Profile 2nd row-->
+                        <div class="ui device one column middle aligned vertical grid segment">
+                            <div class="column verborder">
+                                <div class="ui info segment">
+                                    <p><span class="stress">Change Parent Account ：</span><select class="ui dropdown">
+                                <option value="">Parent Account</option>
+                                <option value="1">Malaysian Society for Quality in Health</option>
+                                <option value="2">Malaysian Orthopaedic Association</option>
+                                	<option value="3">StemTech International</option>
+                                  <option value="4">UKM Kesihatan</option>
+                                  	<option value="5">Mahkota Medical Centre</option>
+                                    <option value="6">Regency Specialist Hospital</option>
+                                    <option value="7">IJN</option>
+                                    	<option value="8">Beverly Wilshire Medical Centre</option>
+                                      <option value="9">Pantai Hospitals Gleneagles</option>
+                                      <option value="10">Mount Miriam Cancer Hospital</option>
+                                      	<option value="11">ISEC International Specialist Eye Centre Malaysia </option>
+                                        <option value="12">DMMC Darul Makmur Medical Centre</option>
+                                        <option value="13">Penang Adventist Hospital</option>
+                                        	<option value="14">The Tun Hussein Onn National Eye Hospital</option>
+                              </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="ui bottom attached tab segment" data-tab="cert">
-                      <button class="positive ui button">Positive Button</button>
-                    </div>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="cert">
+                    <button class="positive ui button">Positive Button</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!--footer begin-->
     <footer>
@@ -180,6 +238,7 @@
     </footer>
     <script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
     <script type="text/javascript" src="resource/javascript/framework.js"></script>
+    <script src="./semantic/dist/components/tab.js"></script>
     <script>
         $(document).ready(function() {
             $('.ui.dropdown')
@@ -195,7 +254,7 @@
                     content: '哎呀，这个传感器异常。'
                 });
 
-            $('.tabular.menu .item')
+            $('.menu .item')
                 .tab();
         });
     </script>
