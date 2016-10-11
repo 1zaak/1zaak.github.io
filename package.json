@@ -1,0 +1,29 @@
+{
+  "name": "1zaak.github.io",
+  "version": "1.0.0",
+  "description": "Anything i want to publish i publish",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm install semantic-ui --save && cd ./semantic/ && gulp build",
+    "start": "browser-sync start --server --files '*.*' '*/*/*.*'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1zaak/1zaak.github.io.git"
+  },
+  "keywords": [
+    "1zaak",
+    "izaak",
+    "izaakhaliq"
+  ],
+  "author": "Izaak Khaliq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1zaak/1zaak.github.io/issues"
+  },
+  "homepage": "https://github.com/1zaak/1zaak.github.io#readme",
+  "dependencies": {
+    "semantic-ui": "^2.2.4"
+  }
+}
