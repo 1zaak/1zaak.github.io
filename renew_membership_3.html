@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <title>Payment History Page | MSQH</title>
+    <title>Renew Membership Page | MSQH</title>
     <link type="text/css" rel="stylesheet" href="resource/css/framework.css" />
     <link type="text/css" rel="stylesheet" href="resource/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./semantic/dist/components/step.css">
 </head>
 
 <body>
@@ -42,8 +43,8 @@
                 <div class="right menu">
                     <a class="item" href="./main.html"><i class="home icon"></i>Home</a>
                     <a class="item" href="./profile.html"><i class="user icon"></i>Profile</a>
-                    <a class="active item" href="./profile.html"><i class="payment icon"></i>Payment History</a>
-                    <a class="item" href="./renew_membership.html"><i class="users icon"></i>Renew Membership</a>
+                    <a class="item" href="./profile.html"><i class="payment icon"></i>Payment History</a>
+                    <a class="active item" href="./renew_membership.html"><i class="users icon"></i>Renew Membership</a>
                     <a class="item" href="./enquiry.html"><i class="info icon"></i>Help</a>
                 </div>
             </div>
@@ -62,11 +63,11 @@
                             <a class="item" href="./profile.html">
                                 <i class="user icon"></i> Profile
                             </a>
-                            <a class="active teal item" href="./payment_history.html">
+                            <a class="item" href="./payment_history.html">
                                 <i class="payment icon"></i> Payment History
                             </a>
 
-                            <a class="item" href="./renew_membership.html">
+                            <a class="active teal item" href="./renew_membership.html">
                                 <i class="users icon"></i> Renew Membership
                             </a>
 
@@ -81,59 +82,64 @@
                     <div class="pageHeader">
                         <div class="segment">
                             <h3 class="ui dividing header">
-  							<i class="large payment icon"></i>
+  							<i class="large users icon"></i>
   							<div class="content">
-    						Payment History
+    						Renew Membership
   							</div>
 						          </h3>
                         </div>
                     </div>
 
-                    <table class="ui single line table">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Invoice</th>
-      <th>Membership Category</th>
-      <th>Payment Method</th>
-      <th>Amount</th>
-      <th>Receipt</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>01/09/2013</td>
-      <td>MSQH/15/ORD/001</td>
-      <td>Ordinary</td>
-      <td>Bank Transfer <a class="ui green tiny label">
-  <i class="download tiny icon"></i> Attachment 1
-</a></td>
-      <td>RM63.00</td>
-      <td>MSQH/15/Receipt</td>
-    </tr>
-    <tr>
-      <td>14/10/2014</td>
-      <td>MSQH/15/ORD/231</td>
-      <td>Ordinary</td>
-      <td>Bank Transfer <a class="ui green tiny label">
-  <i class="download tiny icon"></i> Attachment 2
-</a></td>
-      <td>RM63.00</td>
-      <td>MSQH/13/Receipt</td>
-    </tr>
-    <tr>
-      <td>14/05/2015</td>
-      <td>MSQH/15/ORD/132</td>
-      <td>Ordinary</td>
-      <td>Bank Transfer <a class="ui green tiny label">
-  <i class="download tiny icon"></i> Attachment 3
-</a></td>
-      <td>RM63.00</td>
-      <td>MSQH/17/Receipt</td>
-    </tr>
-  </tbody>
-</table>
+                    <div class="ui stackable steps">
+                        <a href="./renew_membership.html" class="step">
+                            <i class="tasks icon"></i>
+                            <div class="content">
+                                <div class="title">Selection</div>
 
+                            </div>
+                        </a>
+                        <a href="./renew_membership_2.html" class="step">
+                            <i class="payment icon"></i>
+                            <div class="content">
+                                <div class="title">Payment</div>
+
+                            </div>
+                        </a>
+                        <div class="active step">
+                            <i class="checkmark icon"></i>
+                            <div class="content">
+                                <div class="title">Proof of Payment</div>
+                            </div>
+                        </div>
+                        <div class="disabled step">
+                            <i class="barcode icon"></i>
+                            <div class="content">
+                                <div class="title">Receipt</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- divider -->
+                    <div class="ui device one column middle aligned vertical grid segment">
+                    </div>
+                    <!-- 1st sub-section -->
+                    <div class="ui device one column middle aligned vertical grid segment">
+                        <div class="column verborder">
+                            <form class="ui form">
+                                <div class="grouped fields">
+                                    <label for="fruit">Attach Proof of Payment:</label>
+                                  <input type="file" accept=".pdf" class="ui input">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- 2nd subsection -->
+                    <div class="ui one column middle aligned vertical grid segment">
+                        <a href="./renew_membership_4.html" class="ui positive right labeled icon button">
+                          Next
+                          <i class="arrow right icon"></i>
+                      </a>
+                    </div>
 
 
 
@@ -177,6 +183,9 @@
 
             $('.menu .item')
                 .tab();
+
+            $('.ui.radio.checkbox')
+                .checkbox();
         });
     </script>
 </body>

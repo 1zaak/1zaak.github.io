@@ -8,7 +8,6 @@
     <title>Profile Page | MSQH</title>
     <link type="text/css" rel="stylesheet" href="resource/css/framework.css" />
     <link type="text/css" rel="stylesheet" href="resource/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="./semantic/dist/components/dropdown.css">
 </head>
 
 <body>
@@ -27,7 +26,7 @@
                         </a>
                     </div>
                     <div class="ui inline labeled icon top right pointing dropdown">
-                        <img class="ui avatar image" src="resource/images/avatar-default.gif"> Welcome, Izaak
+                        <img class="ui avatar image" src="resource/images/avatar-default.gif"> Welcome, Dr Kadar
                         <i class="dropdown icon"></i>
                         <div class="menu">
                             <a class="item" href="./profile.html"><i class="reply mail icon"></i>Profile</a>
@@ -41,10 +40,10 @@
         <div class="ui teal inverted menu">
             <div class="bigcontainer">
                 <div class="right menu">
-                    <a class="item" href="./index.html"><i class="home icon"></i>Home</a>
+                    <a class="item" href="./main.html"><i class="home icon"></i>Home</a>
                     <a class="active item" href="./profile.html"><i class="user icon"></i>Profile</a>
                     <a class="item" href="./payment_history.html"><i class="payment icon"></i>Payment History</a>
-                    <a class="item" href="./profile.html"><i class="users icon"></i>Renew Membership</a>
+                    <a class="item" href="./renew_membership.html"><i class="users icon"></i>Renew Membership</a>
                     <a class="item" href="./enquiry.html"><i class="info icon"></i>Help</a>
                 </div>
             </div>
@@ -57,7 +56,7 @@
                 <div class="four wide column">
                     <div class="verticalMenu">
                         <div class="ui vertical pointing menu fluid">
-                            <a class="item" href="./index.html">
+                            <a class="item" href="./main.html">
                                 <i class="home icon"></i> Home
                             </a>
                             <a class="active teal item" href="./profile.html">
@@ -67,7 +66,7 @@
                                 <i class="payment icon"></i> Payment History
                             </a>
 
-                            <a class="item" href="./profile.html">
+                            <a class="item" href="./renew_membership.html">
                                 <i class="users icon"></i> Renew Membership
                             </a>
 
@@ -191,7 +190,7 @@
                         <div class="ui device one column middle aligned vertical grid segment">
                             <div class="column verborder">
                                 <div class="ui info segment">
-                                    <p><span class="stress">Change Parent Account ：</span><select class="ui dropdown">
+                                    <p><span class="stress">Change Parent Account ：</span><select class="ui selection dropdown">
                                 <option value="">Parent Account</option>
                                 <option value="1">Malaysian Society for Quality in Health</option>
                                 <option value="2">Malaysian Orthopaedic Association</option>
@@ -238,21 +237,13 @@
     </footer>
     <script type="text/javascript" src="resource/javascript/jquery.min.js"></script>
     <script type="text/javascript" src="resource/javascript/framework.js"></script>
+    <script type="text/javascript" src="resource/javascript/jquery.zclip.min.js"></script>
+    <script type="text/javascript" src="resource/javascript/alert.js"></script>
     <script src="./semantic/dist/components/tab.js"></script>
     <script>
         $(document).ready(function() {
             $('.ui.dropdown')
                 .dropdown();
-
-            $('.ok.label')
-                .popup({
-                    content: '这个传感器正常工作。'
-                });
-
-            $('.error.label')
-                .popup({
-                    content: '哎呀，这个传感器异常。'
-                });
 
             $('.menu .item')
                 .tab();
