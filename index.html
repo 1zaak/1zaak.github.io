@@ -1,120 +1,43 @@
 <!doctype html>
-<html><head>
-  <!-- Standard Meta -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<html>
+  <head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="./semantic/dist/components/icon.css">
 
-  <!-- Site Properties -->
-  <title>Login - MSQH</title>
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/reset.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/site.css">
+    <!-- Site Properties -->
+    <title>Izaak's Page</title>
 
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/container.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/grid.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/header.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/image.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/menu.css">
-
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/divider.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/segment.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/form.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/input.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/button.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/list.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/message.css">
-  <link rel="stylesheet" type="text/css" href="./semantic/dist/components/icon.css">
-
-
-  <script src="./semantic/dist/components/form.js"></script>
-  <script src="./semantic/dist/components/transition.js"></script>
-
-  <style type="text/css">
-    body {
-      background-color: #DADADA;
-    }
-    body > .grid {
-      height: 100%;
-    }
-    .image {
-      margin-top: -100px;
-    }
-    .column {
-      max-width: 450px;
-    }
-  </style>
-  <script>
-  $(document)
-    .ready(function() {
-      $('.ui.form')
-        .form({
-          fields: {
-            email: {
-              identifier  : 'email',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your e-mail'
-                },
-                {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
-                }
-              ]
-            },
-            password: {
-              identifier  : 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your password'
-                },
-                {
-                  type   : 'length[6]',
-                  prompt : 'Your password must be at least 6 characters'
-                }
-              ]
-            }
-          }
-        })
-      ;
-    })
-  ;
-  </script>
-</head>
-<body>
-
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <h2 class="ui teal image header">
-      <img src="./resource/images/logo-main.png" class="image">
-      <div class="content">
-        MSQH Member Portal
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child1">
+          <img class="img-ball" src="Soccer-Football-icon.png">
       </div>
-    </h2>
-    <form class="ui large form">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+      <div class="child2">
+          <div class="text-main">
+              <h2>Who am I?</h2>
+              <p class = "justify">Hi, I am Izaak Khaliq. I'm a Software Engineer based in Malaysia.</p>
+              <br/>
+              <h2>Where am I working right now?</h2>
+              <p class = "justify">I'm currently working at <a href="https://iprice.my" target="_blank">iPrice</a></p>
+              <br/>
+              <h2>What have I done lately?</h2>
+              <p class = "justify">Most of my Javascript, Elixir and PHP code are in <a href="https://github.com/1zaak" target="_blank">Github</a> and description of my past work experiences is at my <a href="https://www.linkedin.com/in/1zaak" target="_blank">LinkedIn.</a></p>
+              <br/>
+              <h2>How can anyone contact me?</h2>
+              <p class = "justify"> You can contact me at <a href="mailto:izaak@izaak.my?Subject=Hi Izaak (From Site)" target="_blank">izaak@izaak.my</a></p>
+              <br/>
+              <div class="icons">
+                <a href="https://github.com/1zaak" target="_blank"><i class="huge github icon"></i></a>
+                <a href="https://www.linkedin.com/in/1zaak" target="_blank"><i class="huge linkedin icon"></i></a>
+              </div>
           </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-          </div>
-        </div>
-        <a href="main.html" class="ui fluid large teal submit button">Login</a>
       </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-
-    <div class="ui message">
-      Register as new MSQH member? <a href="#">Sign Up Here</a>
     </div>
-  </div>
-</div>
+  </body>
+</html>
