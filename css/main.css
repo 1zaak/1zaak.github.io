@@ -250,11 +250,11 @@ a:active {
 }
 
 .question {
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 
 .answer {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .img-ball {
@@ -292,11 +292,11 @@ a:active {
         overflow:scroll;
     }
     .question {
-      font-size: 5vw;
+      font-size: 4.5vw;
     }
 
     .answer {
-      font-size: 4vw;
+      font-size: 3.5vw;
     }
     .text-main {
         margin: 5% 5%;
