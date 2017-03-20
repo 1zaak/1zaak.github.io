@@ -265,24 +265,6 @@ a:active {
 }
 
 @media only screen and (max-width: 768px) {
-    .icon-twitter-square:before {
-        content: "\e900";
-        font-size: 10vw;
-    }
-    .icon-instagram:before {
-        content: "\e901";
-        font-size: 10vw;
-    }
-    .icon-facebook-square:before {
-        content: "\e902";
-        font-size: 10vw;
-    }
-    /*.parent {
-        display: flex;
-        flex-direction: column;
-        height: 200vh;
-        font-family: var(--main-font);
-    }*/
     .parent {
         display: flex;
         flex-direction: column;
@@ -302,6 +284,94 @@ a:active {
         margin: 5% 5%;
         color: #F2F4F3;
     }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+  .parent {
+      overflow:scroll;
+  }
+  .question {
+    font-size: 2.5vw;
+  }
+
+  .answer {
+    font-size: 1.5vw;
+  }
+  .text-main {
+      margin: 2% 5% 2% 5%;
+      color: #F2F4F3;
+  }
+}
+
+/* Landscape*/
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)  {
+  .parent {
+      display: flex;
+      flex-direction: column;
+      background: #0A0908;
+      height: 100vh;
+      font-family: var(--main-font);
+      overflow:scroll;
+  }
+  .question {
+    font-size: 4.5vw;
+  }
+
+  .answer {
+    font-size: 3.5vw;
+  }
+  .text-main {
+      margin: auto;
+      color: #F2F4F3;
+  }
+}
+
+/* Portrait*/
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)  {
+  .parent {
+      display: flex;
+      flex-direction: column;
+      background: #0A0908;
+      height: 100vh;
+      font-family: var(--main-font);
+      overflow:scroll;
+  }
+  .question {
+    font-size: 4.5vw;
+  }
+
+  .answer {
+    font-size: 3.5vw;
+  }
+  .text-main {
+      margin: 5% 5%;
+      color: #F2F4F3;
+  }
+}
+
+/*Nexus 10*/
+@media only screen and (max-device-width:1280px){
+  .parent {
+      display: flex;
+      flex-direction: column;
+      background: #0A0908;
+      height: 100vh;
+      font-family: var(--main-font);
+      overflow:scroll;
+  }
+  .question {
+    font-size: 4.5vw;
+  }
+
+  .answer {
+    font-size: 3.5vw;
+  }
+  .text-main {
+      margin: 5% 5%;
+      color: #F2F4F3;
+  }
 }
 
 
