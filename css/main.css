@@ -286,25 +286,6 @@ a:active {
     }
 }
 
-/* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
-/* Styles */
-  .parent {
-      overflow:scroll;
-  }
-  .question {
-    font-size: 2.5vw;
-  }
-
-  .answer {
-    font-size: 1.5vw;
-  }
-  .text-main {
-      margin: 2% 5% 2% 5%;
-      color: #F2F4F3;
-  }
-}
-
 /* Landscape*/
 @media only screen and (min-device-width: 1366px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)  {
   .parent {
