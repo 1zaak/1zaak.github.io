@@ -245,7 +245,7 @@ a:active {
 }*/
 
 .text-main {
-    margin: auto;
+    margin: 2% 20% 2% 20%;
     color: #F2F4F3;
 }
 
@@ -304,7 +304,7 @@ a:active {
     font-size: 3.5vw;
   }
   .text-main {
-      margin: auto;
+      margin: 2% 20% 2% 20%;
       color: #F2F4F3;
   }
 }
@@ -332,8 +332,71 @@ a:active {
   }
 }
 
-/*Nexus 10*/
-@media only screen and (max-device-width:1280px){
+/* Nexus 10 Landscape */
+@media only screen
+  and (min-width: 1200px)
+  and (device-height: 800px)
+  and (-webkit-min-device-pixel-ratio: 2.0)
+  and (-webkit-max-device-pixel-ratio: 2.0) {
+    .parent {
+        display: flex;
+        flex-direction: column;
+        background: #0A0908;
+        height: 100vh;
+        font-family: var(--main-font);
+        overflow:scroll;
+    }
+    .question {
+      font-size: 2.0vw;
+    }
+
+    .answer {
+      font-size: 1.5vw;
+    }
+
+    .text-main {
+        margin: 2% 10%;
+        color: #F2F4F3;
+    }
+
+}
+
+/* Nexus 10 Portrait */
+@media only screen
+  and (min-width: 750px)
+  and (device-height: 1280px)
+  and (-webkit-min-device-pixel-ratio: 2.0)
+  and (-webkit-max-device-pixel-ratio: 2.0) {
+    .parent {
+        display: flex;
+        flex-direction: column;
+        background: #0A0908;
+        height: 100vh;
+        font-family: var(--main-font);
+        overflow:scroll;
+    }
+
+    .question {
+      font-size: 4.5vw;
+    }
+
+    .answer {
+      font-size: 3.5vw;
+    }
+
+    .text-main {
+        margin: 5% 5%;
+        color: #F2F4F3;
+    }
+}
+
+/* iPad in portrait———– */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+}
+
+/*/Ipad Resolution Starts Here – landscape/ */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation: landscape) {
   .parent {
       display: flex;
       flex-direction: column;
@@ -343,14 +406,15 @@ a:active {
       overflow:scroll;
   }
   .question {
-    font-size: 4.5vw;
+    font-size: 2.0vw;
   }
 
   .answer {
-    font-size: 3.5vw;
+    font-size: 1.5vw;
   }
+
   .text-main {
-      margin: 5% 5%;
+      margin: 2% 10%;
       color: #F2F4F3;
   }
 }
