@@ -23,19 +23,19 @@
     <style>
       @font-face {
         font-family: "Futura";
-        src: url('./resource/fonts/futura.tff') format('truetype')
+        src: url('./resource/fonts/futura.tff') format('truetype'),        
       }
 
-      body {
-        font-family: 'Futura', Fallback, sans-serif;
-      }
+      @media screen and (-webkit-min-device-pixel-ratio:0) {@font-face {font-family: 'futura';
+        src: url('/resource/fonts/futura.svg') format('svg');
+      }}
     </style>
     <link rel="shortcut icon" href="/resource/images/me.ico" />
     <!-- Site Properties -->
     <title>Duduk · Coming Soon · May 2023</title>
 
   </head>
-  <body class="font-sans bg-slate-200">
+  <body class="font-sans bg-stone-200">
     <div class="flex flex-col justify-center min-h-screen mx-20">
       <div class="mx-auto">
         <svg width="130" height="130" viewBox="0 0 1900 1900" fill="none" xmlns="http://www.w3.org/2000/svg">
