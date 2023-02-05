@@ -22,16 +22,14 @@
     </script>
     <style>
       @font-face {
-        font-family: "Futura";
-        src: url('./resource/fonts/futura.tff') format('truetype');        
+        font-family: "Futura"; 
+        src: url('./resource/fonts/futura.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('./resource/fonts/futura.woff2') format('woff2'), /* Super Modern Browsers */
+            url('./resource/fonts/futura.woff') format('woff'), /* Pretty Modern Browsers */
+            url('./resource/fonts/futura.tff') format('truetype'), /* Safari, Android, iOS */
+            url('./resource/fonts/futura.svg')  format('svg'); /* Legacy iOS */    
       }
 
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
-        @font-face {
-          font-family: 'futura-svg';
-          src: url('./resource/fonts/futura.svg') format('svg');
-          }
-        }
     </style>
     <link rel="shortcut icon" href="/resource/images/me.ico" />
     <!-- Site Properties -->
