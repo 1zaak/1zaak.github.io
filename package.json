@@ -12,18 +12,13 @@
     "type": "git",
     "url": "git+https://github.com/1zaak/1zaak.github.io.git"
   },
-  "keywords": [
-    "1zaak",
-    "izaak",
-    "izaakhaliq"
-  ],
   "author": "Izaak Khaliq",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/1zaak/1zaak.github.io/issues"
   },
   "homepage": "https://github.com/1zaak/1zaak.github.io#readme",
-  "dependencies": {
-    "semantic-ui": "^2.2.4"
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
   }
 }

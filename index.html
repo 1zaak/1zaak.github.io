@@ -1,93 +1,185 @@
 <!doctype html>
 <html class="h-screen sticky top-0">
-  <head>
-    <!-- Standard Meta -->    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="./resource/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="./resource/images/android-chrome-192x192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="./resource/images/android-chrome-512x512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./resource/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./resource/images/favicon-16x16.png">      
-    <meta property="og:title" content="duduk · coming soon · may 2023" />
-    <meta property="og:url" content="https://duduk.app/" />
-    <meta property="og:image" content="https://duduk.app/resource/images/android-chrome-512x512.png" />  
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {        
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Futura', 'Futura-all']
-            },
+
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./resource/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="./resource/images/android-chrome-192x192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="./resource/images/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./resource/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./resource/images/favicon-16x16.png">
+  <link href="/dist/output.css" rel="stylesheet">
+  <meta property="og:title" content="duduk · coming soon · may 2023" />
+  <meta property="og:url" content="https://duduk.app/" />
+  <meta property="og:image" content="https://duduk.app/resource/images/android-chrome-512x512.png" />
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Futura', 'Futura-all']
           },
-        }
+        },
       }
-    </script>
-    <style>
-      @font-face {
-        font-family: "Futura";
-        src: url('./resource/fonts/futura.tff') format('truetype');        
-      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: "Futura";
+      src: url('./resource/fonts/futura.tff') format('truetype');
+    }
 
-      @font-face {
-        font-family: 'Futura-all';
-        src: url('./resource/fonts/futura.woff') format('woff');    
-         src: url('./resource/fonts/futura.eot') format('embedded-opentype'), /* IE6-IE8 */
-            url('./resource/fonts/futura.woff2') format('woff2'), /* Super Modern Browsers */
-            url('./resource/fonts/futura.woff') format('woff'), /* Pretty Modern Browsers */            
-            url('./resource/fonts/futura.svg')  format('svg'); /* Legacy iOS */    
-      }
+    @font-face {
+      font-family: 'Futura-all';
+      src: url('./resource/fonts/futura.woff') format('woff');
+      src: url('./resource/fonts/futura.eot') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('./resource/fonts/futura.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('./resource/fonts/futura.woff') format('woff'),
+        /* Pretty Modern Browsers */
+        url('./resource/fonts/futura.svg') format('svg');
+      /* Legacy iOS */
+    }
 
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
-        @font-face {
-          font-family: 'futura-svg';
-          src: url('./resource/fonts/futura.svg') format('svg');
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+      @font-face {
+        font-family: 'futura-svg';
+        src: url('./resource/fonts/futura.svg') format('svg');
+      }
+    }
+  </style>
+  <!-- Site Properties -->
+  <title>Duduk · Coming Soon · May 2023</title>
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3PYLXB744M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-3PYLXB744M');
+</script>
+
+
+
+<body class="mx-14 font-sans bg-sky-50 bg-gradient-to-tr from-stone-300 to-sky-100">
+  <h1 class="pt-5 underline text-2xl">Floor View Prototype</h1>
+
+  <!-- Todo -->
+  <ol class="list-decimal">
+    <li>Make the tables draggable ✅ </li>
+    <li>When dropped into a dropzone, show the dropped zone location ✅</li>
+    <li>On page load, place the object into a specific dropzone</li>
+    <li>Make the dropzone an SVG</li>
+    <li>Limit the draggable into only the dropzones</li>
+    <li>When dropped into SVG, snap it into place</li>
+  </ol>
+
+  <script>
+    const position = { x: 0, y: 0 }
+  
+    // Make the tables draggable ✅
+    interact('.draggable')
+      .draggable({
+        inertia: true,
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+          })
+        ],
+        autoScroll: true,
+        listeners: {
+          move(event) {
+            position.x += event.dx
+            position.y += event.dy
+  
+            event.target.style.transform =
+              `translate(${position.x}px, ${position.y}px)`
           }
         }
-    </style>
-    <!-- Site Properties -->
-    <title>Duduk · Coming Soon · May 2023</title>
-
-  </head>
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PYLXB744M"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-3PYLXB744M');
+      })
+  
+  
+    // When dropped into a dropzone, show the dropped zone location ✅
+    interact('.dropzone').dropzone({
+      accept: '.draggable',
+      overlap: 0.75,
+  
+      ondropactivate(event) {
+        // add active dropzone feedback
+        // event.target.classList.add('drop-active')
+        // console.log('drop activated')
+      },
+      ondragenter(event) {
+        const draggableElement = event.relatedTarget
+        const dropzoneElement = event.target
+  
+        // feedback the possibility of a drop
+        // dropzoneElement.classList.add('drop-target')
+        // draggableElement.classList.add('can-drop')
+        // draggableElement.textContent = 'Dragged in'
+        // console.log('drag entered')
+      },
+      ondragleave(event) {
+        // remove the drop feedback style
+        // event.target.classList.remove('drop-target')
+        // event.relatedTarget.classList.remove('can-drop')
+        // event.relatedTarget.textContent = 'Dragged out'
+        // console.log('drag left')
+      },
+      ondrop(event) {
+        // event.relatedTarget.textContent = 'Dropped'
+        // log the id of dropped zone
+        console.log('dropped into', event.target.id)
+      },
+      ondropdeactivate(event) {
+        // remove active dropzone feedback
+        // event.target.classList.remove('drop-active')
+        // event.target.classList.remove('drop-target')
+        // console.log('drop deactivated')
+      }
+    })
+  
   </script>
 
-  <body class="font-sans bg-sky-50 bg-gradient-to-tr from-stone-300 to-sky-100">
-    <div class="flex flex-col justify-center min-h-screen mx-18 px-10 lg:mx-20 lg:px-96">
-      <div class="mx-auto">
-        <svg width="130" height="130" viewBox="0 0 1900 1900" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="1900" height="1900" fill="black" />
-          <path
-            d="M513.65 1059.55C544.45 1059.55 564.05 1045.2 573.85 1021.75C574.55 1035.75 575.6 1050.8 576.3 1055H638.95V1028.75H624.25C620.4 1028.75 618.3 1027.7 618.3 1019.65V819.1C610.6 820.85 594.85 822.6 577.7 822.6H548.65V848.85H565.1C569.65 848.85 571.05 850.95 571.05 859.35V914.3C561.25 892.25 542 880 513.3 880C467.8 880 437 915.7 437 969.6C437 1023.85 467.1 1059.55 513.65 1059.55ZM528.7 1029.8C502.8 1029.8 486 1010.2 486 972.4V967.15C486 929.35 502.8 909.75 528.7 909.75C553.55 909.75 571.05 929.35 571.05 967.15V972.4C571.05 1010.55 553.9 1029.8 528.7 1029.8ZM816.93 1055H845.63V1028.75H829.18C824.63 1028.75 823.23 1026.65 823.23 1018.25V884.55H752.88V910.8H770.03C773.88 910.8 775.98 911.85 775.98 919.9V978.7C775.98 1011.25 763.38 1029.45 739.93 1029.45C722.08 1029.45 711.93 1021.05 711.93 996.2V884.55H642.98V910.8H658.73C662.23 910.8 664.33 911.85 664.33 919.9V997.25C664.33 1040.65 684.28 1059.55 719.98 1059.55C745.88 1059.55 765.13 1048.7 775.98 1027.35V1058.5C784.03 1056.75 799.78 1055 816.93 1055ZM931.326 1059.55C962.126 1059.55 981.726 1045.2 991.526 1021.75C992.226 1035.75 993.276 1050.8 993.976 1055H1056.63V1028.75H1041.93C1038.08 1028.75 1035.98 1027.7 1035.98 1019.65V819.1C1028.28 820.85 1012.53 822.6 995.376 822.6H966.326V848.85H982.776C987.326 848.85 988.726 850.95 988.726 859.35V914.3C978.926 892.25 959.676 880 930.976 880C885.476 880 854.676 915.7 854.676 969.6C854.676 1023.85 884.776 1059.55 931.326 1059.55ZM946.376 1029.8C920.476 1029.8 903.676 1010.2 903.676 972.4V967.15C903.676 929.35 920.476 909.75 946.376 909.75C971.226 909.75 988.726 929.35 988.726 967.15V972.4C988.726 1010.55 971.576 1029.8 946.376 1029.8ZM1234.61 1055H1263.31V1028.75H1246.86C1242.31 1028.75 1240.91 1026.65 1240.91 1018.25V884.55H1170.56V910.8H1187.71C1191.56 910.8 1193.66 911.85 1193.66 919.9V978.7C1193.66 1011.25 1181.06 1029.45 1157.61 1029.45C1139.76 1029.45 1129.61 1021.05 1129.61 996.2V884.55H1060.66V910.8H1076.41C1079.91 910.8 1082.01 911.85 1082.01 919.9V997.25C1082.01 1040.65 1101.96 1059.55 1137.66 1059.55C1163.56 1059.55 1182.81 1048.7 1193.66 1027.35V1058.5C1201.71 1056.75 1217.46 1055 1234.61 1055ZM1269.88 1055H1358.08V1028.75H1344.43C1340.58 1028.75 1338.48 1027.7 1338.48 1019.65V1001.45L1364.73 976.25L1394.13 1021.4C1395.88 1024.2 1396.93 1028.75 1391.68 1028.75H1379.43V1055H1466.58V1028.75H1456.43C1452.93 1028.75 1449.43 1027.35 1446.28 1022.1L1397.63 947.9L1432.28 916.75C1436.13 913.25 1440.33 910.45 1448.73 910.45H1460.98V884.55H1371.73V910.45H1389.58C1395.88 910.45 1395.53 916.4 1393.08 918.5L1338.48 971.35V819.1C1330.78 820.85 1315.03 822.6 1297.88 822.6H1268.83V848.85H1285.28C1289.83 848.85 1291.23 850.95 1291.23 859.35V1019.65C1291.23 1027.7 1289.13 1028.75 1285.28 1028.75H1269.88V1055Z"
-            fill="white" />
-        </svg>
-      </div>
-      <div class="mx-auto font-bold text-2xl lg:text-3xl text-center mt-2 mb-1 lg:mt-3">
-        <span>Coming Soon</span>
-      </div>
-      <div class="mx-auto font-medium text-lg lg:text-2xl text-center mb-1 leading-tight">
-        <span >Unlock Your Restaurant's Potential With The Future of Reservation & Diner Management  </span>
-      </div> 
-      <div class="mx-auto mt-2" >
-        <a href="https://wa.me/+601117645780?text=Hi,%20I&#39;m%20interested%20to%20try%20Duduk%20Platform%20for%20my%20business." class="shadow-md h-10 text-gray-700 bg-gray-200 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-md text-sm px-2 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-400 mx-auto mb-2">
-          <svg width="30" height="30" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552"><defs><linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#57d163"/><stop offset="1" stop-color="#23b33a"/></linearGradient><filter id="a" width="1.115" height="1.114" x="-.057" y="-.057" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation="3.531"/></filter></defs><path fill="#b3b3b3" d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0" filter="url(#a)"/><path fill="#fff" d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"/><path fill="url(#linearGradient1780)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z"/><path fill="url(#b)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"/><path fill="#fff" fill-rule="evenodd" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647"/></svg>
-          <span class="ml-1 text-md lg:text-lg">Get Notified*</span> 
-        </a>
-      </div>
-      
-      <div class="mx-auto text-xs italic text-center mt-1" >
-        <span>*Join our beta launch in May 2023 🚀</span>
-      </div>
-    
-    </div>
-  </body>
+
+  <!-- The draggable table -->
+  <svg class="draggable" width="226" height="146" viewBox="0 0 226 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20.5" y="20.5" width="185" height="105" rx="22.5" fill="white" stroke="#14532D" stroke-width="15" />
+    <rect x="56" width="45" height="13" rx="6.5" fill="#14532D" />
+    <rect y="88" width="45" height="13" rx="6.5" transform="rotate(-90 0 88)" fill="#14532D" />
+    <rect x="213" y="88" width="45" height="13" rx="6.5" transform="rotate(-90 213 88)" fill="#14532D" />
+    <rect x="125" width="45" height="13" rx="6.5" fill="#14532D" />
+    <rect x="56" y="133" width="45" height="13" rx="6.5" fill="#14532D" />
+    <rect x="125" y="133" width="45" height="13" rx="6.5" fill="#14532D" />
+    <path
+      d="M108.145 43.416V54H104.617V43.416H101.719V40.428H111.043V43.416H108.145ZM115.96 43.416H113.98V40.428H119.488V54H115.96V43.416Z"
+      fill="black" />
+  </svg>
+
+  <!-- The drop location. Size it as a box with border in style in tailwindcss, make it larger than the draggable object above -->
+  <div class="flex max-w-3xl">
+    <div id="dropzone1" class="flex-initial dropzone w-96 h-96 border-4 border-dashed border-gray-500">Dropzone 1</div>
+
+  <div id="dropzone2" class=" flex-initial dropzone w-96 h-96 border-4 border-dashed border-gray-500">Dropzone 2</div>
+  </div>
+  
+
+
+  
+
+
+
+
+</body>
+
 </html>
