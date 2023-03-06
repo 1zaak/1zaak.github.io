@@ -68,52 +68,79 @@
   gtag('config', 'G-3PYLXB744M');
 </script>
 
+<!-- Add a square logo at top left -->
+<svg class="absolute top-0 left-0 w-16 h-16 width=" 150" height="150" viewBox="0 0 150 150" fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <rect width="150" height="150" fill="black" />
+  <path
+    d="M68.6321 103.17C76.5521 103.17 81.5921 99.48 84.1121 93.45C84.2921 97.05 84.5621 100.92 84.7421 102H100.852V95.25H97.0721C96.0821 95.25 95.5421 94.98 95.5421 92.91V41.34C93.5621 41.79 89.5121 42.24 85.1021 42.24H77.6321V48.99H81.8621C83.0321 48.99 83.3921 49.53 83.3921 51.69V65.82C80.8721 60.15 75.9221 57 68.5421 57C56.8421 57 48.9221 66.18 48.9221 80.04C48.9221 93.99 56.6621 103.17 68.6321 103.17ZM72.5021 95.52C65.8421 95.52 61.5221 90.48 61.5221 80.76V79.41C61.5221 69.69 65.8421 64.65 72.5021 64.65C78.8921 64.65 83.3921 69.69 83.3921 79.41V80.76C83.3921 90.57 78.9821 95.52 72.5021 95.52Z"
+    fill="white" />
+</svg>
 
 
-<body class="mx-14 font-sans bg-sky-50 bg-gradient-to-tr from-stone-300 to-sky-100">
+
+<body class="mx-24 font-sans bg-sky-50 bg-gradient-to-tr from-stone-300 to-sky-100">
   <h1 class="pt-5 underline text-2xl">Floor View Prototype</h1>
+
+  <h1 id="state" class="text-xl uppercase text-red-600 bg-slate-300">State: </h1>
 
   <!-- Todo -->
   <ol class="list-decimal">
     <li>Make the tables draggable ✅ </li>
-    <li>When dropped into a dropzone, show the dropped zone location ✅</li>
+    <li>When dropped into a dropzone, show the dropped zone location and previous location ✅</li>
     <li>On page load, place the object into a specific dropzone</li>
-    <li>Make the dropzone an SVG</li>
+    <li>Make the dropzone an SVG (a table) ✅</li>
     <li>Limit the draggable into only the dropzones</li>
     <li>When dropped into SVG, snap it into place</li>
   </ol>
 
+
   <script>
     const position = { x: 0, y: 0 }
-  
+
     // Make the tables draggable ✅
     interact('.draggable')
       .draggable({
         inertia: true,
         modifiers: [
-          interact.modifiers.restrictRect({
-            restriction: 'parent',
+          interact.modifiers.restrict({
+            restriction: '.dropzone',
             endOnly: true
-          })
+          }),
+          // Add snap modifier
+          interact.modifiers.snap({
+            targets: [
+              '.draggable'
+            ],
+            range: Infinity,
+            relativePoints: [
+              { x: 0, y: 0 },   // snap relative to the element's top-left,
+              { x: 0, y: 0 },   // to the center
+              { x: 0, y: 0 }    // and to the bottom-right
+            ]
+          }),
+
         ],
         autoScroll: true,
         listeners: {
           move(event) {
             position.x += event.dx
             position.y += event.dy
-  
+
             event.target.style.transform =
               `translate(${position.x}px, ${position.y}px)`
           }
         }
       })
-  
-  
+
+      
+
     // When dropped into a dropzone, show the dropped zone location ✅
+
     interact('.dropzone').dropzone({
       accept: '.draggable',
-      overlap: 0.75,
-  
+      // overlap: 0.75,
+
       ondropactivate(event) {
         // add active dropzone feedback
         // event.target.classList.add('drop-active')
@@ -122,7 +149,7 @@
       ondragenter(event) {
         const draggableElement = event.relatedTarget
         const dropzoneElement = event.target
-  
+
         // feedback the possibility of a drop
         // dropzoneElement.classList.add('drop-target')
         // draggableElement.classList.add('can-drop')
@@ -134,12 +161,22 @@
         // event.target.classList.remove('drop-target')
         // event.relatedTarget.classList.remove('can-drop')
         // event.relatedTarget.textContent = 'Dragged out'
-        // console.log('drag left')
+        const final_status = event.relatedTarget.id + ' left ' + event.target.id
+        console.log(final_status)
+        // select id called 'state'
+        const state = document.getElementById('state')
+        // change the text of the state
+        state.textContent = 'State: ' + final_status
       },
       ondrop(event) {
         // event.relatedTarget.textContent = 'Dropped'
         // log the id of dropped zone
-        console.log('dropped into', event.target.id)
+        const final_status = event.relatedTarget.id + ' entered ' + event.target.id
+        console.log(final_status)
+        // select id called 'state'
+        const state = document.getElementById('state')
+        // change the text of the state
+        state.textContent = 'State: ' + final_status
       },
       ondropdeactivate(event) {
         // remove active dropzone feedback
@@ -148,12 +185,16 @@
         // console.log('drop deactivated')
       }
     })
-  
+
+
+
+
   </script>
 
 
   <!-- The draggable table -->
-  <svg class="draggable" width="226" height="146" viewBox="0 0 226 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg id="R1" class="draggable" width="226" height="146" viewBox="0 0 226 146" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <rect x="20.5" y="20.5" width="185" height="105" rx="22.5" fill="white" stroke="#14532D" stroke-width="15" />
     <rect x="56" width="45" height="13" rx="6.5" fill="#14532D" />
     <rect y="88" width="45" height="13" rx="6.5" transform="rotate(-90 0 88)" fill="#14532D" />
@@ -161,22 +202,35 @@
     <rect x="125" width="45" height="13" rx="6.5" fill="#14532D" />
     <rect x="56" y="133" width="45" height="13" rx="6.5" fill="#14532D" />
     <rect x="125" y="133" width="45" height="13" rx="6.5" fill="#14532D" />
-    <path
-      d="M108.145 43.416V54H104.617V43.416H101.719V40.428H111.043V43.416H108.145ZM115.96 43.416H113.98V40.428H119.488V54H115.96V43.416Z"
-      fill="black" />
+    <text fill="black" xml:space="preserve" style="white-space: pre" font-family="Futura" font-size="18"
+      font-weight="bold" letter-spacing="0em">
+      <tspan x="101.575" y="54.011">R1</tspan>
+    </text>
   </svg>
 
-  <!-- The drop location. Size it as a box with border in style in tailwindcss, make it larger than the draggable object above -->
-  <div class="flex max-w-3xl">
-    <div id="dropzone1" class="flex-initial dropzone w-96 h-96 border-4 border-dashed border-gray-500">Dropzone 1</div>
 
-  <div id="dropzone2" class=" flex-initial dropzone w-96 h-96 border-4 border-dashed border-gray-500">Dropzone 2</div>
-  </div>
-  
+  <!-- The vacant table -->
+  <svg id="T1" class="dropzone" width="226" height="146" viewBox="0 0 226 146" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <rect x="20.5" y="20.5" width="185" height="105" rx="22.5" fill="white" stroke="white" stroke-width="15" />
+    <rect x="56" width="45" height="13" rx="6.5" fill="white" />
+    <rect y="88" width="45" height="13" rx="6.5" transform="rotate(-90 0 88)" fill="white" />
+    <rect x="213" y="88" width="45" height="13" rx="6.5" transform="rotate(-90 213 88)" fill="white" />
+    <rect x="125" width="45" height="13" rx="6.5" fill="white" />
+    <rect x="56" y="133" width="45" height="13" rx="6.5" fill="white" />
+    <rect x="125" y="133" width="45" height="13" rx="6.5" fill="white" />
+  </svg>
 
 
-  
 
+
+  <!-- The drop location. Size it as a box with border in style in tailwindcss and on the right side of the screen-->
+  <!-- Put the section below on the right side of the screen -->
+  <!-- <div class="flex max-w-3xl ">
+    <div id="T2" class="flex-initial dropzone w-96 h-96 border-4 border-dashed border-gray-500">Table 1</div>
+
+    <div id="T3" class=" flex-initial dropzone w-96 h-96 border-4 border-dashed border-gray-500">Table 2</div>
+  </div> -->
 
 
 
