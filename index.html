@@ -1,98 +1,1298 @@
-<!doctype html>
-<html class="h-screen sticky top-0">
-  <head>
-    <!-- Standard Meta -->    
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="./resource/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="./resource/images/android-chrome-192x192.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="./resource/images/android-chrome-512x512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./resource/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./resource/images/favicon-16x16.png">      
-    <meta property="og:title" content="Waitrest AI Concierge" />
-    <meta property="og:url" content="https://waitrest.com/" />
-    <meta property="og:image" content="https://waitrest.com/resource/images/android-chrome-512x512.png" />  
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {        
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Futura', 'Futura-all']
-            },
-          },
-        }
-      }
-    </script>
-    <style>
-      @font-face {
-        font-family: "Futura";
-        src: url('./resource/fonts/futura.tff') format('truetype');        
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokyo 2026 — Family BJJ Trip Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-light: #f5e6e9;
+    --ink: #1a1a1a;
+    --ink-mid: #444;
+    --ink-light: #777;
+    --paper: #FAFAF7;
+    --paper-warm: #F3F0EA;
+    --paper-card: #FFFFFF;
+    --border: #e2ddd6;
+    --gold: #B8860B;
+    --green: #2D6A4F;
+    --green-light: #e8f5ef;
+    --blue: #1a4a7a;
+    --blue-light: #e8f0f8;
+    --orange: #C45C1A;
+    --orange-light: #fdf0e8;
+  }
 
-      @font-face {
-        font-family: 'Futura-all';
-        src: url('./resource/fonts/futura.woff') format('woff');    
-         src: url('./resource/fonts/futura.eot') format('embedded-opentype'),
-            url('./resource/fonts/futura.woff2') format('woff2'),
-            url('./resource/fonts/futura.woff') format('woff'),
-            url('./resource/fonts/futura.svg')  format('svg');
-      }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
-        @font-face {
-          font-family: 'futura-svg';
-          src: url('./resource/fonts/futura.svg') format('svg');
-        }
-      }
-    </style>
-    <!-- Site Properties -->
-    <title>Waitrest AI Concierge</title>
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+  }
 
-  </head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PYLXB744M"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3PYLXB744M');
-  </script>
+  /* HEADER */
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '東京';
+    position: absolute;
+    right: -20px;
+    top: -10px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 180px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--red); }
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-meta-item { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .hero-meta-item strong { display: block; color: white; font-size: 14px; font-weight: 500; }
 
-  <body class="font-sans bg-sky-50 bg-gradient-to-tr from-stone-300 to-sky-100">
-    <div class="flex flex-col justify-center min-h-screen mx-18 px-10 lg:mx-20 lg:px-96">
-      <div class="mx-auto">
-        <img src="./resource/images/logo-waitrest-icon.svg" alt="Waitrest AI Concierge Logo" width="130" height="130">
-      </div>
-      <div class="mx-auto font-bold text-2xl lg:text-3xl text-center mt-2 mb-1 lg:mt-3">
-        <span>Coming Soon</span>
-      </div>
-      <div class="mx-auto font-medium text-lg lg:text-2xl text-center mb-1 leading-tight">
-        <span>Unlock Your Restaurant's Potential with Waitrest AI Concierge</span>
-      </div> 
-      <div class="mx-auto mt-2">
-        <a href="https://wa.me/+60142320736?text=Hi,%20I'm%20interested%20to%20try%20Waitrest%20AI%20Concierge%20for%20my%20business." class="shadow-md h-10 text-gray-700 bg-gray-200 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-md text-sm px-2 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-400 mx-auto mb-2">
-          <svg width="30" height="30" class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552">
-            <defs>
-              <linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#57d163"/>
-                <stop offset="1" stop-color="#23b33a"/>
-              </linearGradient>
-              <filter id="a" width="1.115" height="1.114" x="-.057" y="-.057" color-interpolation-filters="sRGB">
-                <feGaussianBlur stdDeviation="3.531"/>
-              </filter>
-            </defs>
-            <path fill="#b3b3b3" d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0" filter="url(#a)"/>
-            <path fill="#fff" d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"/>
-            <path fill="url(#linearGradient1780)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.559 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.524h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.929z"/>
-            <path fill="url(#b)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"/>
-            <path fill="#fff" fill-rule="evenodd" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.226 0-3.218.46-4.902 2.3s-6.435 6.287-6.435 15.332 6.588 17.785 7.506 19.013 12.718 20.381 31.405 27.75c15.529 6.124 18.689 4.906 22.061 4.6s10.877-4.447 12.408-8.74 1.532-7.971 1.073-8.74-1.685-1.226-3.525-2.146-10.877-5.367-12.562-5.981-2.91-.919-4.137.921-4.746 5.979-5.819 7.206-2.144 1.381-3.984.462-7.76-2.861-14.784-9.124c-5.465-4.873-9.154-10.891-10.228-12.73s-.114-2.835.808-3.751c.825-.824 1.838-2.147 2.759-3.22s1.224-1.84 1.836-3.065.307-2.301-.153-3.22-4.032-10.011-5.666-13.647"/>
-          </svg>
-          <span class="ml-1 text-md lg:text-lg">Get Notified</span> 
-        </a>
-      </div>
-      
+  /* CONTAINER */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* SECTION */
+  section { padding: 40px 0 20px; }
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ALERT BOXES */
+  .alert {
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-size: 13.5px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alert-red { background: var(--red-light); border-left: 3px solid var(--red); }
+  .alert-green { background: var(--green-light); border-left: 3px solid var(--green); }
+  .alert-blue { background: var(--blue-light); border-left: 3px solid var(--blue); }
+  .alert-orange { background: var(--orange-light); border-left: 3px solid var(--orange); }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alert-text { }
+  .alert-text strong { display: block; margin-bottom: 2px; font-weight: 600; }
+
+  /* DAY CARDS */
+  .day-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .day-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-num {
+    width: 44px;
+    height: 44px;
+    background: var(--ink);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .day-num small { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-top: 2px; }
+  .day-info { flex: 1; }
+  .day-info h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .day-info p { font-size: 12.5px; color: var(--ink-light); }
+  .day-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .badge-red { background: var(--red); color: white; }
+  .badge-gold { background: var(--gold); color: white; }
+  .badge-green { background: var(--green); color: white; }
+  .badge-blue { background: var(--blue); color: white; }
+
+  /* STOPS */
+  .stops { padding: 8px 0; }
+  .stop {
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .stop:last-child { border-bottom: none; }
+  .stop:hover { background: var(--paper); }
+  .stop-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-light);
+    padding-top: 2px;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .stop-time.competition { color: var(--red); font-weight: 600; }
+  .stop-time.training { color: var(--blue); font-weight: 600; }
+  .stop-content { }
+  .stop-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .stop-name a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .stop-name a:hover { border-bottom-color: var(--red); color: var(--red); }
+  .map-link {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--red);
+    text-decoration: none;
+    background: var(--red-light);
+    padding: 2px 7px;
+    border-radius: 3px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+  .map-link:hover { background: var(--red); color: white; }
+  .stop-desc { font-size: 12.5px; color: var(--ink-mid); line-height: 1.5; }
+  .stop-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .tag {
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag-halal { background: #e8f5ef; color: var(--green); }
+  .tag-free { background: #e8f5ef; color: var(--green); }
+  .tag-book { background: #fff3cd; color: #856404; }
+  .tag-passport { background: var(--blue-light); color: var(--blue); }
+  .tag-combat { background: #fee2e2; color: #991b1b; }
+  .tag-watch { background: #fef3c7; color: #92400e; }
+  .tag-kids { background: #ede9fe; color: #5b21b6; }
+  .stop-cost {
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .cost-jpy { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--ink); }
+  .cost-myr { font-size: 11px; color: var(--ink-light); }
+  .cost-free { font-size: 12px; font-weight: 600; color: var(--green); }
+
+  /* HALAL SECTION */
+  .halal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .halal-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .halal-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  .halal-card-name { font-size: 13.5px; font-weight: 600; }
+  .halal-card-rating { font-size: 12px; color: var(--gold); font-weight: 600; }
+  .halal-card-type { font-size: 11.5px; color: var(--ink-light); margin-bottom: 6px; }
+  .halal-card-cost { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--green); font-weight: 500; }
+  .halal-card-note { font-size: 11.5px; color: var(--ink-mid); margin-top: 5px; line-height: 1.4; }
+
+  /* BUDGET TABLE */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-top: 8px;
+  }
+  .budget-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--paper-warm);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-mid);
+    border-bottom: 2px solid var(--border);
+  }
+  .budget-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:hover td { background: var(--paper); }
+  .budget-table .jpy { font-family: 'DM Mono', monospace; font-weight: 500; }
+  .budget-table .myr { font-size: 12px; color: var(--ink-light); }
+  .budget-table .total-row td { font-weight: 700; background: var(--ink); color: white; }
+  .budget-table .total-row td .myr { color: rgba(255,255,255,0.6); }
+  .budget-table .section-row td { 
+    background: var(--paper-warm); 
+    font-weight: 600; 
+    font-size: 11px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    color: var(--ink-mid);
+    padding: 8px 14px;
+  }
+
+  /* PAYMENT CARDS */
+  .payment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .payment-card {
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid var(--border);
+  }
+  .payment-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .payment-card-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .payment-card-title { font-size: 14px; font-weight: 600; }
+  .payment-card-sub { font-size: 11px; color: var(--ink-light); }
+  .payment-card ul { list-style: none; padding: 0; }
+  .payment-card ul li { font-size: 12.5px; color: var(--ink-mid); padding: 3px 0; display: flex; gap: 6px; }
+  .payment-card ul li::before { content: '→'; color: var(--red); font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+  .pc-wise { background: var(--green-light); }
+  .pc-wise .payment-card-icon { background: var(--green); color: white; }
+  .pc-tgo { background: var(--red-light); }
+  .pc-tgo .payment-card-icon { background: var(--red); color: white; }
+  .pc-suica { background: var(--blue-light); }
+  .pc-suica .payment-card-icon { background: var(--blue); color: white; }
+  .pc-cash { background: var(--orange-light); }
+  .pc-cash .payment-card-icon { background: var(--orange); color: white; }
+
+  /* BOOKING CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-urgency {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+    letter-spacing: 0.3px;
+  }
+  .urgent { background: var(--red); color: white; }
+  .moderate { background: var(--gold); color: white; }
+  .low { background: var(--green); color: white; }
+  .check-content { flex: 1; }
+  .check-content strong { display: block; font-weight: 600; }
+  .check-content span { font-size: 12px; color: var(--ink-light); }
+  .check-link { font-size: 12px; color: var(--red); text-decoration: none; font-weight: 500; }
+  .check-link:hover { text-decoration: underline; }
+
+  /* TIPS */
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .tip-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .tip-card-head { font-size: 14px; font-weight: 600; margin-bottom: 8px; display: flex; gap: 8px; align-items: center; }
+  .tip-card ul { list-style: none; padding: 0; }
+  .tip-card ul li { font-size: 12.5px; color: var(--ink-mid); padding: 4px 0; border-bottom: 1px solid var(--border); line-height: 1.45; display: flex; gap: 6px; }
+  .tip-card ul li:last-child { border-bottom: none; }
+  .tip-card ul li::before { content: '·'; color: var(--red); font-size: 16px; flex-shrink: 0; line-height: 1.2; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    margin-top: 40px;
+  }
+  footer strong { color: white; }
+
+  /* UTILS */
+  .note { font-size: 12px; color: var(--ink-light); font-style: italic; margin-top: 8px; }
+  .divider { height: 1px; background: var(--border); margin: 8px 0 20px; }
+  strong.red { color: var(--red); }
+  strong.green { color: var(--green); }
+  .emoji { font-style: normal; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px; }
+    .container { padding: 0 16px; }
+    .stop { grid-template-columns: 44px 1fr; }
+    .stop-cost { display: none; }
+    .hero::before { font-size: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-tag">🇯🇵 Trip Guide 2026</div>
+    <h1>Tokyo<br><span>BJJ & Family</span><br>Adventure</h1>
+    <p class="hero-sub">A complete guide for a Malaysian Muslim family — competition, watches, halal wagyu & gaming pilgrimages</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>26–31 March 2026</strong>6 Days · 5 Nights</div>
+      <div class="hero-meta-item"><strong>Ota City, Tokyo</strong>1-14-22 Shimomaruko</div>
+      <div class="hero-meta-item"><strong>2 Travellers</strong>Parent + 8yr Old Competitor</div>
+      <div class="hero-meta-item"><strong>Competition</strong>Sunday 29 March</div>
     </div>
-  </body>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- URGENT BOOKINGS -->
+<section>
+  <h2 class="section-title">⚡ Book These NOW — Before You Land</h2>
+  <ul class="checklist">
+    <li>
+      <span class="check-urgency urgent">🔴 URGENT</span>
+      <div class="check-content">
+        <strong>Shibuya Sky — Sunset Slot (Friday 6pm)</strong>
+        <span>Sunset slots sell out 2–3 weeks ahead. Book immediately.</span>
+      </div>
+      <a class="check-link" href="https://www.shibuya-scramble-square.com/sky/" target="_blank">Book →</a>
+    </li>
+    <li>
+      <span class="check-urgency urgent">🔴 URGENT</span>
+      <div class="check-content">
+        <strong>teamLab Borderless — Saturday Evening ~7pm</strong>
+        <span>Saturday slots are always packed. Book at teamlab.art now.</span>
+      </div>
+      <a class="check-link" href="https://www.teamlab.art/jp/e/tokyo/" target="_blank">Book →</a>
+    </li>
+    <li>
+      <span class="check-urgency moderate">🟡 SOON</span>
+      <div class="check-content">
+        <strong>LEGOLAND Discovery Center Tokyo — Monday</strong>
+        <span>Online tickets are cheaper and skip the queue.</span>
+      </div>
+      <a class="check-link" href="https://tokyo.legolanddiscoverycenter.jp/" target="_blank">Book →</a>
+    </li>
+    <li>
+      <span class="check-urgency moderate">🟡 SOON</span>
+      <div class="check-content">
+        <strong>Halal Wagyu Yakiniku Panga — Sunday Dinner (Celebration)</strong>
+        <span>Popular spot. Book a table for the champion's dinner.</span>
+      </div>
+      <a class="check-link" href="http://www.wagyu-panga.jp/" target="_blank">Book →</a>
+    </li>
+    <li>
+      <span class="check-urgency low">🟢 BEFORE TRIP</span>
+      <div class="check-content">
+        <strong>Download S.RIDE or DiDi Japan App</strong>
+        <span>GO App doesn't accept Malaysian numbers. These alternatives do.</span>
+      </div>
+    </li>
+    <li>
+      <span class="check-urgency low">🟢 BEFORE TRIP</span>
+      <div class="check-content">
+        <strong>Buy Japan eSIM (Data Only)</strong>
+        <span>Buy from Airalo before departure. Your MY number stays active. Load Wise with RM3,000–4,000.</span>
+      </div>
+      <a class="check-link" href="https://www.airalo.com" target="_blank">Airalo →</a>
+    </li>
+  </ul>
+</section>
+
+<!-- DAY 1 -->
+<section>
+  <h2 class="section-title">📅 Day-by-Day Itinerary</h2>
+
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">26<small>MAR</small></div>
+      <div class="day-info">
+        <h3>Thursday — Arrival, Grocery & Cherry Blossoms</h3>
+        <p>Land at Haneda · 15 min to Airbnb · Stock up · First sakura walk</p>
+      </div>
+      <span class="day-badge badge-blue">Arrival</span>
+    </div>
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-time">Afternoon</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJzdPXavxgGGARY0txPVCh1aM" target="_blank">Airbnb — Shimomaruko, Ota City</a>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=1-14-22+Shimomaruko+Ota+City+Tokyo" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Check in, freshen up. Haneda Airport is only 15 min away — the easiest arrival in Asia. Keep the young fighter awake until 8pm to beat jet lag.</div>
+        </div>
+        <div class="stop-cost"><span class="cost-free">FREE</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">4:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ3WDAlmxfGGARXQfDMLHstKM" target="_blank">Chandra Surya Halal Grocery</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ3WDAlmxfGGARXQfDMLHstKM" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Your closest halal grocery (~10 min from Airbnb). Halal frozen chicken & mutton, spices, eggs, cooking basics at very cheap prices. <strong>Do this today</strong> — CLOSED SATURDAY.</div>
+          <div class="stop-tags"><span class="tag tag-halal">🕌 Halal</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥3,000–6,000</div>
+          <div class="cost-myr">~RM90–180</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">6:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJkxljrVz1GGARV2xxys9l6CQ" target="_blank">Sakura-zaka Cherry Blossom Walk</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJkxljrVz1GGARV2xxys9l6CQ" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Denenchofu's famous sakura slope with 20 blooming cherry trees and a red pedestrian bridge. Peak bloom late March. Magical first evening in Japan.</div>
+          <div class="stop-tags"><span class="tag tag-free">✓ FREE</span></div>
+        </div>
+        <div class="stop-cost"><span class="cost-free">FREE</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">7:30pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJzdPXavxgGGARY0txPVCh1aM" target="_blank">Zaika Pakistani Restaurant — Dinner</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJzdPXavxgGGARY0txPVCh1aM" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Closest halal restaurant to your Airbnb. Authentic Pakistani — fresh naan from tandoor, spicy curry, kebab. Very affordable. Rated 4.6 ⭐</div>
+          <div class="stop-tags"><span class="tag tag-halal">🕌 Halal</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥2,000–3,000</div>
+          <div class="cost-myr">~RM60–90</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">27<small>MAR</small></div>
+      <div class="day-info">
+        <h3>Friday — Meiji · Gaming · ISAMI · Prof Craig · Sunset</h3>
+        <p>Shrine → Nintendo → Kiddy Land → Halal Ramen → ISAMI → Training → Pastry → Shibuya Sky</p>
+      </div>
+      <span class="day-badge badge-blue">🥋 Training 2–4pm</span>
+    </div>
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-time">9:00am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ5SZMmreMGGARcz8QSTiJyo8" target="_blank">Meiji Jingu Shrine</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ5SZMmreMGGARcz8QSTiJyo8" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Tokyo's most sacred Shinto shrine. Walk through ancient cedar forest and towering torii gates. Peaceful and stunning in cherry blossom season. Say a prayer for the young warrior before his competition. Write a wish on an ema plaque (¥500–1,000).</div>
+          <div class="stop-tags"><span class="tag tag-free">✓ FREE Entry</span><span class="tag tag-kids">👦 Kid-friendly</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥500–1,000</div>
+          <div class="cost-myr">~RM15–30</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">10:30am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ7Su1FK6NGGARAr7UK5NjmMo" target="_blank">Nintendo Tokyo — Shibuya PARCO 6F</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ7Su1FK6NGGARAr7UK5NjmMo" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">The only official Nintendo store in Tokyo. Floor-to-ceiling Mario, Zelda, Kirby, Splatoon. Tokyo-exclusive merch. Life-size character statues. Budget 90 min easily. Then hit <strong>Jump Shop</strong> (Spider-Man/Marvel merch) + Pokémon + Capcom — all on the same 6F of PARCO.</div>
+          <div class="stop-tags"><span class="tag tag-passport">🛂 Tax-Free w/ Passport</span><span class="tag tag-kids">👦 Kid Magnet</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥5,000–20,000+</div>
+          <div class="cost-myr">~RM150–600+</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">12:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJu1uP9aOMGGARiZH5QxSqDm0" target="_blank">Kiddy Land Harajuku</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJu1uP9aOMGGARiZH5QxSqDm0" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">5-floor toy paradise, 15 min walk from PARCO. Spider-Man & Marvel figures, Nintendo goods, Ghibli, character merchandise. Great for souvenir hunting. Open 11am–8pm.</div>
+          <div class="stop-tags"><span class="tag tag-passport">🛂 Tax-Free w/ Passport</span><span class="tag tag-kids">👦 Kid-friendly</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥2,000–8,000</div>
+          <div class="cost-myr">~RM60–240</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">1:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ_-R_mUGLGGARDfQ8ATZZ4w0" target="_blank">Gyumon Halal Wagyu Ramen — Lunch</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ_-R_mUGLGGARDfQ8ATZZ4w0" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Tokyo's most reviewed halal restaurant — 4.9 ⭐ with 20,000+ reviews. Rich wagyu beef ramen broth. Prayer room available. Go early to beat the queue. Wagyu Ramen + Gyukatsu set recommended.</div>
+          <div class="stop-tags"><span class="tag tag-halal">🕌 Halal</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥3,000–5,000</div>
+          <div class="cost-myr">~RM90–150</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">2:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-4nI2tqMGGARBYMbqVmt7Dw" target="_blank">ISAMI Combat Sports Shop — Shinjuku</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ-4nI2tqMGGARBYMbqVmt7Dw" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Japan's legendary combat sports mecca. BJJ gis, wrestling gear, rashguards, boxing gloves, ISAMI exclusive merch. <strong>4F of Soumu Building — enter via parking garage and take the elevator up.</strong> Only 10 min from Shibuya. ⚠️ CLOSED TUESDAYS. Open 11am–8pm.</div>
+          <div class="stop-tags"><span class="tag tag-combat">🥊 Combat Gear</span><span class="tag tag-passport">🛂 Tax-Free w/ Passport</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥5,000–30,000</div>
+          <div class="cost-myr">~RM150–900</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time training">2:00–4:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJT4pr2dP1GGARXyjk_57Tjyo" target="_blank">🥋 Carpe Diem Jiyugaoka — Prof Craig</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJT4pr2dP1GGARXyjk_57Tjyo" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">PT Session with Prof Craig. Rated 4.9 ⭐ — world-class instruction. Arrive by 1:50pm to change and warm up. Last tune-up before competition. Leave ISAMI by 1:15pm to make it comfortably.</div>
+          <div class="stop-tags"><span class="tag tag-combat">🥋 BJJ Training</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">Pre-paid</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">4:15pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJkR90QuH0GGARg9l9OGe-vjU" target="_blank">Mont St. Clair — Jiyugaoka</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJkR90QuH0GGARg9l9OGe-vjU" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">One of Tokyo's most celebrated French patisseries — steps from Carpe Diem. Exquisite seasonal tarts, chocolate cakes, perfect pastry. Well-earned post-training treat. Open until 6pm. ⚠️ CLOSED WEDNESDAY ✓</div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥1,500–3,000</div>
+          <div class="cost-myr">~RM45–90</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">6:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8" target="_blank">Shibuya Sky — Sunset 360°</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ4Rr2JWiLGGARcyRSHuZ-9G8" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Open-air observation deck above Shibuya Scramble. Tokyo's best sunset view — Skytree, Tokyo Tower, and Mt. Fuji on clear days. Rated 4.6 ⭐. <strong>⚠️ MUST book a 6pm slot in advance — sells out weeks ahead.</strong></div>
+          <div class="stop-tags"><span class="tag tag-book">🎟 Pre-book Required</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥4,000–5,000</div>
+          <div class="cost-myr">~RM120–150</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">28<small>MAR</small></div>
+      <div class="day-info">
+        <h3>Saturday — SARB033 Watch Hunt · Prof Diego · teamLab</h3>
+        <p>Nakano Broadway → Prof Diego 2:30pm → teamLab Borderless evening</p>
+      </div>
+      <span class="day-badge badge-blue">🥋 Training 2:30–4:20pm</span>
+    </div>
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-time watch">11:00am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ0Zw0SZfyGGARh4kHgpuzOCs" target="_blank">① Jackroad — Nakano Broadway 3F</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ0Zw0SZfyGGARh4kHgpuzOCs" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">First stop. 6,000+ watches. Known for Seiko JDM pieces including 62MAS. Most respected dealer in Nakano. Ask for SARB033 / reference SSB033J1 — even if they don't have it, they'll direct you. Rated 4.3 ⭐</div>
+          <div class="stop-tags"><span class="tag tag-watch">⌚ Watch Hunt</span><span class="tag tag-passport">🛂 Tax-Free w/ Passport</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥25,000–65,000</div>
+          <div class="cost-myr">~RM750–1,950</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">11:30am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJOSFGhgvzGGARhQBSVIXTbkc" target="_blank">② WATCHNIAN — Nakano Broadway 3F</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJOSFGhgvzGGARhQBSVIXTbkc" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Massive selection, English-speaking staff, patient with enthusiasts. Rated 4.9 ⭐ / 1,100+ reviews. Ask specifically for SARB033 — staff are knowledgeable and helpful. Open 11am–8pm.</div>
+          <div class="stop-tags"><span class="tag tag-watch">⌚ Watch Hunt</span><span class="tag tag-passport">🛂 Tax-Free w/ Passport</span></div>
+        </div>
+        <div class="stop-cost"><div class="cost-myr">same range</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">12:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ7693PBrzGGARCTb20OsLF8E" target="_blank">③ Time Walker — Nakano Broadway 3F</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ7693PBrzGGARCTb20OsLF8E" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Perfect 5.0 ⭐ Google rating. Zero-pressure sales, fair prices. Best watch-buying experience in Tokyo. Staff are genuine watch enthusiasts. Note: 3.5% card fee — weigh up cash vs card. Open 11am–7:30pm.</div>
+          <div class="stop-tags"><span class="tag tag-watch">⌚ Watch Hunt</span></div>
+        </div>
+        <div class="stop-cost"><div class="cost-myr">same range</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">12:30pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJRTkgNruMGGAR-_6vlYlpbHY" target="_blank">④ The Watch Company — Sun Mall Nakano</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJRTkgNruMGGAR-_6vlYlpbHY" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">5 min walk from Broadway in Sun Mall. Has previously stocked the SARB033. Wide JDM Seiko range. Good final stop if Broadway drew a blank.</div>
+          <div class="stop-tags"><span class="tag tag-watch">⌚ Watch Hunt</span></div>
+        </div>
+        <div class="stop-cost"><div class="cost-myr">same range</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time training">2:30–4:20pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJT4pr2dP1GGARXyjk_57Tjyo" target="_blank">🥋 Carpe Diem Jiyugaoka — Prof Diego</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJT4pr2dP1GGARXyjk_57Tjyo" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">PT Session with Prof Diego. Nakano → Jiyugaoka is ~40 min. <strong>Leave Nakano by 1:45pm.</strong> Light lunch before — nothing heavy. This is the final polish before tomorrow's competition.</div>
+          <div class="stop-tags"><span class="tag tag-combat">🥋 BJJ Training</span></div>
+        </div>
+        <div class="stop-cost"><div class="cost-jpy">Pre-paid</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">5:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">Light Home-Cooked Dinner + Early Rest</div>
+          <div class="stop-desc">Save your legs and energy. Cook at the Airbnb using groceries from Thursday. <strong>Competition tomorrow — early to bed is the rule.</strong> No heavy food, no late nights.</div>
+        </div>
+        <div class="stop-cost"><div class="cost-jpy">Home</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">7:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJQ5Sa1PqJGGARUSaNKKOrMVg" target="_blank">teamLab Borderless — Digital Art</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJQ5Sa1PqJGGARUSaNKKOrMVg" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Immersive digital art that genuinely feels like stepping inside Minecraft. Infinite light forests, interactive floors that react to movement, glowing waterfalls. Rated 4.6 ⭐ / 27,000+ reviews. Kids are completely spellbound. Open until 9–10pm. <strong>⚠️ Book at teamlab.art NOW — Saturday slots sell out fast.</strong></div>
+          <div class="stop-tags"><span class="tag tag-book">🎟 Pre-book Required</span><span class="tag tag-kids">👦 Kid Magnet</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥5,000–7,000</div>
+          <div class="cost-myr">~RM150–210</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">29<small>MAR</small></div>
+      <div class="day-info">
+        <h3>Sunday — COMPETITION DAY 🏆</h3>
+        <p>Asia Jiu Jitsu Cup (GI) + Asia No-Gi Cup · Komazawa Olympic Park · Celebration Dinner</p>
+      </div>
+      <span class="day-badge badge-red">🏆 Compete</span>
+    </div>
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-time">Morning</div>
+        <div class="stop-content">
+          <div class="stop-name">Light Pre-Competition Breakfast</div>
+          <div class="stop-desc">Cook at Airbnb or konbini run. Light, familiar food — onigiri, eggs, banana. Nothing heavy. Hydrate well. Pack the gear bags the night before.</div>
+        </div>
+        <div class="stop-cost"><div class="cost-jpy">¥500–1,000</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time competition">All Day</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ-RtGV-30GGARhfkfCmCAnI0" target="_blank">🏆 Komazawa Olympic Park Gymnasium</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ-RtGV-30GGARhfkfCmCAnI0" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc"><strong>Asia Jiu Jitsu Cup 2026 + Asia No-Gi Cup 2026.</strong> A 1964 Tokyo Olympics venue surrounded by cherry blossoms at peak bloom. Arrive early, warm up thoroughly, trust Prof Craig and Prof Diego's preparation. The young warrior is ready. Go compete with everything you have.</div>
+          <div class="stop-tags"><span class="tag tag-combat">🥋 Competition</span></div>
+        </div>
+        <div class="stop-cost"><div class="cost-jpy">Pre-paid</div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">Evening</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9bFAjKSOGGARqsl1Ru2ZQs0" target="_blank">🎉 Halal Wagyu Yakiniku Panga — Champion's Dinner</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ9bFAjKSOGGARqsl1Ru2ZQs0" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Halal wagyu grilled right at your table. Rated 4.8 ⭐ / 3,800+ reviews. Melt-in-your-mouth beef. This is the meal the young champion has earned. Book in advance at wagyu-panga.jp. Near Ueno/Asakusa area.</div>
+          <div class="stop-tags"><span class="tag tag-halal">🕌 Halal</span><span class="tag tag-book">📞 Book Ahead</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥8,000–14,000</div>
+          <div class="cost-myr">~RM240–420</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">30<small>MAR</small></div>
+      <div class="day-info">
+        <h3>Monday — Akihabara · GRIT Shop · Odaiba Mega Day</h3>
+        <p>Gaming district → Fight gear → Minecraft store → Gundam → LEGOLAND</p>
+      </div>
+      <span class="day-badge badge-green">Kids Day</span>
+    </div>
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-time">10:00am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJS6eXQB2MGGAR9W0Xk2Q7B3Y" target="_blank">Akihabara — Gaming & Anime District</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJS6eXQB2MGGAR9W0Xk2Q7B3Y" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">The nerd capital of the world. Akihabara Gamers + surrounding streets. Spider-Man figures, wrestling collectibles (WWE/NJPW), Minecraft merch, Pokémon cards, gashapon capsule machines everywhere. <strong>Budget ¥2,000 just for capsule toys</strong> — he will want them all.</div>
+          <div class="stop-tags"><span class="tag tag-kids">👦 Kid Magnet</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥3,000–10,000</div>
+          <div class="cost-myr">~RM90–300</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">11:15am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJx1iQgT-MGGAREd39swh-bpc" target="_blank">GRIT Fight Shop</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJx1iQgT-MGGAREd39swh-bpc" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Near Akihabara area. English-speaking owner, excellent combat gear selection. Rated 4.7 ⭐. Great if ISAMI didn't have everything. Owner known to give gifts and discounts to overseas visitors. ⚠️ CLOSED WEDNESDAY ✓</div>
+          <div class="stop-tags"><span class="tag tag-combat">🥊 Combat Gear</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥3,000–15,000</div>
+          <div class="cost-myr">~RM90–450</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">12:30pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJy7ZNMwCNGGARQkxeAwodzmk" target="_blank">Halal Wagyu Karemen King — Lunch</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJy7ZNMwCNGGARQkxeAwodzmk" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Right near Akihabara. Spicy wagyu ramen with heat levels 1–7. Rated 4.8 ⭐ / 4,000+ reviews. Start at Level 3 — Level 7 is a serious challenge. Open from 12pm (Friday: 1pm).</div>
+          <div class="stop-tags"><span class="tag tag-halal">🕌 Halal</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥3,000–4,000</div>
+          <div class="cost-myr">~RM90–120</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">2:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJpbpu0_mJGGARd9sJ-psh9Gc" target="_blank">DiverCity Tokyo Plaza — Minecraft Store</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJpbpu0_mJGGARd9sJ-psh9Gc" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Take the Rinkai Line from Akihabara area (~30 min) to Odaiba. DiverCity houses a dedicated Minecraft merchandise store with Tokyo-exclusive designs. Also has great food court, fashion shops. Open 11am–8pm.</div>
+          <div class="stop-tags"><span class="tag tag-kids">👦 Minecraft!</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥2,000–8,000</div>
+          <div class="cost-myr">~RM60–240</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">3:15pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJF6xTyvmJGGARU8t5NIqkNeI" target="_blank">Unicorn Gundam — Life-Size Robot</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJF6xTyvmJGGARU8t5NIqkNeI" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">FREE. 20-metre life-size Gundam robot right outside DiverCity. <strong>TRANSFORMS and lights up with a full sound show on the hour.</strong> One of the most jaw-dropping free things in all of Japan. Perfect for photos and videos.</div>
+          <div class="stop-tags"><span class="tag tag-free">✓ FREE</span><span class="tag tag-kids">👦 Mind-Blowing</span></div>
+        </div>
+        <div class="stop-cost"><span class="cost-free">FREE</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">4:00pm</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJvUU77PaJGGARo--9HRokktc" target="_blank">LEGOLAND Discovery Center Tokyo</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJvUU77PaJGGARo--9HRokktc" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Right in the same Odaiba area. Rides, 4D movie, giant LEGO Tokyo miniature cityscape, building zones. 8-year-olds have been known to stay 4–5 hours. Closes at 7pm (Mon–Fri). <strong>⚠️ Book online in advance — cheaper and skips queues.</strong></div>
+          <div class="stop-tags"><span class="tag tag-book">🎟 Pre-book Online</span><span class="tag tag-kids">👦 Kid Heaven</span></div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥4,000–5,500</div>
+          <div class="cost-myr">~RM120–165</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-num">31<small>MAR</small></div>
+      <div class="day-info">
+        <h3>Tuesday — Final Sakura · Konbini Run · Haneda</h3>
+        <p>Last cherry blossom morning → souvenir snacks → Haneda Airport (15 min)</p>
+      </div>
+      <span class="day-badge badge-gold">Departure</span>
+    </div>
+    <div class="stops">
+      <div class="stop">
+        <div class="stop-time">8:00am</div>
+        <div class="stop-content">
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJo6QJRWv1GGAR0ASqjsVbdQY" target="_blank">Tamagawadai Park — Last Cherry Blossoms</a>
+            <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJo6QJRWv1GGAR0ASqjsVbdQY" target="_blank">📍 Maps</a>
+          </div>
+          <div class="stop-desc">Beautiful park 15 min from your Airbnb. Walk among the cherry blossoms, take final photos. Let the champion reflect on an extraordinary week. Then head back to pack.</div>
+          <div class="stop-tags"><span class="tag tag-free">✓ FREE</span></div>
+        </div>
+        <div class="stop-cost"><span class="cost-free">FREE</span></div>
+      </div>
+      <div class="stop">
+        <div class="stop-time">9:30am</div>
+        <div class="stop-content">
+          <div class="stop-name">Final Konbini Run + Pack Up</div>
+          <div class="stop-desc">7-Eleven or Lawson for last-minute Japanese souvenir snacks — matcha KitKats (various flavours), Pocky, Tokyo Banana, Melon Pan. Stock up for family back home. Then head to Haneda — only 15 min away.</div>
+        </div>
+        <div class="stop-cost">
+          <div class="cost-jpy">¥2,000–5,000</div>
+          <div class="cost-myr">~RM60–150</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HALAL GUIDE -->
+<section>
+  <h2 class="section-title">🕌 Halal Food Guide</h2>
+  <div class="alert alert-green">
+    <span class="alert-icon">✅</span>
+    <div class="alert-text"><strong>First stop on arrival (Thursday)</strong> — Chandra Surya Halal Grocery in Ota City (near your Airbnb) for self-cooking supplies. CLOSED SATURDAY so go Thursday.</div>
+  </div>
+  <div class="halal-grid">
+    <div class="halal-card">
+      <div class="halal-card-head"><div class="halal-card-name">Gyumon Halal Wagyu Ramen</div><div class="halal-card-rating">⭐ 4.9</div></div>
+      <div class="halal-card-type">Wagyu Ramen · Shibuya</div>
+      <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ_-R_mUGLGGARDfQ8ATZZ4w0" target="_blank">📍 Maps</a>
+      <div class="halal-card-cost">¥1,500–2,500/person · ~RM45–75</div>
+      <div class="halal-card-note">20,000+ reviews — Tokyo's #1 halal spot. Rich wagyu broth. Prayer room. 🗓 Friday lunch</div>
+    </div>
+    <div class="halal-card">
+      <div class="halal-card-head"><div class="halal-card-name">Halal Wagyu Yakiniku Panga</div><div class="halal-card-rating">⭐ 4.8</div></div>
+      <div class="halal-card-type">Yakiniku · Ueno/Asakusa</div>
+      <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ9bFAjKSOGGARqsl1Ru2ZQs0" target="_blank">📍 Maps</a>
+      <div class="halal-card-cost">¥4,000–7,000/person · ~RM120–210</div>
+      <div class="halal-card-note">Wagyu grilled at your table. 🗓 Sunday champion's dinner — book ahead</div>
+    </div>
+    <div class="halal-card">
+      <div class="halal-card-head"><div class="halal-card-name">Halal Wagyu Karemen King</div><div class="halal-card-rating">⭐ 4.8</div></div>
+      <div class="halal-card-type">Spicy Ramen · Akihabara</div>
+      <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJy7ZNMwCNGGARQkxeAwodzmk" target="_blank">📍 Maps</a>
+      <div class="halal-card-cost">¥1,500–2,500/person · ~RM45–75</div>
+      <div class="halal-card-note">Heat levels 1–7. 🗓 Monday lunch near Akihabara</div>
+    </div>
+    <div class="halal-card">
+      <div class="halal-card-head"><div class="halal-card-name">HALRA Halal Wagyu Sukiyaki</div><div class="halal-card-rating">⭐ 4.9</div></div>
+      <div class="halal-card-type">Sukiyaki · Shibuya</div>
+      <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJ93JfnxiLGGAR-WuuRDw4-04" target="_blank">📍 Maps</a>
+      <div class="halal-card-cost">¥3,000–6,000/person · ~RM90–180</div>
+      <div class="halal-card-note">Tender melt-in-mouth wagyu. 🗓 Alt Friday dinner option</div>
+    </div>
+    <div class="halal-card">
+      <div class="halal-card-head"><div class="halal-card-name">Honolu Grande Akihabara</div><div class="halal-card-rating">⭐ 4.8</div></div>
+      <div class="halal-card-type">Ramen/Steak/Gyoza · Akihabara</div>
+      <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJn9d23niPGGARl__2ZnjnfEM" target="_blank">📍 Maps</a>
+      <div class="halal-card-cost">¥1,500–3,000/person · ~RM45–90</div>
+      <div class="halal-card-note">Halal gyoza! Spacious for families. Prayer room available.</div>
+    </div>
+    <div class="halal-card">
+      <div class="halal-card-head"><div class="halal-card-name">Zaika Pakistani Restaurant</div><div class="halal-card-rating">⭐ 4.6</div></div>
+      <div class="halal-card-type">Pakistani · Kamata (near Airbnb)</div>
+      <a class="map-link" href="https://www.google.com/maps/place/?q=place_id:ChIJzdPXavxgGGARY0txPVCh1aM" target="_blank">📍 Maps</a>
+      <div class="halal-card-cost">¥800–1,500/person · ~RM25–45</div>
+      <div class="halal-card-note">Closest halal restaurant to Airbnb. Very affordable. 🗓 Thursday arrival dinner</div>
+    </div>
+  </div>
+  <p class="note">💡 Prayer rooms confirmed at Gyumon Shibuya, Honolu Grande Akihabara. Tokyo Camii (largest mosque in Japan) is in Yoyogi-Uehara, 5 min from Shibuya — free to visit. Use HalalGo app for finding halal options across Tokyo in real time.</p>
+</section>
+
+<!-- BUDGET -->
+<section>
+  <h2 class="section-title">💴 Budget Breakdown (2 People · 6 Days)</h2>
+  <div class="alert alert-blue">
+    <span class="alert-icon">💱</span>
+    <div class="alert-text"><strong>Exchange Rate Used:</strong> ¥100 = RM3.00 (approximate). Actual rate varies — Wise gives you the best mid-market rate. Always check before converting.</div>
+  </div>
+
+  <table class="budget-table">
+    <thead>
+      <tr><th>Item</th><th>Notes</th><th>¥ Estimate</th><th>RM Approx</th></tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4" class="section-row">🏠 ACCOMMODATION & ARRIVAL</td></tr>
+      <tr><td>Suica Top-Up</td><td>Initial load + top-ups for transit & konbini</td><td class="jpy">¥8,000</td><td class="myr">~RM240</td></tr>
+      <tr><td>Halal Grocery (Thurs)</td><td>Chandra Surya — stocking up for self-cooking</td><td class="jpy">¥3,000–6,000</td><td class="myr">~RM90–180</td></tr>
+
+      <tr><td colspan="4" class="section-row">🎮 FRIDAY — Gaming, ISAMI, Training, Sunset</td></tr>
+      <tr><td>Nintendo Tokyo + PARCO 6F</td><td>Shopping — merch, toys, souvenirs. Tax-free with passport</td><td class="jpy">¥5,000–20,000</td><td class="myr">~RM150–600</td></tr>
+      <tr><td>Kiddy Land Harajuku</td><td>Spider-Man, Marvel, Nintendo figures</td><td class="jpy">¥2,000–8,000</td><td class="myr">~RM60–240</td></tr>
+      <tr><td>Gyumon Halal Ramen (Lunch)</td><td>2 persons with drinks</td><td class="jpy">¥3,000–5,000</td><td class="myr">~RM90–150</td></tr>
+      <tr><td>ISAMI Combat Shop</td><td>Gi, rashguard, wrestling gear. Tax-free with passport</td><td class="jpy">¥5,000–30,000</td><td class="myr">~RM150–900</td></tr>
+      <tr><td>Mont St. Clair Pastries</td><td>Post-training treat, 2 persons + drinks</td><td class="jpy">¥1,500–3,000</td><td class="myr">~RM45–90</td></tr>
+      <tr><td>Shibuya Sky (Sunset)</td><td>2 adults + 1 child ticket approx</td><td class="jpy">¥3,800–5,000</td><td class="myr">~RM115–150</td></tr>
+      <tr><td>Meiji Shrine Ema Plaque</td><td>Wooden wish plaque for the young warrior</td><td class="jpy">¥500–1,000</td><td class="myr">~RM15–30</td></tr>
+
+      <tr><td colspan="4" class="section-row">⌚ SATURDAY — Watch Hunt, Training, teamLab</td></tr>
+      <tr><td>SARB033 Watch</td><td>Worn: ¥25–35k · Good: ¥35–45k · Near-mint: ¥45–65k. Use Wise card. Tax-free with passport.</td><td class="jpy">¥25,000–65,000</td><td class="myr">~RM750–1,950</td></tr>
+      <tr><td>teamLab Borderless</td><td>2 adults + 1 child · Book online in advance</td><td class="jpy">¥8,000–10,000</td><td class="myr">~RM240–300</td></tr>
+      <tr><td>Saturday Meals</td><td>Light lunch + home cooking dinner</td><td class="jpy">¥2,000–3,000</td><td class="myr">~RM60–90</td></tr>
+
+      <tr><td colspan="4" class="section-row">🏆 SUNDAY — Competition + Champion's Dinner</td></tr>
+      <tr><td>Competition Day Snacks/Drinks</td><td>Konbini onigiri, energy drinks, water at venue</td><td class="jpy">¥2,000–3,000</td><td class="myr">~RM60–90</td></tr>
+      <tr><td>Halal Wagyu Yakiniku Panga</td><td>Champion's celebration dinner · Book ahead</td><td class="jpy">¥8,000–14,000</td><td class="myr">~RM240–420</td></tr>
+
+      <tr><td colspan="4" class="section-row">🟩 MONDAY — Akihabara, GRIT, Odaiba</td></tr>
+      <tr><td>Akihabara Shopping</td><td>Figures, manga, Gashapon (budget ¥2k just for capsules!)</td><td class="jpy">¥3,000–10,000</td><td class="myr">~RM90–300</td></tr>
+      <tr><td>GRIT Fight Shop</td><td>Additional combat gear if needed</td><td class="jpy">¥0–10,000</td><td class="myr">~RM0–300</td></tr>
+      <tr><td>Halal Karemen King (Lunch)</td><td>2 persons</td><td class="jpy">¥3,000–4,000</td><td class="myr">~RM90–120</td></tr>
+      <tr><td>Minecraft Store Shopping</td><td>DiverCity Tokyo exclusive merch</td><td class="jpy">¥2,000–6,000</td><td class="myr">~RM60–180</td></tr>
+      <tr><td>LEGOLAND Discovery Center</td><td>1 child + 1 adult · Book online for discount</td><td class="jpy">¥4,000–5,500</td><td class="myr">~RM120–165</td></tr>
+
+      <tr><td colspan="4" class="section-row">✈️ TUESDAY — Departure Day</td></tr>
+      <tr><td>Konbini Souvenir Snacks</td><td>Matcha KitKat, Pocky, Tokyo Banana for family</td><td class="jpy">¥2,000–5,000</td><td class="myr">~RM60–150</td></tr>
+
+      <tr><td colspan="4" class="section-row">💴 CASH BUFFER</td></tr>
+      <tr><td>Gashapon Coins</td><td>Your son will find them on every corner</td><td class="jpy">¥3,000–5,000</td><td class="myr">~RM90–150</td></tr>
+      <tr><td>Vending Machines</td><td>~¥200/drink, 2–3 per day</td><td class="jpy">¥3,000</td><td class="myr">~RM90</td></tr>
+      <tr><td>Coin Lockers</td><td>At stations when carrying bags</td><td class="jpy">¥1,500</td><td class="myr">~RM45</td></tr>
+      <tr><td>Emergency Cash Buffer</td><td>Keep untouched until departure</td><td class="jpy">¥5,000</td><td class="myr">~RM150</td></tr>
+
+      <tr class="total-row">
+        <td colspan="2"><strong>TOTAL ESTIMATED (WITHOUT WATCH)</strong></td>
+        <td class="jpy"><strong>¥75,000–155,000</strong></td>
+        <td><strong>~RM2,250–4,650</strong><div class="myr">excl. flights/Airbnb</div></td>
+      </tr>
+      <tr class="total-row" style="background:#8B1A2A!important">
+        <td colspan="2"><strong>TOTAL ESTIMATED (WITH WATCH)</strong></td>
+        <td class="jpy"><strong>¥100,000–220,000</strong></td>
+        <td><strong>~RM3,000–6,600</strong><div class="myr">excl. flights/Airbnb</div></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PAYMENT STRATEGY -->
+<section>
+  <h2 class="section-title">💳 Payment Strategy</h2>
+  <div class="payment-grid">
+    <div class="payment-card pc-wise">
+      <div class="payment-card-header">
+        <div class="payment-card-icon">W</div>
+        <div><div class="payment-card-title">Wise Prepaid</div><div class="payment-card-sub">Primary card — use this first</div></div>
+      </div>
+      <ul>
+        <li>Nintendo Tokyo, ISAMI, Kiddy Land</li>
+        <li>SARB033 watch purchase (best rate)</li>
+        <li>teamLab, Shibuya Sky, LEGOLAND</li>
+        <li>Larger halal restaurants</li>
+        <li>Free ATM at 7-Eleven (up to ~RM1,500/mo)</li>
+      </ul>
+    </div>
+    <div class="payment-card pc-tgo">
+      <div class="payment-card-header">
+        <div class="payment-card-icon">T</div>
+        <div><div class="payment-card-title">T&Go Visa</div><div class="payment-card-sub">Backup card only</div></div>
+      </div>
+      <ul>
+        <li>Backup if Wise is declined</li>
+        <li>Split large bills</li>
+        <li>Higher FX fees than Wise — avoid for big purchases</li>
+      </ul>
+    </div>
+    <div class="payment-card pc-suica">
+      <div class="payment-card-header">
+        <div class="payment-card-icon">🚇</div>
+        <div><div class="payment-card-title">Suica (Apple Wallet)</div><div class="payment-card-sub">Transit + Konbini</div></div>
+      </div>
+      <ul>
+        <li>All trains & buses — tap in, tap out</li>
+        <li>7-Eleven, Lawson, FamilyMart</li>
+        <li>Vending machines</li>
+        <li>Top up at any station kiosk or Apple Wallet</li>
+        <li>Load ¥8,000 to start at Haneda</li>
+      </ul>
+    </div>
+    <div class="payment-card pc-cash">
+      <div class="payment-card-header">
+        <div class="payment-card-icon">¥</div>
+        <div><div class="payment-card-title">Cash (¥40,000)</div><div class="payment-card-sub">For cash-only situations</div></div>
+      </div>
+      <ul>
+        <li>Gashapon capsule machines (coins only)</li>
+        <li>Ramen ticket vending machines</li>
+        <li>Watch dealers with card fees</li>
+        <li>Coin lockers at stations</li>
+        <li>Shrine offerings & ema plaques</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert alert-orange" style="margin-top:14px">
+    <span class="alert-icon">💡</span>
+    <div class="alert-text"><strong>ATM Tip:</strong> Withdraw cash from 7-Eleven ATMs using Wise card on arrival at Haneda. Most reliable for foreign cards. Get ¥20,000 first, keep ¥20,000 as reserve at Airbnb. Never carry all your cash at once.</div>
+  </div>
+</section>
+
+<!-- ESSENTIAL TIPS -->
+<section>
+  <h2 class="section-title">📌 Essential Tips</h2>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-card-head">🚇 Getting Around</div>
+      <ul>
+        <li>Google Maps Transit mode is perfectly accurate for Tokyo trains</li>
+        <li>Stand LEFT on escalators, walk right</li>
+        <li>Trains are silent — no calls, quiet voices only</li>
+        <li>Last trains ~midnight. After that: taxi or S.RIDE app</li>
+        <li>GO App needs Japanese number — use S.RIDE or DiDi instead</li>
+        <li>Your Airbnb is on Tokyu Tamagawa + Ikegami Lines</li>
+        <li>Haneda Airport is only 15–20 min from your Airbnb</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="tip-card-head">🛍️ Shopping</div>
+      <ul>
+        <li>Show PASSPORT at checkout for tax-free (8–10% back) on ¥5,500+ at same store</li>
+        <li>Don't open sealed tax-free bags until you leave Japan</li>
+        <li>ISAMI: 4F, enter via parking garage, take elevator up</li>
+        <li>Nakano Broadway watch shops: open from 11am on the dot</li>
+        <li>Time Walker charges 3.5% card fee — weigh cash vs card for watch</li>
+        <li>Bring tote bag — plastic bags cost ¥5–10 at most shops</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="tip-card-head">🕌 Halal & Food</div>
+      <ul>
+        <li>Stock grocery on Thursday — Chandra Surya is CLOSED Saturday</li>
+        <li>7-Eleven ATMs accept Malaysian cards (most reliable)</li>
+        <li>Convenience store onigiri = good quick halal meal (tuna/salmon/kombu)</li>
+        <li>Use HalalGo app for finding halal spots in real time</li>
+        <li>Tokyo Camii mosque in Yoyogi-Uehara, 5 min from Shibuya</li>
+        <li>Prayer rooms at Gyumon Shibuya & Honolu Grande Akihabara</li>
+        <li>Check labels for 豚肉 (pork) and アルコール (alcohol)</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="tip-card-head">👦 For Your 8-Year-Old</div>
+      <ul>
+        <li>Budget ¥2,000–3,000/day for gashapon — he will want them ALL</li>
+        <li>Nintendo Store closes at 9pm — loads of time after training</li>
+        <li>Keep him awake until 8pm on arrival day to beat jet lag</li>
+        <li>Train voice = indoor voice. Japan is very quiet in public</li>
+        <li>Competition day: light breakfast, familiar food only</li>
+        <li>Coin lockers at Komazawa station for gear storage</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="tip-card-head">🎌 Etiquette</div>
+      <ul>
+        <li>No eating while walking — find a spot and stop</li>
+        <li>Carry a small bag for rubbish — almost no public bins</li>
+        <li>Remove shoes when you see a step up at any entrance</li>
+        <li>Both hands when giving or receiving anything</li>
+        <li>Never tip — it can be considered rude in Japan</li>
+        <li>Taxis: door opens/closes automatically. Don't touch it!</li>
+        <li>Tap water is safe and delicious everywhere in Japan</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="tip-card-head">📱 Apps & Tech</div>
+      <ul>
+        <li>Google Maps — perfect transit directions including exit numbers</li>
+        <li>Google Translate camera — point at menus to translate instantly</li>
+        <li>Download Japanese offline language pack before departure</li>
+        <li>S.RIDE or DiDi app for taxis (accept Malaysian numbers)</li>
+        <li>Airalo eSIM for data — buy before leaving Malaysia</li>
+        <li>Your Malaysian number stays active — WhatsApp works normally</li>
+        <li>Load Wise with RM3,000–4,000 before departure</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WATCH REFERENCE -->
+<section>
+  <h2 class="section-title">⌚ SARB033 Hunt — Quick Reference</h2>
+  <div class="alert alert-orange">
+    <span class="alert-icon">⌚</span>
+    <div class="alert-text"><strong>Reference to show dealers:</strong> Seiko SARB033 · SSB033J1 · Show a photo · Discontinued 2019 · JDM dress watch · Cocktail Time dial. All 4 shops are on the same Saturday morning route. Go early — open from 11am.</div>
+  </div>
+  <table class="budget-table">
+    <thead><tr><th>Shop</th><th>Floor</th><th>Rating</th><th>Notes</th><th>Card Fee</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJ0Zw0SZfyGGARh4kHgpuzOCs" target="_blank" style="color:var(--red)">Jackroad</a></strong></td>
+        <td>Broadway 3F</td><td>⭐ 4.3</td>
+        <td>6,000+ watches · Known for JDM Seiko · Most respected</td>
+        <td>Accepts card</td>
+      </tr>
+      <tr>
+        <td><strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJOSFGhgvzGGARhQBSVIXTbkc" target="_blank" style="color:var(--red)">WATCHNIAN</a></strong></td>
+        <td>Broadway 3F</td><td>⭐ 4.9</td>
+        <td>Huge selection · English-speaking staff · Patient</td>
+        <td>Accepts card</td>
+      </tr>
+      <tr>
+        <td><strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJ7693PBrzGGARCTb20OsLF8E" target="_blank" style="color:var(--red)">Time Walker</a></strong></td>
+        <td>Broadway 3F</td><td>⭐ 5.0</td>
+        <td>Zero pressure · Fair prices · Best buying experience</td>
+        <td>3.5% card fee</td>
+      </tr>
+      <tr>
+        <td><strong><a href="https://www.google.com/maps/place/?q=place_id:ChIJRTkgNruMGGAR-_6vlYlpbHY" target="_blank" style="color:var(--red)">The Watch Company</a></strong></td>
+        <td>Sun Mall</td><td>⭐ 3.6</td>
+        <td>5 min walk · Has stocked SARB033 before · Wide JDM range</td>
+        <td>Accepts card</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">💡 SARB033 price guide: Worn/no papers ¥25–35k (~RM750–1,050) · Good condition ¥35–45k (~RM1,050–1,350) · Near-mint full set ¥45–65k (~RM1,350–1,950). Use Wise card for best rate. Tax-free with passport saves ~10%.</p>
+</section>
+
+<!-- EMERGENCY -->
+<section>
+  <h2 class="section-title">🆘 Emergency Info</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;font-size:13px">
+    <div class="alert alert-red" style="margin:0"><span class="alert-icon">🚨</span><div><strong>Police</strong> 110</div></div>
+    <div class="alert alert-red" style="margin:0"><span class="alert-icon">🚑</span><div><strong>Ambulance/Fire</strong> 119</div></div>
+    <div class="alert alert-blue" style="margin:0"><span class="alert-icon">📞</span><div><strong>Tourist Helpline (24hr English)</strong> 050-3816-2787</div></div>
+    <div class="alert alert-blue" style="margin:0"><span class="alert-icon">🏥</span><div><strong>English Hospital:</strong> St. Luke's International, Tokyo</div></div>
+  </div>
+</section>
+
+</div><!-- end container -->
+
+<footer>
+  <strong>Tokyo BJJ & Family Adventure · March 26–31, 2026</strong><br>
+  For: 1-14-22 Shimomaruko, Ota City, Tokyo 146-0092 · 
+  Exchange rate: ¥100 ≈ RM3.00 · Always verify current rates on Wise before spending
+</footer>
+
+</body>
 </html>
