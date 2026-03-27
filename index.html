@@ -414,9 +414,181 @@
     .stop-cost { display: none; }
     .hero::before { font-size: 120px; }
   }
+
+  /* ═══════════════════════════════════════════
+     NAVIGATION — DESKTOP SIDEBAR + MOBILE BOTTOM BAR
+  ═══════════════════════════════════════════ */
+
+  /* Desktop sidebar */
+  .desktop-nav {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: var(--ink);
+    border-radius: 12px 0 0 12px;
+    padding: 8px 0;
+    z-index: 1000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    width: 48px;
+    overflow: hidden;
+    transition: width 0.25s ease;
+  }
+  .desktop-nav:hover {
+    width: 210px;
+  }
+  .desktop-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 13px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .desktop-nav a:hover, .desktop-nav a.active {
+    color: white;
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--red);
+  }
+  .desktop-nav a .nav-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    width: 22px;
+    text-align: center;
+  }
+  .desktop-nav a .nav-label {
+    opacity: 0;
+    transition: opacity 0.2s ease 0.05s;
+    font-size: 11.5px;
+    line-height: 1.2;
+  }
+  .desktop-nav:hover a .nav-label { opacity: 1; }
+  .desktop-nav .nav-header {
+    padding: 6px 13px 10px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2px;
+  }
+  .desktop-nav .nav-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 4px 0;
+  }
+
+  /* Mobile bottom nav */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .mobile-nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 2px;
+  }
+  .mobile-nav-tabs::-webkit-scrollbar { display: none; }
+  .mobile-nav-tabs a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 14px 7px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 9.5px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-top: 2px solid transparent;
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .mobile-nav-tabs a:active,
+  .mobile-nav-tabs a.active {
+    color: white;
+    border-top-color: var(--red);
+  }
+  .mobile-nav-tabs a .m-icon { font-size: 18px; line-height: 1; }
+
+  /* Add padding so content not hidden behind mobile nav */
+  @media (max-width: 768px) {
+    .mobile-nav { display: block; }
+    .desktop-nav { display: none; }
+    body { padding-bottom: 72px; }
+  }
+  @media (min-width: 769px) {
+    body { padding-right: 52px; }
+  }
 </style>
 </head>
 <body>
+
+<!-- DESKTOP SIDEBAR NAV (hover to expand) -->
+<nav class="desktop-nav" role="navigation" aria-label="Page sections">
+  <div class="nav-header">TOKYO GUIDE</div>
+  <a href="#airbnb"><span class="nav-icon">🏠</span><span class="nav-label">Airbnb &amp; Info</span></a>
+  <a href="#bookings"><span class="nav-icon">⚡</span><span class="nav-label">Book Now</span></a>
+  <a href="#itinerary"><span class="nav-icon">📅</span><span class="nav-label">Daily Itinerary</span></a>
+  <div class="nav-divider"></div>
+  <a href="#konbini"><span class="nav-icon">🏪</span><span class="nav-label">Konbini Guide</span></a>
+  <a href="#halal"><span class="nav-icon">🕌</span><span class="nav-label">Halal Food</span></a>
+  <a href="#morehalal"><span class="nav-icon">🍜</span><span class="nav-label">More Halal Spots</span></a>
+  <a href="#mosques"><span class="nav-icon">🕌</span><span class="nav-label">Mosques</span></a>
+  <div class="nav-divider"></div>
+  <a href="#sakura"><span class="nav-icon">🌸</span><span class="nav-label">Sakura Forecast</span></a>
+  <a href="#watch"><span class="nav-icon">⌚</span><span class="nav-label">Watch Hunt</span></a>
+  <a href="#sneakers"><span class="nav-icon">👟</span><span class="nav-label">Sneakers</span></a>
+  <a href="#bonsai"><span class="nav-icon">🎋</span><span class="nav-label">Bonsai Shops</span></a>
+  <a href="#outlets"><span class="nav-icon">🏬</span><span class="nav-label">Outlet Malls</span></a>
+  <div class="nav-divider"></div>
+  <a href="#map"><span class="nav-icon">🗺️</span><span class="nav-label">Interactive Map</span></a>
+  <a href="#camera"><span class="nav-icon">📸</span><span class="nav-label">Insta360 Guide</span></a>
+  <a href="#budget"><span class="nav-icon">💴</span><span class="nav-label">Budget</span></a>
+  <a href="#emergency"><span class="nav-icon">🆘</span><span class="nav-label">Emergency</span></a>
+</nav>
+
+<!-- MOBILE BOTTOM NAV (scrollable tab bar) -->
+<nav class="mobile-nav" role="navigation" aria-label="Page sections">
+  <div class="mobile-nav-tabs">
+    <a href="#airbnb"><span class="m-icon">🏠</span>Home</a>
+    <a href="#itinerary"><span class="m-icon">📅</span>Days</a>
+    <a href="#konbini"><span class="m-icon">🏪</span>Konbini</a>
+    <a href="#halal"><span class="m-icon">🕌</span>Halal</a>
+    <a href="#sakura"><span class="m-icon">🌸</span>Sakura</a>
+    <a href="#watch"><span class="m-icon">⌚</span>Watch</a>
+    <a href="#sneakers"><span class="m-icon">👟</span>Sneakers</a>
+    <a href="#bonsai"><span class="m-icon">🎋</span>Bonsai</a>
+    <a href="#map"><span class="m-icon">🗺️</span>Map</a>
+    <a href="#camera"><span class="m-icon">📸</span>Camera</a>
+    <a href="#mosques"><span class="m-icon">🕌</span>Mosque</a>
+    <a href="#emergency"><span class="m-icon">🆘</span>SOS</a>
+  </div>
+</nav>
+
 
 <!-- HERO -->
 <div class="hero">
@@ -435,8 +607,7 @@
 
 <div class="container">
 
-<!-- AIRBNB INFO -->
-<section>
+<section id="airbnb">
   <h2 class="section-title">🏠 Your Airbnb — Everything You Need</h2>
 
   <!-- ADDRESS + MAP -->
@@ -557,7 +728,7 @@
   <p class="note" style="margin-top:10px;">💡 Screenshot this section or keep this page bookmarked on your phone. If you're in a taxi and can't communicate, just show the driver the Japanese address and building photo above.</p>
 </section>
 
-<!-- URGENT BOOKINGS -->
+<section id="bookings"><!-- URGENT BOOKINGS -->
 <section>
   <h2 class="section-title">⚡ Book These NOW — Before You Land</h2>
   <ul class="checklist">
@@ -611,8 +782,7 @@
   </ul>
 </section>
 
-<!-- DAY 1 -->
-<section>
+<section id="itinerary"><!-- DAY 1 -->
   <h2 class="section-title">📅 Restructured Itinerary — Geographic Flow</h2>
 
   <div class="alert alert-blue" style="margin-bottom:16px;">
@@ -1320,8 +1490,175 @@
 
 
 
-<!-- HALAL GUIDE -->
-<section>
+
+<!-- KONBINI GUIDE -->
+<section id="konbini">
+  <h2 class="section-title">🏪 Konbini Near Airbnb — Halal Shopping Guide</h2>
+  <div class="alert alert-green">
+    <span class="alert-icon">🏪</span>
+    <div class="alert-text"><strong>Your nearest konbini is a 2-minute walk.</strong> Lawson (Nishimine-machi) is ~170m west of your Airbnb on the way to the river — open 24 hours. Perfect for the 1am arrival night, pre-dawn sakura runs, and competition day breakfasts.</div>
+  </div>
+
+  <!-- NEAREST KONBINI RANKED -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:20px;">
+    <div style="background:var(--paper-card);border:2px solid var(--red);border-radius:10px;padding:14px 16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🥇 Closest — 2 min walk</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:3px;">Lawson · Nishimine-machi</div>
+      <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~170m west of Airbnb</div>
+      <div style="font-size:12px;background:var(--green-light);color:var(--green);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">⏰ Open 24 Hours</div>
+      <a href="https://maps.google.com/maps?q=35.5791,139.6828" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+    </div>
+    <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🥈 7 min walk</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:3px;">Lawson · Unoki</div>
+      <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~550m south · Larger store · Eat-in space</div>
+      <div style="font-size:12px;background:var(--green-light);color:var(--green);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">⏰ Open 24 Hours</div>
+      <a href="https://maps.google.com/maps?q=35.5746,139.6824" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+    </div>
+    <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🥉 12 min walk</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:3px;">FamilyMart · 3-chome</div>
+      <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~1.3km south · 24hrs · Eat-in + power outlets</div>
+      <div style="font-size:12px;background:var(--green-light);color:var(--green);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">⏰ Open 24 Hours</div>
+      <a href="https://maps.google.com/maps?q=35.5668,139.6843" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+    </div>
+    <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">⚠️ NOT 24hrs</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:3px;">7-Eleven · 3-chome</div>
+      <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~1km south · Has ATM · 6am–1am only</div>
+      <div style="font-size:12px;background:var(--orange-light);color:var(--orange);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">🕕 6am–1am only</div>
+      <a href="https://maps.google.com/maps?q=35.5708,139.6857" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+    </div>
+  </div>
+
+  <!-- HALAL FOOD GUIDE -->
+  <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;">
+    <div style="background:var(--green);color:white;padding:12px 18px;font-size:14px;font-weight:700;">✅ Konbini Muslim-Friendly Shopping Guide</div>
+    <div style="padding:16px 18px;">
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;">
+
+        <!-- SAFE MEALS -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--green-light);">🍱 Safe Meals</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);display:flex;flex-direction:column;gap:6px;">
+            <div><strong>Onigiri (rice balls)</strong> — Look for: 昆布 konbu (kelp) · 梅 ume (plum) · 鮭 sake (salmon) · たらこ tarako (cod roe). All pork-free.</div>
+            <div><strong>Tamago sando</strong> (egg sandwich) — always safe</div>
+            <div><strong>Tuna mayo onigiri</strong> — safe, no pork</div>
+            <div><strong>Hard-boiled eggs</strong> (温泉卵/ゆで卵) — always safe</div>
+            <div><strong>Edamame</strong> — safe</div>
+            <div><strong>Inari sushi</strong> (tofu pouch rice) — safe</div>
+            <div style="background:var(--red-light);padding:4px 8px;border-radius:4px;color:var(--red);font-size:11.5px;"><strong>❌ Avoid:</strong> anything with 豚 buta / ポーク pōku (pork) · チャーシュー chāshū · 豚骨 tonkotsu</div>
+          </div>
+        </div>
+
+        <!-- HOT FOOD -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--green-light);">🔥 Hot Food Counter</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);display:flex;flex-direction:column;gap:6px;">
+            <div><strong>Karaage chicken</strong> (唐揚げ) — fried chicken, safe</div>
+            <div><strong>Corn dog / Chikuwa</strong> — fish cake stick, safe</div>
+            <div><strong>Boiled egg (hot)</strong> — always at the register counter</div>
+            <div><strong>Fish fillet burger</strong> — safe at most konbini</div>
+            <div><strong>Steamed buns</strong> — check filling: 肉まん nikuman has pork. Safe ones: 豆腐 tofu · 野菜 vegetables · カレー curry (usually beef)</div>
+            <div style="background:var(--red-light);padding:4px 8px;border-radius:4px;color:var(--red);font-size:11.5px;"><strong>❌ Avoid:</strong> 肉まん nikuman (pork bun) · 豚まん butaman</div>
+          </div>
+        </div>
+
+        <!-- CUP NOODLES -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--green-light);">🍜 Cup Noodles</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);display:flex;flex-direction:column;gap:6px;">
+            <div>✅ <strong>Nissin Cup Noodle Seafood</strong> (シーフード) — safe</div>
+            <div>✅ <strong>Maruchan Soba</strong> flavours — most pork-free</div>
+            <div>✅ <strong>Donbee Kitsune Udon</strong> (きつねうどん) — tofu & dashi, safe</div>
+            <div>✅ <strong>Chicken-based soups</strong> — look for 鶏 tori on label</div>
+            <div style="background:var(--red-light);padding:4px 8px;border-radius:4px;color:var(--red);font-size:11.5px;"><strong>❌ Avoid:</strong> 豚骨 tonkotsu · 豚肉 butaniku · ラード lard (lādo)</div>
+          </div>
+        </div>
+
+        <!-- DRINKS -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--green-light);">🥤 Drinks — All Safe</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);display:flex;flex-direction:column;gap:5px;">
+            <div>✅ <strong>Yakult</strong> — probiotic drink, great daily</div>
+            <div>✅ <strong>Calpis / Calpico</strong> — yoghurt soda, very refreshing</div>
+            <div>✅ <strong>Pocari Sweat</strong> — sports rehydration</div>
+            <div>✅ <strong>Ocha (green tea)</strong> — Itoen brand, unsweetened</div>
+            <div>✅ <strong>Barley tea</strong> (麦茶) — caffeine-free, good for kids</div>
+            <div>✅ <strong>Milk / Chocolate milk</strong> — Meiji or Morinaga</div>
+            <div>✅ <strong>All juices, water, coffee</strong> — safe</div>
+            <div style="background:var(--red-light);padding:4px 8px;border-radius:4px;color:var(--red);font-size:11.5px;"><strong>❌ Avoid:</strong> Any mirin-based drinks · Amazake (甘酒) contains trace alcohol</div>
+          </div>
+        </div>
+
+        <!-- SNACKS & SWEETS -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--green-light);">🍫 Snacks & Souvenirs</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);display:flex;flex-direction:column;gap:5px;">
+            <div>✅ <strong>KitKat</strong> — matcha · strawberry · sakura · vanilla · hojicha</div>
+            <div>✅ <strong>Pocky</strong> — all flavours (chocolate, matcha, strawberry)</div>
+            <div>✅ <strong>Tokyo Banana</strong> — banana cream cake, iconic souvenir</div>
+            <div>✅ <strong>Pretz</strong> — all flavours except BBQ pork</div>
+            <div>✅ <strong>Chips / Crisps</strong> — seaweed · soy sauce · cheese all safe</div>
+            <div>✅ <strong>Mochi sweets</strong> — rice cakes, traditionally pork-free</div>
+            <div>✅ <strong>Melon pan</strong> — sweet bread, safe</div>
+            <div style="background:var(--red-light);padding:4px 8px;border-radius:4px;color:var(--red);font-size:11.5px;"><strong>❌ Check:</strong> BBQ chips (some use pork extract) · Consommé chips · Any soup-flavoured snacks</div>
+          </div>
+        </div>
+
+        <!-- BREAKFAST PACK -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--blue);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--blue-light);">🌅 Recommended Breakfast Pack</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);">Build a complete halal breakfast from any konbini:</div>
+          <div style="background:var(--blue-light);border-radius:6px;padding:10px 12px;margin-top:6px;font-size:12px;display:flex;flex-direction:column;gap:4px;">
+            <div>🍙 2× Onigiri (salmon + plum)</div>
+            <div>🥚 1× Hard-boiled egg</div>
+            <div>🥛 1× Milk carton or Calpis</div>
+            <div>🍌 1× Banana (from fruit corner)</div>
+            <div>☕ 1× Canned coffee or green tea</div>
+            <div style="margin-top:4px;font-weight:700;color:var(--blue);">Total: ~¥600–900 (~RM18–27) for 2 people</div>
+          </div>
+        </div>
+
+        <!-- COMPETITION DAY PACK -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--red-light);">🏆 Competition Day Pack (Sun)</div>
+          <div style="font-size:12.5px;color:var(--ink-mid);">Pre-pack the night before for Komazawa:</div>
+          <div style="background:var(--red-light);border-radius:6px;padding:10px 12px;margin-top:6px;font-size:12px;display:flex;flex-direction:column;gap:4px;">
+            <div>🍙 2× Onigiri (light, familiar food only!)</div>
+            <div>🍌 2× Bananas for between matches</div>
+            <div>💧 2× 500ml water bottles</div>
+            <div>🏃 1× Pocari Sweat or sports drink</div>
+            <div>🍫 1× KitKat or chocolate for energy</div>
+            <div>🧴 Wet wipes (in kitchen aisle)</div>
+            <div style="margin-top:4px;font-weight:700;color:var(--red);">⚠️ No heavy food day-of. Keep it light and familiar.</div>
+          </div>
+        </div>
+
+        <!-- LABEL READING CHEAT SHEET -->
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--border);">📖 Label Reading Cheat Sheet</div>
+          <div style="font-size:12px;color:var(--ink-mid);display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--red-light);color:var(--red);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">豚 / 豚肉</span><span>Pork / Pork meat — AVOID</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--red-light);color:var(--red);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">豚骨</span><span>Pork bone broth — AVOID</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--red-light);color:var(--red);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">ラード</span><span>Lard — AVOID</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--red-light);color:var(--red);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">みりん</span><span>Mirin (cooking wine) — AVOID</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--red-light);color:var(--red);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">チャーシュー</span><span>BBQ pork — AVOID</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--green-light);color:var(--green);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">鶏 / 鳥</span><span>Chicken — ✅ Safe</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--green-light);color:var(--green);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">魚 / シーフード</span><span>Fish / Seafood — ✅ Safe</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--green-light);color:var(--green);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">牛 / 牛肉</span><span>Beef — ✅ Generally safe</span></div>
+            <div style="display:flex;gap:8px;align-items:center;"><span style="background:var(--green-light);color:var(--green);font-size:11px;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace;white-space:nowrap;">野菜 / 豆腐</span><span>Veg / Tofu — ✅ Safe</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <p class="note">💡 <strong>Google Translate trick:</strong> Open Google Translate on your phone, tap the camera icon, and point it at any Japanese label — it translates ingredients in real-time. Use this when unsure about any packaged item.</p>
+</section>
+
+<section id="halal"><!-- HALAL GUIDE -->
   <h2 class="section-title">🕌 Halal Food Guide</h2>
   <div class="alert alert-green">
     <span class="alert-icon">✅</span>
@@ -1376,7 +1713,7 @@
 
 <!-- BUDGET -->
 <section>
-  <h2 class="section-title">💴 Budget Breakdown (2 People · 6 Days)</h2>
+  <h2 class="section-title" id="budget">💴 Budget Breakdown (2 People · 6 Days)</h2>
   <div class="alert alert-blue">
     <span class="alert-icon">💱</span>
     <div class="alert-text"><strong>Exchange Rate Used:</strong> ¥100 = RM3.00 (approximate). Actual rate varies — Wise gives you the best mid-market rate. Always check before converting.</div>
@@ -1579,7 +1916,7 @@
 
 <!-- WATCH REFERENCE -->
 <section>
-  <h2 class="section-title">⌚ SARB033 Hunt — Quick Reference</h2>
+  <h2 class="section-title" id="watch">⌚ SARB033 Hunt — Quick Reference</h2>
   <div class="alert alert-orange">
     <span class="alert-icon">⌚</span>
     <div class="alert-text"><strong>Reference to show dealers:</strong> Seiko SARB033 · SSB033J1 · Show a photo · Discontinued 2019 · JDM dress watch · Cocktail Time dial. <strong>5 shops</strong> on Saturday morning — Broadway 1F & 3F + Sun Mall. Open from 11:30am (FireKids) or 11am (others).</div>
@@ -1624,7 +1961,7 @@
 
 <!-- SAKURA TRACKER -->
 <section>
-  <h2 class="section-title">🌸 Cherry Blossom Forecast — Tokyo 2026</h2>
+  <h2 class="section-title" id="sakura">🌸 Cherry Blossom Forecast — Tokyo 2026</h2>
   <div style="background:linear-gradient(135deg,#fff5f7 0%,#fff0f5 100%);border:1px solid #f4b8c8;border-radius:12px;overflow:hidden;margin-bottom:16px;">
     <div style="background:linear-gradient(90deg,#C8102E,#e8527a);padding:14px 20px;color:white;">
       <div style="font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;margin-bottom:2px;">🌸 2026 Tokyo Sakura Status</div>
@@ -1714,7 +2051,7 @@
 
 <!-- BONSAI SHOPS -->
 <section>
-  <h2 class="section-title">🎋 Bonsai Shops — Mame & Kuromatsu</h2>
+  <h2 class="section-title" id="bonsai">🎋 Bonsai Shops — Mame & Kuromatsu</h2>
   <div class="alert alert-green">
     <span class="alert-icon">🎋</span>
     <div class="alert-text"><strong>Buying tip:</strong> You can bring bonsai pots, tools, and grow kits back to Malaysia without restriction. Live bonsai trees require a phytosanitary certificate and are very difficult to export — stick to <strong>kits, seeds, pots, and tools</strong> for hassle-free souvenirs. Kuromatsu (black pine) growing kits and mame bonsai starter sets are widely available and make incredible gifts.</div>
@@ -1795,7 +2132,7 @@
 
 <!-- MITSUI OUTLET PARKS -->
 <section>
-  <h2 class="section-title">🏬 Mitsui Outlet Parks — Discount Hunter Guide</h2>
+  <h2 class="section-title" id="outlets">🏬 Mitsui Outlet Parks — Discount Hunter Guide</h2>
   <div class="alert alert-orange">
     <span class="alert-icon">💡</span>
     <div class="alert-text"><strong>Strategy:</strong> These work best on a half-day or full-day dedicated trip — not combined with central Tokyo sightseeing. Bring your passport for tax-free on purchases over ¥5,500. Best brands to hunt: Nike, Adidas, New Balance, Asics, Columbia, Timberland, Coach, and Japanese brands like United Arrows, Beams, and Journal Standard. Expect 30–70% off RRP.</div>
@@ -1846,7 +2183,7 @@
 
 <!-- EXTRA HALAL — TABELOG PICKS -->
 <section>
-  <h2 class="section-title">🕌 More Halal Spots — Tabelog & Certified Picks</h2>
+  <h2 class="section-title" id="morehalal">🕌 More Halal Spots — Tabelog & Certified Picks</h2>
   <div class="alert alert-green">
     <span class="alert-icon">📊</span>
     <div class="alert-text"><strong>About Tabelog ratings:</strong> Japan's most trusted restaurant review platform. A score of 3.5+ puts a restaurant in the top 5% nationwide. The places below are selected from Tabelog reviews combined with halal certification verification.</div>
@@ -1900,7 +2237,7 @@
 
 <!-- SNEAKERS -->
 <section>
-  <h2 class="section-title">👟 Sneaker Heaven — Tokyo's Best Stores</h2>
+  <h2 class="section-title" id="sneakers">👟 Sneaker Heaven — Tokyo's Best Stores</h2>
   <div class="alert alert-blue">
     <span class="alert-icon">👟</span>
     <div class="alert-text"><strong>All in the Harajuku/Omotesando zone — Friday morning.</strong> Every shop is within 15 min walk of Harajuku station. Prices are 30–50% cheaper than overseas. Bring passport for tax-free on purchases over ¥5,500. Onitsuka Tiger is especially popular with Malaysians — go early (before 11am) to beat queues.</div>
@@ -1954,7 +2291,7 @@
 
 <!-- MOSQUES -->
 <section>
-  <h2 class="section-title">🕌 Mosques in Tokyo — Prayer Guide</h2>
+  <h2 class="section-title" id="mosques">🕌 Mosques in Tokyo — Prayer Guide</h2>
   <div class="alert alert-green">
     <span class="alert-icon">🕌</span>
     <div class="alert-text"><strong>Tokyo is well-equipped for Muslim visitors.</strong> Prayer rooms are available at multiple malls and restaurants throughout the guide. The mosques below offer full prayer facilities with proper wudu areas. Tokyo Camii has the most beautiful prayer hall and a halal market — worth visiting as a destination in itself.</div>
@@ -1995,8 +2332,7 @@
   </div>
 </section>
 
-<!-- MAP SECTION -->
-<section>
+<section id="map"><!-- MAP SECTION -->
   <h2 class="section-title">🗺️ Interactive Trip Map</h2>
   <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;">
 
@@ -2441,8 +2777,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- INSTA360 PHOTOGRAPHY -->
-<section>
+<section id="camera"><!-- INSTA360 PHOTOGRAPHY -->
   <h2 class="section-title">📸 Insta360 Ace Pro 2 — Tokyo Street Photography Guide</h2>
   <div class="alert alert-blue">
     <span class="alert-icon">📷</span>
@@ -2514,8 +2849,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <p class="note">💡 <strong>Japan photography etiquette:</strong> Shrines (Meiji Jingu) ask you not to photograph prayer areas or inside the main hall. Asking permission before photographing individuals is appreciated though rarely enforced outdoors. Competition venues may restrict filming — check with organizers. All outdoor public spaces and street scenes are completely fine to photograph freely.</p>
 </section>
 
-<!-- EMERGENCY -->
-<section>
+<section id="emergency"><!-- EMERGENCY -->
   <h2 class="section-title">🆘 Emergency Info</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;font-size:13px">
     <div class="alert alert-red" style="margin:0"><span class="alert-icon">🚨</span><div><strong>Police</strong> 110</div></div>
@@ -2532,6 +2866,35 @@ document.addEventListener('DOMContentLoaded', function() {
   For: 1-14-22 Shimomaruko, Ota City, Tokyo 146-0092 · 
   Exchange rate: ¥100 ≈ RM3.00 · Always verify current rates on Wise before spending
 </footer>
+
+
+<script>
+// Highlight active nav item as user scrolls
+const navLinks = document.querySelectorAll('.desktop-nav a, .mobile-nav a');
+const sections = [];
+navLinks.forEach(link => {
+  const id = link.getAttribute('href').replace('#','');
+  const el = document.getElementById(id) ||
+             document.querySelector('[id="' + id + '"]') ||
+             document.querySelector('h2#' + id)?.closest('section');
+  if (el) sections.push({ id, el, links: document.querySelectorAll('a[href="#' + id + '"]') });
+});
+
+function updateActive() {
+  const scrollY = window.scrollY + 120;
+  let current = sections[0]?.id;
+  for (const s of sections) {
+    if (s.el.offsetTop <= scrollY) current = s.id;
+  }
+  navLinks.forEach(link => {
+    const isActive = link.getAttribute('href') === '#' + current;
+    link.classList.toggle('active', isActive);
+  });
+}
+
+window.addEventListener('scroll', updateActive, { passive: true });
+updateActive();
+</script>
 
 </body>
 </html>
