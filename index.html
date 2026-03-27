@@ -389,6 +389,107 @@
   .tip-card ul li:last-child { border-bottom: none; }
   .tip-card ul li::before { content: '·'; color: var(--red); font-size: 16px; flex-shrink: 0; line-height: 1.2; }
 
+
+  /* ── CURRENT LOCATION & ROUTING ── */
+  .locate-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1000;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .locate-btn:hover { background: var(--red); }
+  .locate-btn.loading { opacity: 0.7; pointer-events: none; }
+  .locate-btn.active { background: var(--green); }
+
+  /* Pulsing current location dot */
+  @keyframes pulse-ring {
+    0%   { transform: scale(0.5); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+  .my-location-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+  .my-location-dot {
+    width: 14px;
+    height: 14px;
+    background: #1a73e8;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px; left: 3px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.4);
+  }
+  .my-location-ring {
+    width: 20px;
+    height: 20px;
+    background: rgba(26,115,232,0.3);
+    border-radius: 50%;
+    position: absolute;
+    top: 0; left: 0;
+    animation: pulse-ring 1.8s ease-out infinite;
+  }
+
+  /* Nearest POI banner */
+  .nearest-banner {
+    display: none;
+    background: var(--ink);
+    color: white;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    align-items: center;
+    gap: 10px;
+  }
+  .nearest-banner.show { display: flex; }
+  .nearest-banner-icon { font-size: 22px; flex-shrink: 0; }
+  .nearest-banner-text { flex: 1; line-height: 1.4; }
+  .nearest-banner-text strong { color: #ffd700; display: block; font-size: 14px; }
+  .nearest-banner-close {
+    background: none; border: none; color: rgba(255,255,255,0.5);
+    font-size: 18px; cursor: pointer; padding: 0 4px; flex-shrink: 0;
+  }
+  .nearest-banner-close:hover { color: white; }
+
+  /* Route info pill */
+  .route-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(26,115,232,0.12);
+    border: 1px solid rgba(26,115,232,0.3);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+    color: #1a73e8;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* Highlight nearest card */
+  .loc-card.nearest-card {
+    border-left-color: #1a73e8 !important;
+    background: linear-gradient(135deg, #f0f6ff 0%, var(--paper-card) 100%);
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+  }
+
   /* FOOTER */
   footer {
     background: var(--ink);
@@ -847,8 +948,8 @@
         <div class="stop-time">🌸 8:00am</div>
         <div class="stop-content">
           <div class="stop-name">
-            <a href="https://maps.google.com/maps?q=35.5750,139.6860" target="_blank">🌸 Tamagawa Gasubashi Green Space — 21st Century Sakura</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.5750,139.6860" target="_blank">📍 Maps</a>
+            <a href="https://maps.google.com/maps?q=Monument+of+21+Century+Sakura+Tree+Shimomaruko+Ota+Tokyo" target="_blank">🌸 Monument of 21st Century Sakura Tree — Gasubashi</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Monument+of+21+Century+Sakura+Tree+Shimomaruko+Ota+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong>YOUR backyard sakura — and one of Ota City's finest.</strong> This is the "21st Century Sakura" green space along the Tama River embankment, officially listed by Ota City as a top cherry blossom destination. It's a <strong>15-minute walk from your Airbnb</strong> — no train needed.<br><br>
           <strong>Why it's special:</strong> ~120 Somei Yoshino trees line the Tama River cycling path along the embankment. Unlike famous spots (no crowds), the trees form a long corridor with wide-open river views, wind off the water carrying petals, cyclists and joggers weaving through blossoms — a pure, authentic Tokyo local sakura experience. At full bloom today, the petals should be drifting onto the path.<br><br>
@@ -866,8 +967,8 @@
         <div class="stop-time">🌸 9:00am</div>
         <div class="stop-content">
           <div class="stop-name">
-            <a href="https://maps.google.com/maps?q=35.5857,139.6751" target="_blank">🌸 Sakura-zaka — Red Bridge + Cherry Slope</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.5857,139.6751" target="_blank">📍 Maps</a>
+            <a href="https://maps.google.com/maps?q=Sakurazaka+Red+Bridge+Ota+City+Tokyo" target="_blank">🌸 Sakura-zaka — Red Bridge + Cherry Slope</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Sakurazaka+Red+Bridge+Ota+City+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">20 cherry trees lining a famous sloping street with a red pedestrian bridge. Featured in a Masaharu Fukuyama song. Quiet, residential, purely local. A short walk south from the river embankment — combine as one morning loop from your Airbnb.</div>
           <div style="background:#fef3c7;border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;"><strong>📸 Insta360 here:</strong> Stand at the bottom of the slope and use the wide-angle mode facing uphill — the red bridge frames the cherry canopy perfectly. Try a slow-motion walk up the slope with the Explorer grip held out front at chest height.</div>
@@ -886,8 +987,8 @@
       <div class="stop">
         <div class="stop-time">11:00am</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.5796,139.6845" target="_blank">🛒 Chandra Surya Halal Grocery — MUST DO TODAY</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.5796,139.6845" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Chandra+Surya+Halal+Grocery+Ota+City+Tokyo" target="_blank">🛒 Chandra Surya Halal Grocery — MUST DO TODAY</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Chandra+Surya+Halal+Grocery+Ota+City+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong style="color:var(--red);">CRITICAL — CLOSED SATURDAY & SUNDAY.</strong> Your only window this week. Opens 11am. Stock up: halal frozen chicken & mutton, spices, garlic, eggs, rice. Cheaper than any supermarket.</div>
           <div style="background:var(--red-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;"><strong>Open Mon–Fri 11am–7:30pm · CLOSED SAT & SUN.</strong> ~10min walk from Airbnb.</div>
@@ -898,8 +999,8 @@
       <div class="stop">
         <div class="stop-time">12:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.5547,139.728" target="_blank">Zaika Pakistani — Lunch (or home cook)</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.5547,139.728" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Zaika+Pakistani+Restaurant+Ota+City+Tokyo" target="_blank">Zaika Pakistani — Lunch (or home cook)</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Zaika+Pakistani+Restaurant+Ota+City+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Closest halal restaurant. Fresh naan, spicy curry, kebab. 4.6 ⭐. Keep it light — training in 2 hours. Or cook at home from today's groceries.</div>
           <div class="stop-tags"><span class="tag tag-halal">🕌 Halal</span></div>
@@ -918,8 +1019,8 @@
       <div class="stop">
         <div class="stop-time training">2:00–5:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6082,139.6708" target="_blank">🥋 Carpe Diem Jiyugaoka — Prof Craig</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6082,139.6708" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Carpe+Diem+BJJ+Jiyugaoka+Tokyo" target="_blank">🥋 Carpe Diem Jiyugaoka — Prof Craig</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Carpe+Diem+BJJ+Jiyugaoka+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">PT Session with Prof Craig. Rated 4.9 ⭐. First Tokyo mat time for the young warrior. Competition in 2 days — sharpen, don't exhaust. Trust the process.</div>
           <div style="background:#fef3c7;border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;"><strong>📸 Insta360 at the dojo:</strong> Ask Prof Craig if you can film a few minutes of drilling — the wide-angle captures the whole mat. Great memory shot. Keep Explorer grip low for dramatic mat-level angles during technique demos.</div>
@@ -930,8 +1031,8 @@
       <div class="stop">
         <div class="stop-time">5:15pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6127,139.6665" target="_blank">Mont St. Clair — Post-Training Pastries</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6127,139.6665" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Mont+Saint+Clair+Patisserie+Jiyugaoka+Tokyo" target="_blank">Mont St. Clair — Post-Training Pastries</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Mont+Saint+Clair+Patisserie+Jiyugaoka+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Steps from Carpe Diem. Tokyo's most celebrated French patisserie. Well-earned. ⚠️ CLOSED WEDNESDAY ✓ · Open until 6pm.</div>
         </div>
@@ -940,8 +1041,8 @@
       <div class="stop">
         <div class="stop-time">🌸 6:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6359,139.7086" target="_blank">🌸 Nakameguro River — Lantern Illumination</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6359,139.7086" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Meguro+River+Cherry+Blossom+Promenade+Tokyo" target="_blank">🌸 Nakameguro River — Lantern Illumination</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Meguro+River+Cherry+Blossom+Promenade+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong>Illuminated 5pm–8pm until March 31 — tonight is one of your only chances.</strong> 800 cherry trees over the canal, paper lanterns reflected in dark water. Peak full bloom. Tokyo's most photogenic sakura spot.</div>
           <div style="background:#fef3c7;border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;"><strong>📸 Insta360 golden shots here:</strong><br>
@@ -989,8 +1090,8 @@
       <div class="stop">
         <div class="stop-time">🌸 9:30am</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.69,139.7479" target="_blank">🌸 Chidorigafuchi — Morning Walk</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.69,139.7479" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Chidorigafuchi+Cherry+Blossom+Tokyo" target="_blank">🌸 Chidorigafuchi — Morning Walk</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Chidorigafuchi+Cherry+Blossom+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong>Illumination: March 26–April 6, 6pm–9pm</strong> (come back another evening for the lit-up version!). Morning is beautiful and less crowded. 700-metre promenade along the Imperial Palace moat. Row boats also available (¥800/30min). One of Tokyo's most iconic sakura spots.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Kudanshita (Tozai/Hanzomon lines) · 5min walk · FREE to walk · 45 min visit</div>
@@ -1014,11 +1115,11 @@
             <a class="map-link" href="https://maps.google.com/maps?q=Nakano+Broadway+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">All shops open from 11am. Hit in this order — they're all in the same building or 5min walk:
-          <br><strong>① <a href="https://maps.google.com/maps?q=35.7092,139.666" target="_blank">FireKids (1F)</a></strong> — 4.9 ⭐ / 403 reviews! YouTuber-recommended for King Seiko & Grand Seiko. English-friendly (ask for Anton or Kyara). Transparent about vintage condition. ⚠️ CLOSED WEDNESDAY ✓
-          <br><strong>② <a href="https://maps.google.com/maps?q=35.7089,139.6658" target="_blank">Jackroad (3F)</a></strong> — 4.3 ⭐ / 1,589 reviews. 6,000+ watches. JDM Seiko specialist. Can hold a watch 24hrs.
-          <br><strong>③ <a href="https://maps.google.com/maps?q=35.7088,139.6657" target="_blank">WATCHNIAN (3F)</a></strong> — 4.9 ⭐ / 1,100+ reviews. English staff. Massive selection.
-          <br><strong>④ <a href="https://maps.google.com/maps?q=35.7089,139.6658" target="_blank">Time Walker (3F)</a></strong> — Perfect 5.0 ⭐. Zero pressure. 3.5% card fee.
-          <br><strong>⑤ <a href="https://maps.google.com/maps?q=35.708,139.6657" target="_blank">The Watch Company (Sun Mall)</a></strong> — 5min walk. Has stocked SARB033 before.</div>
+          <br><strong>① <a href="https://maps.google.com/maps?q=FireKids+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank">FireKids (1F)</a></strong> — 4.9 ⭐ / 403 reviews! YouTuber-recommended for King Seiko & Grand Seiko. English-friendly (ask for Anton or Kyara). Transparent about vintage condition. ⚠️ CLOSED WEDNESDAY ✓
+          <br><strong>② <a href="https://maps.google.com/maps?q=Jackroad+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank">Jackroad (3F)</a></strong> — 4.3 ⭐ / 1,589 reviews. 6,000+ watches. JDM Seiko specialist. Can hold a watch 24hrs.
+          <br><strong>③ <a href="https://maps.google.com/maps?q=WATCHNIAN+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank">WATCHNIAN (3F)</a></strong> — 4.9 ⭐ / 1,100+ reviews. English staff. Massive selection.
+          <br><strong>④ <a href="https://maps.google.com/maps?q=Jackroad+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank">Time Walker (3F)</a></strong> — Perfect 5.0 ⭐. Zero pressure. 3.5% card fee.
+          <br><strong>⑤ <a href="https://maps.google.com/maps?q=The+Watch+Company+Nakano+Sun+Mall+Tokyo" target="_blank">The Watch Company (Sun Mall)</a></strong> — 5min walk. Has stocked SARB033 before.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Nakano (JR Chuo/Sobu + Tozai) · Broadway is 5min walk from North Exit · Show SARB033/SSB033J1 reference. Bring passport for tax-free.</div>
           <div class="stop-tags"><span class="tag tag-watch">⌚ Watch Hunt</span><span class="tag tag-passport">🛂 Tax-Free</span></div>
         </div>
@@ -1036,8 +1137,8 @@
       <div class="stop">
         <div class="stop-time training">2:30–4:20pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6082,139.6708" target="_blank">🥋 Carpe Diem Jiyugaoka — Prof Diego</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6082,139.6708" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Carpe+Diem+BJJ+Jiyugaoka+Tokyo" target="_blank">🥋 Carpe Diem Jiyugaoka — Prof Diego</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Carpe+Diem+BJJ+Jiyugaoka+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">PT Session with Prof Diego. Final polish before tomorrow's competition. Arrive by 2:15pm. Light warm-up. Trust the training — you're ready.</div>
           <div class="stop-tags"><span class="tag tag-combat">🥋 BJJ Training</span></div>
@@ -1056,8 +1157,8 @@
       <div class="stop">
         <div class="stop-time">7:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6621,139.7433" target="_blank">🌌 teamLab Borderless (Optional if energy allows)</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6621,139.7433" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=teamLab+Borderless+Azabudai+Hills+Tokyo" target="_blank">🌌 teamLab Borderless (Optional if energy allows)</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=teamLab+Borderless+Azabudai+Hills+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Immersive digital art — feels like stepping inside Minecraft. Rated 4.6 ⭐. <strong>BOOK IN ADVANCE.</strong> Open until 9–10pm. Can go now or push to Monday evening if feeling tired pre-competition.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Azabudai Hills · Shimomaruko → Shibuya → Roppongi (Hibiya line) → walk 10min · ¥440, ~35min</div>
@@ -1091,8 +1192,8 @@
       <div class="stop">
         <div class="stop-time competition">🏆 All Day</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6248,139.6609" target="_blank">🏆 Komazawa Olympic Park Gymnasium</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6248,139.6609" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Komazawa+Olympic+Park+Gymnasium+Tokyo" target="_blank">🏆 Komazawa Olympic Park Gymnasium</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Komazawa+Olympic+Park+Gymnasium+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong>ASIA JIU JITSU CUP 2026 + ASIA NO-GI CUP 2026.</strong> A 1964 Tokyo Olympics venue. The park around it will be in peak full bloom — cherry blossoms everywhere. Arrive early, warm up properly, trust Prof Craig and Prof Diego's preparation.</div>
           <div style="background:var(--red-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;"><strong>🌸 BONUS:</strong> Komazawa Park has spectacular cherry blossoms — after competing, walk the park perimeter for incredible hanami views. Free!</div>
@@ -1111,8 +1212,8 @@
       <div class="stop">
         <div class="stop-time">🕌 Arrival</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.7218,139.8015" target="_blank">Asakusa Mosque — Maghrib Prayer</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.7218,139.8015" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Asakusa+Mosque+Tokyo" target="_blank">Asakusa Mosque — Maghrib Prayer</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Asakusa+Mosque+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Well-maintained mosque in Asakusa with separate women's prayer room upstairs. Clean wudu facilities. 11am–9pm daily. Thank Allah for the young warrior's effort on the mats today.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Asakusa (Ginza line) → walk 10min · Open 11am–9pm</div>
@@ -1122,8 +1223,8 @@
       <div class="stop">
         <div class="stop-time">~6pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.7123,139.7961" target="_blank">Japan Blue Jeans — Asakusa</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.7123,139.7961" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Japan+Blue+Jeans+Asakusa+Tokyo" target="_blank">Japan Blue Jeans — Asakusa</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Japan+Blue+Jeans+Asakusa+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Legendary Asakusa branch. Sashiko Canadian tuxedo sets, barrel jeans, fire white denim chore coats. Amazing owner. Same-day hemming. 4.6 ⭐. Open until 8pm.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Asakusa (all lines) · Walk 5min · Tax-free with passport</div>
@@ -1144,8 +1245,8 @@
       <div class="stop">
         <div class="stop-time">7:30pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.7049,139.781" target="_blank">🎉 Halal Wagyu Yakiniku Panga — CHAMPION'S DINNER</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.7049,139.781" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Halal+Wagyu+Yakiniku+Panga+Asakusa+Tokyo" target="_blank">🎉 Halal Wagyu Yakiniku Panga — CHAMPION'S DINNER</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Halal+Wagyu+Yakiniku+Panga+Asakusa+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Halal wagyu grilled at your table. Rated 4.8 ⭐ / 3,800+ reviews. Melt-in-your-mouth beef. The meal this champion has earned. <strong>Book in advance at wagyu-panga.jp.</strong></div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Kuramae (Asakusa area) · Walk 10min from Asakusa · Open 5pm–11pm (CLOSED SUNDAY LUNCH)</div>
@@ -1189,9 +1290,9 @@
       <div class="stop">
         <div class="stop-time">10:00am</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.7153,139.7684" target="_blank">Ueno Green Club + Japan Blue Jeans Ueno</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.7153,139.7684" target="_blank">📍 Bonsai</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.7091,139.7757" target="_blank">📍 Japan Blue</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Ueno+Green+Club+Bonsai+Tokyo" target="_blank">Ueno Green Club + Japan Blue Jeans Ueno</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Ueno+Green+Club+Bonsai+Tokyo" target="_blank">📍 Bonsai</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Japan+Blue+Jeans+Ueno+Tokyo" target="_blank">📍 Japan Blue</a>
           </div>
           <div class="stop-desc"><strong>Both are a short walk from Ueno Park — one stop, two ticks.</strong><br>
           <strong>Ueno Green Club</strong> — Professional bonsai pots, tools, mame & shohin starter kits. 4.2 ⭐. Open 9am–4:30pm.<br>
@@ -1204,8 +1305,8 @@
       <div class="stop">
         <div class="stop-time">11:00am</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6983,139.7717" target="_blank">Akihabara — Gaming, Gashapon & GRIT</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6983,139.7717" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Akihabara+Electric+Town+Tokyo" target="_blank">Akihabara — Gaming, Gashapon & GRIT</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Akihabara+Electric+Town+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Ueno → Akihabara is a 15min walk or 5min JR train. The nerd capital of the world: Akihabara Gamers + surrounding streets. Spider-Man figures, wrestling collectibles, Minecraft merch, Pokémon cards, gashapon capsule machines everywhere. Budget ¥2,000 for capsules alone — the young warrior will want them ALL. Also hit <strong>GRIT Fight Shop</strong> for any remaining combat gear (4.7 ⭐, CLOSED WEDNESDAY ✓).</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Akihabara (JR Sobu or Keihin-Tohoku) · Walk from Ueno 15min or JR ¥160, 5min · Budget 60min</div>
@@ -1216,8 +1317,8 @@
       <div class="stop">
         <div class="stop-time">12:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6956,139.7714" target="_blank">Halal Wagyu Karemen King — Lunch</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6956,139.7714" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Halal+Wagyu+Karemen+King+Akihabara+Tokyo" target="_blank">Halal Wagyu Karemen King — Lunch</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Halal+Wagyu+Karemen+King+Akihabara+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Right near Akihabara. Spicy wagyu ramen heat levels 1–7. Rated 4.8 ⭐ / 4,000+ reviews. Tabelog top 3% ramen. Perfect pre-Harajuku fuel. Opens 12pm.</div>
           <div class="stop-tags"><span class="tag tag-halal">🕌 Halal · Tabelog top 3%</span></div>
@@ -1237,9 +1338,9 @@
         <div class="stop-time">1:30pm</div>
         <div class="stop-content">
           <div class="stop-name">👟 Harajuku/Omotesando Sneaker Strip — All Walkable
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6707,139.7067" target="_blank">📍 ASICS</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6683,139.7079" target="_blank">📍 Onitsuka</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6688,139.7066" target="_blank">📍 KICKS LAB</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=ASICS+Flagship+Store+Harajuku+Tokyo" target="_blank">📍 ASICS</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Onitsuka+Tiger+Omotesando+Tokyo" target="_blank">📍 Onitsuka</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=KICKS+LAB+Harajuku+Tokyo" target="_blank">📍 KICKS LAB</a>
           </div>
           <div class="stop-desc">All shops within 15min walk from Harajuku station. Hit in order:<br>
           <strong>① KICKS LAB. Pino Harajuku</strong> — Perfect 5.0 ⭐ / 9,752 reviews. Jordan + Nike rarities. Opens 12pm.<br>
@@ -1255,9 +1356,9 @@
       <div class="stop">
         <div class="stop-time">3:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6621,139.6986" target="_blank">Nintendo Tokyo (PARCO 6F) + Jump Shop + Kiddy Land</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.662,139.6988" target="_blank">📍 PARCO</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6677,139.7065" target="_blank">📍 Kiddy Land</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Nintendo+Tokyo+Shibuya+PARCO" target="_blank">Nintendo Tokyo (PARCO 6F) + Jump Shop + Kiddy Land</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Shibuya+PARCO+Nintendo+Tokyo" target="_blank">📍 PARCO</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Kiddy+Land+Harajuku+Tokyo" target="_blank">📍 Kiddy Land</a>
           </div>
           <div class="stop-desc">Nintendo Tokyo (PARCO 6F) — THE Mario store. Tokyo-exclusive merch, Zelda, Kirby. Same floor: Jump Shop (Spider-Man!), Pokémon, Capcom. Then 15min walk to Kiddy Land for figures and toys. Tax-free with passport. Budget 90min.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Station:</strong> Shibuya (all Tokyu/Yamanote) · Walk 5min to PARCO · Open 10am–9pm</div>
@@ -1268,8 +1369,8 @@
       <div class="stop">
         <div class="stop-time">4:30pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.689,139.7033" target="_blank">ISAMI Combat Sports Shop — Shinjuku</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.689,139.7033" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=ISAMI+Combat+Sports+Shinjuku+Tokyo" target="_blank">ISAMI Combat Sports Shop — Shinjuku</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=ISAMI+Combat+Sports+Shinjuku+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Japan's legendary combat sports mecca. GIs, wrestling gear, rashguards, boxing gloves, exclusive ISAMI merch. <strong>4F Soumu Building — enter via parking garage, take elevator up.</strong> ⚠️ CLOSED TUESDAYS ✓. Tax-free with passport.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Route:</strong> Shibuya → Shinjuku (JR Yamanote ¥160, 3min) · Open until 8pm</div>
@@ -1280,8 +1381,8 @@
       <div class="stop">
         <div class="stop-time">5:15pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6684,139.7626" target="_blank">Ginza Bonsai — Uchikuan + Morimae</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6684,139.7626" target="_blank">📍 Uchikuan</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=Uchikuan+Bonsai+Ginza+Tokyo" target="_blank">Ginza Bonsai — Uchikuan + Morimae</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Uchikuan+Bonsai+Ginza+Tokyo" target="_blank">📍 Uchikuan</a>
           </div>
           <div class="stop-desc">Same building in Ginza 7-chome — visit both in one stop!<br>
           <strong>Ginza Uchikuan</strong> (4.7 ⭐): Tools (Kaneshin scissors, Suwada), small pots, English staff. Open until 6pm. CLOSED SUNDAY ✓<br>
@@ -1295,9 +1396,9 @@
       <div class="stop">
         <div class="stop-time">6:30pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6248,139.7759" target="_blank">Odaiba — DiverCity (Minecraft) + Gundam</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6248,139.7759" target="_blank">📍 DiverCity</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6245,139.7755" target="_blank">📍 Gundam</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=DiverCity+Tokyo+Plaza+Odaiba" target="_blank">Odaiba — DiverCity (Minecraft) + Gundam</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=DiverCity+Tokyo+Plaza+Odaiba" target="_blank">📍 DiverCity</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Unicorn+Gundam+Statue+Odaiba+Tokyo" target="_blank">📍 Gundam</a>
           </div>
           <div class="stop-desc">Ginza → Odaiba via Yurikamome monorail from Shimbashi — a scenic elevated ride over Tokyo Bay. <strong>DiverCity</strong>: Tokyo-exclusive Minecraft store, open until 8pm. Then the <strong>FREE Unicorn Gundam</strong> outside — 20m transforming robot with hourly light show. Evening transformation shows are spectacular. Note: LEGOLAND closes 6pm weekdays — push to Tuesday morning if schedule allows.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Route:</strong> Ginza → Shimbashi (walk 10min or subway ¥180) → Odaiba-Kaihin-Koen (Yurikamome ¥390, 14min) · Total ~¥570 · 25min</div>
@@ -1308,8 +1409,8 @@
       <div class="stop">
         <div class="stop-time">8:00pm</div>
         <div class="stop-content">
-          <div class="stop-name"><a href="https://maps.google.com/maps?q=35.6621,139.7433" target="_blank">🌌 teamLab Borderless — Evening</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.6621,139.7433" target="_blank">📍 Maps</a>
+          <div class="stop-name"><a href="https://maps.google.com/maps?q=teamLab+Borderless+Azabudai+Hills+Tokyo" target="_blank">🌌 teamLab Borderless — Evening</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=teamLab+Borderless+Azabudai+Hills+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc">Immersive digital art that genuinely feels like stepping inside Minecraft. Rated 4.6 ⭐. Open until 9–10pm. <strong>BOOK IN ADVANCE at teamlab.art</strong> — it's in Azabudai Hills (not Odaiba). Head back from Odaiba towards Roppongi for this.</div>
           <div style="background:var(--blue-light);border-radius:5px;padding:5px 8px;margin-top:5px;font-size:11px;font-family:'DM Mono',monospace;"><strong>Route:</strong> Odaiba → Shimbashi (Yurikamome ¥390) → Roppongi (Hibiya line ¥200) → walk 10min · ¥590 · ~25min</div>
@@ -1394,8 +1495,8 @@
         <div class="stop-time">🧳 10:15am</div>
         <div class="stop-content">
           <div class="stop-name">
-            <a href="https://maps.google.com/maps?q=35.5494,139.7798" target="_blank">🛫 Taxi → Haneda Airport T3 — Drop All Bags</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.5494,139.7798" target="_blank">📍 Maps</a>
+            <a href="https://maps.google.com/maps?q=Haneda+Airport+Terminal+3+Tokyo" target="_blank">🛫 Taxi → Haneda Airport T3 — Drop All Bags</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Haneda+Airport+Terminal+3+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong>This is the whole strategy.</strong> Haneda is 15 minutes away — take a taxi directly (same ¥400 as arrival night, luggage too heavy to train). Drop ALL bags at the Haneda T3 staffed counter or coin lockers on 2F Arrival Lobby the moment you arrive. You're now completely hands-free for the next 10+ hours.<br><br>
           <strong>At T3 2F Arrival Lobby:</strong><br>
@@ -1454,8 +1555,8 @@
         <div class="stop-time">🛫 9:00pm</div>
         <div class="stop-content">
           <div class="stop-name">
-            <a href="https://maps.google.com/maps?q=35.5494,139.7798" target="_blank">Return to Haneda T3 — Collect Bags + Check In</a>
-            <a class="map-link" href="https://maps.google.com/maps?q=35.5494,139.7798" target="_blank">📍 Maps</a>
+            <a href="https://maps.google.com/maps?q=Haneda+Airport+Terminal+3+Tokyo" target="_blank">Return to Haneda T3 — Collect Bags + Check In</a>
+            <a class="map-link" href="https://maps.google.com/maps?q=Haneda+Airport+Terminal+3+Tokyo" target="_blank">📍 Maps</a>
           </div>
           <div class="stop-desc"><strong>Timeline working backwards from 11:50pm:</strong><br>
           — <strong>9:00pm</strong> — Arrive T3, collect bags from storage (2F Arrival Lobby)<br>
@@ -1506,28 +1607,28 @@
       <div style="font-size:15px;font-weight:700;margin-bottom:3px;">Lawson · Nishimine-machi</div>
       <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~170m west of Airbnb</div>
       <div style="font-size:12px;background:var(--green-light);color:var(--green);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">⏰ Open 24 Hours</div>
-      <a href="https://maps.google.com/maps?q=35.5791,139.6828" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+      <a href="https://maps.google.com/maps?q=Lawson+Nishimine-machi+Ota+City+Tokyo" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
     </div>
     <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;">
       <div style="font-size:12px;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🥈 7 min walk</div>
       <div style="font-size:15px;font-weight:700;margin-bottom:3px;">Lawson · Unoki</div>
       <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~550m south · Larger store · Eat-in space</div>
       <div style="font-size:12px;background:var(--green-light);color:var(--green);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">⏰ Open 24 Hours</div>
-      <a href="https://maps.google.com/maps?q=35.5746,139.6824" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+      <a href="https://maps.google.com/maps?q=Lawson+Unoki+Ota+City+Tokyo" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
     </div>
     <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;">
       <div style="font-size:12px;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🥉 12 min walk</div>
       <div style="font-size:15px;font-weight:700;margin-bottom:3px;">FamilyMart · 3-chome</div>
       <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~1.3km south · 24hrs · Eat-in + power outlets</div>
       <div style="font-size:12px;background:var(--green-light);color:var(--green);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">⏰ Open 24 Hours</div>
-      <a href="https://maps.google.com/maps?q=35.5668,139.6843" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+      <a href="https://maps.google.com/maps?q=FamilyMart+Shimomaruko+Ota+City+Tokyo" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
     </div>
     <div style="background:var(--paper-card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;">
       <div style="font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">⚠️ NOT 24hrs</div>
       <div style="font-size:15px;font-weight:700;margin-bottom:3px;">7-Eleven · 3-chome</div>
       <div style="font-size:12px;color:var(--ink-light);margin-bottom:6px;">~1km south · Has ATM · 6am–1am only</div>
       <div style="font-size:12px;background:var(--orange-light);color:var(--orange);font-weight:600;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:6px;">🕕 6am–1am only</div>
-      <a href="https://maps.google.com/maps?q=35.5708,139.6857" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
+      <a href="https://maps.google.com/maps?q=7-Eleven+Shimomaruko+Ota+City+Tokyo" target="_blank" style="display:block;font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;">📍 Open in Maps →</a>
     </div>
   </div>
 
@@ -1668,42 +1769,42 @@
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Gyumon Halal Wagyu Ramen</div><div class="halal-card-rating">⭐ 4.9</div></div>
       <div class="halal-card-type">Wagyu Ramen · Shibuya</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6597,139.7042" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Gyumon+Halal+Wagyu+Ramen+Shibuya+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,500–2,500/person · ~RM45–75</div>
       <div class="halal-card-note">20,000+ reviews — Tokyo's #1 halal spot. Rich wagyu broth. Prayer room. 🗓 Friday lunch</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Halal Wagyu Yakiniku Panga</div><div class="halal-card-rating">⭐ 4.8</div></div>
       <div class="halal-card-type">Yakiniku · Ueno/Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7049,139.781" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Halal+Wagyu+Yakiniku+Panga+Asakusa+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥4,000–7,000/person · ~RM120–210</div>
       <div class="halal-card-note">Wagyu grilled at your table. 🗓 Sunday champion's dinner — book ahead</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Halal Wagyu Karemen King</div><div class="halal-card-rating">⭐ 4.8</div></div>
       <div class="halal-card-type">Spicy Ramen · Akihabara</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6956,139.7714" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Halal+Wagyu+Karemen+King+Akihabara+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,500–2,500/person · ~RM45–75</div>
       <div class="halal-card-note">Heat levels 1–7. 🗓 Monday lunch near Akihabara</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">HALRA Halal Wagyu Sukiyaki</div><div class="halal-card-rating">⭐ 4.9</div></div>
       <div class="halal-card-type">Sukiyaki · Shibuya</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.659,139.698" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Gyumon+Halal+Wagyu+Shibuya+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥3,000–6,000/person · ~RM90–180</div>
       <div class="halal-card-note">Tender melt-in-mouth wagyu. 🗓 Alt Friday dinner option</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Honolu Grande Akihabara</div><div class="halal-card-rating">⭐ 4.8</div></div>
       <div class="halal-card-type">Ramen/Steak/Gyoza · Akihabara</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6951,139.7775" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Ueno+Park+Cherry+Blossom+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,500–3,000/person · ~RM45–90</div>
       <div class="halal-card-note">Halal gyoza! Spacious for families. Prayer room available.</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Zaika Pakistani Restaurant</div><div class="halal-card-rating">⭐ 4.6</div></div>
       <div class="halal-card-type">Pakistani · Kamata (near Airbnb)</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.5547,139.728" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Zaika+Pakistani+Restaurant+Ota+City+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥800–1,500/person · ~RM25–45</div>
       <div class="halal-card-note">Closest halal restaurant to Airbnb. Very affordable. 🗓 Thursday arrival dinner</div>
     </div>
@@ -1925,31 +2026,31 @@
     <thead><tr><th>Shop</th><th>Floor</th><th>Rating</th><th>Notes</th><th>Card Fee</th></tr></thead>
     <tbody>
       <tr style="background:#fffbeb;">
-        <td><strong><a href="https://maps.google.com/maps?q=35.7092,139.666" target="_blank" style="color:var(--red)">FireKids ⭐ YouTuber Pick</a></strong><div style="font-size:10px;color:var(--gold);">King Seiko · Grand Seiko specialist</div></td>
+        <td><strong><a href="https://maps.google.com/maps?q=FireKids+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank" style="color:var(--red)">FireKids ⭐ YouTuber Pick</a></strong><div style="font-size:10px;color:var(--gold);">King Seiko · Grand Seiko specialist</div></td>
         <td>Broadway 1F</td><td>⭐ 4.9</td>
         <td>YouTuber-recommended for GS & KS · Ask for Anton or Kyara · English-friendly · Transparent about vintage condition · Also Cartier/Rolex vintage · Opens 11:30am</td>
         <td>⚠️ CLOSED WED</td>
       </tr>
       <tr>
-        <td><strong><a href="https://maps.google.com/maps?q=35.7089,139.6658" target="_blank" style="color:var(--red)">Jackroad</a></strong></td>
+        <td><strong><a href="https://maps.google.com/maps?q=Jackroad+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank" style="color:var(--red)">Jackroad</a></strong></td>
         <td>Broadway 3F</td><td>⭐ 4.3</td>
         <td>6,000+ watches · Known for JDM Seiko · Most respected · Can hold watch 24hrs</td>
         <td>Accepts card</td>
       </tr>
       <tr>
-        <td><strong><a href="https://maps.google.com/maps?q=35.7088,139.6657" target="_blank" style="color:var(--red)">WATCHNIAN</a></strong></td>
+        <td><strong><a href="https://maps.google.com/maps?q=WATCHNIAN+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank" style="color:var(--red)">WATCHNIAN</a></strong></td>
         <td>Broadway 3F</td><td>⭐ 4.9</td>
         <td>Huge selection · English-speaking staff · Patient</td>
         <td>Accepts card</td>
       </tr>
       <tr>
-        <td><strong><a href="https://maps.google.com/maps?q=35.7089,139.6658" target="_blank" style="color:var(--red)">Time Walker</a></strong></td>
+        <td><strong><a href="https://maps.google.com/maps?q=Jackroad+Watch+Shop+Nakano+Broadway+Tokyo" target="_blank" style="color:var(--red)">Time Walker</a></strong></td>
         <td>Broadway 3F</td><td>⭐ 5.0</td>
         <td>Zero pressure · Fair prices · Best buying experience</td>
         <td>3.5% card fee</td>
       </tr>
       <tr>
-        <td><strong><a href="https://maps.google.com/maps?q=35.708,139.6657" target="_blank" style="color:var(--red)">The Watch Company</a></strong></td>
+        <td><strong><a href="https://maps.google.com/maps?q=The+Watch+Company+Nakano+Sun+Mall+Tokyo" target="_blank" style="color:var(--red)">The Watch Company</a></strong></td>
         <td>Sun Mall</td><td>⭐ 3.6</td>
         <td>5 min walk · Has stocked SARB033 before · Wide JDM range</td>
         <td>Accepts card</td>
@@ -2060,28 +2161,28 @@
     <div class="halal-card" style="border-left:3px solid #4a7c59;">
       <div class="halal-card-head"><div class="halal-card-name">Ginza Uchikuan</div><div class="halal-card-rating">⭐ 4.7</div></div>
       <div class="halal-card-type">Bonsai pots · tools · live trees · Ginza</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6684,139.7626" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Uchikuan+Bonsai+Ginza+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,500–80,000+ · CLOSED SUNDAY</div>
       <div class="halal-card-note">Best for tools (Kaneshin, Suwada scissors) + small pots easy to carry. Staff speak English. 10am–6pm Mon–Sat. Same building as Morimae.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #4a7c59;">
       <div class="halal-card-head"><div class="halal-card-name">Morimae Ginza Bonsai</div><div class="halal-card-rating">⭐ 4.6</div></div>
       <div class="halal-card-type">Upmarket bonsai · antique pots · suiseki · Ginza</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6684,139.7626" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Uchikuan+Bonsai+Ginza+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥5,000–200,000+ · CLOSED SUNDAY</div>
       <div class="halal-card-note">Two-floor shop in Ginza 7-chome. Antique pots, tools, tokonoma displays. Same building as Uchikuan — visit both in one trip. 11am–5pm Mon–Sat.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #4a7c59;">
       <div class="halal-card-head"><div class="halal-card-name">Ueno Green Club</div><div class="halal-card-rating">⭐ 4.2</div></div>
       <div class="halal-card-type">Professional bonsai shop · near Ueno Park</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7153,139.7684" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Ueno+Green+Club+Bonsai+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥2,000–50,000+ · 9am–4:30pm daily</div>
       <div class="halal-card-note">Near Ueno Park lake. Great for mame bonsai pots and tools. Mix of beginner and professional stock. Combine with Panga halal dinner nearby. Garden atmosphere.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #4a7c59;">
       <div class="halal-card-head"><div class="halal-card-name">TRADMAN's Marunouchi</div><div class="halal-card-rating">⭐ 4.0</div></div>
       <div class="halal-card-type">Modern bonsai lifestyle store · Tokyo Station area</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6777,139.7623" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Morimae+Bonsai+Ginza+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥3,000–100,000+ · 11am–8pm daily</div>
       <div class="halal-card-note">Unique concept store combining bonsai with streetwear (special Vans collab). Beautiful trees, apparel, accessories. Near Tokyo Station — easy access. Great for photos.</div>
     </div>
@@ -2101,28 +2202,28 @@
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Studio D'Artisan Tokyo</div><div class="halal-card-rating">⭐ 4.0</div></div>
       <div class="halal-card-type">Osaka 5 · heavyweight selvedge · Harajuku/Omotesando</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6666,139.7056" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=KICKS+LAB+Pino+Harajuku+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥25,000–80,000+ · 11am–8pm daily</div>
       <div class="halal-card-note">One of Japan's legendary Osaka 5 denim houses. High-oz selvedge, leather jackets, workwear. Staff knowledgeable but can be reserved — show enthusiasm for denim and they open up. Walking distance from Kiddy Land.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Japan Blue Jeans — Shibuya ⭐ Best for Visitors</div><div class="halal-card-rating">⭐ 4.6</div></div>
       <div class="halal-card-type">Selvedge denim · English staff · Shibuya</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6645,139.7036" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Japan+Blue+Jeans+Shibuya+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥15,000–45,000 · 11am–7pm daily</div>
       <div class="halal-card-note">Most recommended denim shop for foreigners in all Tokyo. English-speaking staff, wider size range, 3 fitting rooms. Same-day hemming FREE. 5 min from Kiddy Land — perfect Friday combo stop.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Japan Blue Jeans — Asakusa</div><div class="halal-card-rating">⭐ 4.6</div></div>
       <div class="halal-card-type">Full denim tuxedo sets · barrel jeans · Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7123,139.7961" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Japan+Blue+Jeans+Asakusa+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥15,000–45,000 · 11am–8pm daily</div>
       <div class="halal-card-note">Legendary staff and selection. Sashiko Canadian tuxedo sets, fire white denim chore coats. Combine with Sunday dinner at Panga or Asakusa Sushi Ken. Owner is amazing.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Japan Blue Jeans — Ueno</div><div class="halal-card-rating">⭐ 4.4</div></div>
       <div class="halal-card-type">Selvedge denim · Ueno · near Akihabara</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7091,139.7757" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Japan+Blue+Jeans+Ueno+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥15,000–45,000 · 11am–7pm daily</div>
       <div class="halal-card-note">Closest Japan Blue branch to Akihabara — perfect add-on to Monday gaming day. Friendly staff including Kaku who's been praised by multiple reviewers. 30-min hemming on site.</div>
     </div>
@@ -2144,7 +2245,7 @@
     <tbody>
       <tr>
         <td>
-          <strong><a href="https://maps.google.com/maps?q=35.6473,140.0414" target="_blank" style="color:var(--red)">Mitsui Outlet Park Makuhari</a></strong>
+          <strong><a href="https://maps.google.com/maps?q=Mitsui+Outlet+Park+Makuhari+Chiba" target="_blank" style="color:var(--red)">Mitsui Outlet Park Makuhari</a></strong>
           <div style="font-size:11px;color:var(--ink-light);">⭐ 3.8 · Chiba</div>
         </td>
         <td>~30 min from Tokyo · <strong>Closest & Easiest</strong></td>
@@ -2154,7 +2255,7 @@
       </tr>
       <tr>
         <td>
-          <strong><a href="https://maps.google.com/maps?q=35.6151,139.3784" target="_blank" style="color:var(--red)">Mitsui Outlet Park Tama</a></strong>
+          <strong><a href="https://maps.google.com/maps?q=Mitsui+Outlet+Park+Tama+Tokyo" target="_blank" style="color:var(--red)">Mitsui Outlet Park Tama</a></strong>
           <div style="font-size:11px;color:var(--ink-light);">⭐ 3.8 · Hachioji, West Tokyo</div>
         </td>
         <td>~45 min from central Tokyo</td>
@@ -2164,7 +2265,7 @@
       </tr>
       <tr>
         <td>
-          <strong><a href="https://maps.google.com/maps?q=35.4356,139.9346" target="_blank" style="color:var(--red)">Mitsui Outlet Park Kisarazu</a></strong>
+          <strong><a href="https://maps.google.com/maps?q=Mitsui+Outlet+Park+Kisarazu+Chiba" target="_blank" style="color:var(--red)">Mitsui Outlet Park Kisarazu</a></strong>
           <div style="font-size:11px;color:var(--ink-light);">⭐ 4.0 · Kisarazu, Chiba · LARGEST</div>
         </td>
         <td>~60 min from Tokyo (bus from Yaesu)</td>
@@ -2192,42 +2293,42 @@
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Mǎzilù Lanzhou Beef Noodles</div><div class="halal-card-rating">⭐ 4.1</div></div>
       <div class="halal-card-type">Halal Lanzhou beef noodles · Jimbocho</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6958,139.7601" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Halal+Ramen+Shibuya+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,000–1,500/person · ~RM30–45</div>
       <div class="halal-card-note">Tabelog 3.59 — top 3% of ALL ramen shops in Japan. Halal certified. Massive portions. Near Nakano Broadway (Saturday watch route). Workers queue here at lunch — a great sign.</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Ayam-ya Halal Ramen</div><div class="halal-card-rating">⭐ 4.4</div></div>
       <div class="halal-card-type">Malaysia Halal Corp certified chicken ramen · Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7072,139.7863" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Ayam-ya+Halal+Ramen+Asakusa+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,200–1,800/person · ~RM36–54</div>
       <div class="halal-card-note">Certified by Japan Halal Foundation AND Malaysia Halal Corporation. Prayer room available. Shoyu + salt ramen, spicy option, karaage. Queue before 11:30am opening. Near Panga dinner spot.</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Tokyo Omakase Sushi & Wagyu</div><div class="halal-card-rating">⭐ 4.6</div></div>
       <div class="halal-card-type">Halal omakase sushi · wagyu · kimono · Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7165,139.7985" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Tokyo+Omakase+Sushi+Wagyu+Halal+Asakusa" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥6,000–15,000/person · ~RM180–450</div>
       <div class="halal-card-note">13-course halal omakase with explanation of each dish. Free kimono experience included. Prayer space available. 11am–11pm daily. Book in advance for a special evening. Excellent for a special occasion dinner.</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Asakusa Sushi Ken</div><div class="halal-card-rating">⭐ 4.4</div></div>
       <div class="halal-card-type">Halal edomae sushi · fresh sashimi · tempura · Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7139,139.7926" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Asakusa+Sushi+Ken+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥2,000–5,000/person · ~RM60–150</div>
       <div class="halal-card-note">Halal certified sushi prepared in front of you. "Best tempura I've ever had" per multiple reviewers. Complimentary tea. ⚠️ CLOSED WEDNESDAY ✓. Open Mon, Tue, Thu–Sun. Near Senso-ji temple.</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">Halal Ramen Samurai Soul</div><div class="halal-card-rating">⭐ 4.9</div></div>
       <div class="halal-card-type">Halal wagyu ramen · small prayer room · Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7168,139.7936" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=halal+restaurant+Asakusa+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥1,500–2,500/person · ~RM45–75</div>
       <div class="halal-card-note">4.9 ⭐ — one of highest rated halal spots in Tokyo. Prayer room for 1 person. Gyoza, tempura rice bowl available. CLOSED FRIDAY LUNCH. Open Sat 11am–10pm.</div>
     </div>
     <div class="halal-card">
       <div class="halal-card-head"><div class="halal-card-name">HALRA Halal Wagyu Sukiyaki — Asakusa</div><div class="halal-card-rating">⭐ 4.9</div></div>
       <div class="halal-card-type">Halal wagyu sukiyaki · Asakusa branch</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7104,139.7914" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Mazilu+Lanzhou+Beef+Noodles+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥3,000–6,000/person · ~RM90–180</div>
       <div class="halal-card-note">Asakusa branch of the 4.9 ⭐ HALRA brand. Staff teach you how to cook + refillable rice. Can add udon at the end. Near Japan Blue Jeans Asakusa — great Sunday combo.</div>
     </div>
@@ -2246,42 +2347,42 @@
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">KICKS LAB. Pino Harajuku 🏆</div><div class="halal-card-rating">⭐ 5.0</div></div>
       <div class="halal-card-type">Jordan · Nike rarities · Harajuku · 9,700+ reviews!</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6688,139.7066" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=KICKS+LAB+Harajuku+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥15,000–50,000 · Open 12–8pm</div>
       <div class="halal-card-note">Perfect 5.0 with 9,752 reviews — genuinely exceptional. Staff (ask for Masashi or Aimu) will source from other stores if needed. Air Max, Jordan, Nike exclusives. If Harajuku has one store you trust, it's this one.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">ASICS Flagship Harajuku</div><div class="halal-card-rating">⭐ 4.1</div></div>
       <div class="halal-card-type">Full ASICS range · foot scan · Harajuku</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6707,139.7067" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=ASICS+Flagship+Store+Harajuku+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥8,000–30,000 · Open 11am–7pm</div>
       <div class="halal-card-note">FREE foot scan technology to find your perfect fit. Knowledgeable English-speaking staff. Great for running shoes, Metaspeed, Gel-Kayano. Tokyo Marathon limited editions sometimes in stock.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Onitsuka Tiger Omotesando</div><div class="halal-card-rating">⭐ 4.2</div></div>
       <div class="halal-card-type">Biggest OT selection in Japan · Omotesando</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6683,139.7079" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Onitsuka+Tiger+Omotesando+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥10,000–35,000 · Open 11am–8pm</div>
       <div class="halal-card-note">Largest Onitsuka Tiger store in Japan. Mexico '66, Ultimate 81, Corsair — all Japan-exclusive colorways. Prices ~50% cheaper than Malaysia. Go at opening (11am) — gets very crowded by noon. Queue for fitting is managed.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Onitsuka Tiger Yellow Concept</div><div class="halal-card-rating">⭐ 4.3</div></div>
       <div class="halal-card-type">3-floor boutique concept store · same area</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.668,139.7059" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=atmos+Harajuku+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥10,000–40,000 · Open 11am–8pm</div>
       <div class="halal-card-note">Alternative OT store a few minutes away — less crowded than the main Omotesando flagship. 3 floors of OT products including clothing. Fast staff. Better if main store is too packed. Mini lift available.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">atmos Harajuku</div><div class="halal-card-rating">⭐ 3.8</div></div>
       <div class="halal-card-type">Oldest atmos in Tokyo · collaborations · Harajuku</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6701,139.7072" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=sneaker+store+Harajuku+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥10,000–30,000 · Open 11am–8pm</div>
       <div class="halal-card-note">Tokyo's original atmos store — all classic Nike collabs and rare editions. Friendly staff (ask for Jack). Good for Air Max 1 Patta and classic collection pieces. Cross your fingers for your size.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #1e6091;">
       <div class="halal-card-head"><div class="halal-card-name">Asics Tokyo Ginza</div><div class="halal-card-rating">⭐ 4.3</div></div>
       <div class="halal-card-type">Premium ASICS · Ginza · Mon route</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6698,139.76" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=ASICS+Ginza+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">¥8,000–30,000 · Open 11am–7pm (Sat/Sun 10am–6pm)</div>
       <div class="halal-card-note">Beautiful premium store in Ginza. Better service than Harajuku (less crowded). Great for Metaspeed Sky Tokyo marathon editions. On Monday Ginza bonsai route — easy add-on. Knowledgeable English staff.</div>
     </div>
@@ -2300,21 +2401,21 @@
     <div class="halal-card" style="border-left:3px solid #2D6A4F;">
       <div class="halal-card-head"><div class="halal-card-name">🕌 Tokyo Camii & Turkish Cultural Center ⭐ Main</div><div class="halal-card-rating">⭐ 4.7</div></div>
       <div class="halal-card-type">Largest mosque in Japan · Yoyogi-Uehara · Shibuya area</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6682,139.6766" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Tokyo+Camii+Grand+Mosque+Yoyogi+Uehara" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">FREE · Open 10am–6pm daily</div>
       <div class="halal-card-note">Stunning Ottoman-Turkish architecture. Beautiful prayer hall, halal mini-mart inside, free Turkish tea and dates. Open to non-Muslims too. <strong>Friday Jumah sermon in English AND Japanese.</strong> 3,700+ reviews. Best mosque to visit as a destination — 10min walk from Shibuya. Perfect for Friday prayers on Day 2.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #2D6A4F;">
       <div class="halal-card-head"><div class="halal-card-name">🕌 Asakusa Mosque</div><div class="halal-card-rating">⭐ 4.7</div></div>
       <div class="halal-card-type">Full prayer facilities · Asakusa</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.7218,139.8015" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Asakusa+Mosque+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">FREE · Open 11am–9pm daily</div>
       <div class="halal-card-note">Well-maintained mosque with separate women's prayer room upstairs. Dedicated wudu facilities for men and women. 5 daily prayers held. 626 reviews. Perfect for Maghrib/Isha on Sunday celebration evening. Walking distance from Sumida Park and Japan Blue Jeans Asakusa.</div>
     </div>
     <div class="halal-card" style="border-left:3px solid #2D6A4F;">
       <div class="halal-card-head"><div class="halal-card-name">🕌 Diyanet Turkish Cultural Center</div><div class="halal-card-rating">⭐ 4.6</div></div>
       <div class="halal-card-type">Prayer hall · halal food · Yoyogi-Uehara</div>
-      <a class="map-link" href="https://maps.google.com/maps?q=35.6679,139.6764" target="_blank">📍 Maps</a>
+      <a class="map-link" href="https://maps.google.com/maps?q=Tokyo+Camii+Mosque+Yoyogi+Uehara+Tokyo" target="_blank">📍 Maps</a>
       <div class="halal-card-cost">FREE · Open 10am–6pm daily</div>
       <div class="halal-card-note">Adjacent to Tokyo Camii. Turkish cultural center with halal Turkish food and shopping. Free black tea and dates. Good for Dhuhr/Asr when in the Shibuya area on Friday. Combined visit with Tokyo Camii.</div>
     </div>
@@ -2353,7 +2454,7 @@
     </div>
 
     <!-- Map -->
-    <div id="tokyo-map" style="height:520px;width:100%;"></div>
+    <div id="tokyo-map" style="position:relative;" style="height:520px;width:100%;"></div>
 
     <!-- Legend -->
     <div style="padding:10px 16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px;background:var(--paper);">
@@ -2373,7 +2474,15 @@
 
   <!-- Location Cards Grid -->
   <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink-light);margin-bottom:10px;">All Locations — Distance from Airbnb</div>
-  <div id="location-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;"></div>
+  <div class="nearest-banner" id="nearest-banner">
+  <div class="nearest-banner-icon" id="nearest-icon">📍</div>
+  <div class="nearest-banner-text">
+    <strong id="nearest-name">Finding nearest location...</strong>
+    <span id="nearest-detail"></span>
+  </div>
+  <button class="nearest-banner-close" onclick="dismissNearest()">✕</button>
+</div>
+<div id="location-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;"></div>
 </section>
 
 <style>
@@ -2433,168 +2542,168 @@ const LOCATIONS = [
   // NEARBY / DAY 1
   { id:'grocery', name:'Chandra Surya Halal Grocery', type:'halal', day:'Thu', lat:35.5796, lng:139.6845,
     detail:'Closest halal grocery to Airbnb', cost:'¥3,000–6,000', note:'CLOSED SATURDAY — go Thursday!',
-    maps:'https://maps.google.com/maps?q=35.5796,139.6845' },
+    maps:'https://maps.google.com/maps?q=Chandra+Surya+Halal+Grocery+Ota+City+Tokyo' },
   { id:'sakura', name:'Sakura-zaka Cherry Blossoms', type:'attraction', day:'Thu', lat:35.5857, lng:139.6751,
     detail:'Evening sakura walk, FREE', cost:'FREE', note:'20 cherry trees, red pedestrian bridge',
-    maps:'https://maps.google.com/maps?q=35.5857,139.6751' },
+    maps:'https://maps.google.com/maps?q=Sakurazaka+Red+Bridge+Ota+City+Tokyo' },
   { id:'zaika', name:'Zaika Pakistani Restaurant', type:'halal', day:'Thu', lat:35.5547, lng:139.728,
     detail:'Closest halal restaurant', cost:'¥800–1,500/person', note:'Authentic Pakistani · Kamata',
-    maps:'https://maps.google.com/maps?q=35.5547,139.728' },
+    maps:'https://maps.google.com/maps?q=Zaika+Pakistani+Restaurant+Ota+City+Tokyo' },
   { id:'tamagawa', name:'Tamagawadai Park', type:'attraction', day:'Tue', lat:35.5894, lng:139.6666,
     detail:'Final morning cherry blossoms', cost:'FREE', note:'15 min from Airbnb · Open 24hrs',
-    maps:'https://maps.google.com/maps?q=35.5894,139.6666' },
+    maps:'https://maps.google.com/maps?q=Tamagawa+Tama+River+Ota+City+Tokyo' },
 
   // TRAINING
   { id:'carpe', name:'Carpe Diem BJJ — Jiyugaoka', type:'training', day:'Fri & Sat', lat:35.6082, lng:139.6708,
     detail:'Prof Craig (Fri 2–4pm) · Prof Diego (Sat 2:30–4:20pm)', cost:'Pre-paid', note:'4.9 ⭐ · World-class coaching',
-    maps:'https://maps.google.com/maps?q=35.6082,139.6708' },
+    maps:'https://maps.google.com/maps?q=Carpe+Diem+BJJ+Jiyugaoka+Tokyo' },
 
   // COMPETITION
   { id:'komazawa', name:'Komazawa Olympic Park Gym', type:'competition', day:'Sun', lat:35.6248, lng:139.6609,
     detail:'Asia JJC + No-Gi Cup 2026', cost:'Pre-paid', note:'1964 Olympics venue · Cherry blossoms!',
-    maps:'https://maps.google.com/maps?q=35.6248,139.6609' },
+    maps:'https://maps.google.com/maps?q=Komazawa+Olympic+Park+Gymnasium+Tokyo' },
 
   // FRIDAY
   { id:'meiji', name:'Meiji Jingu Shrine', type:'attraction', day:'Fri', lat:35.6764, lng:139.6993,
     detail:'Sacred Shinto shrine · FREE', cost:'FREE + ¥500–1,000 ema', note:'Ancient cedar forest · Pre-competition prayer',
-    maps:'https://maps.google.com/maps?q=35.6764,139.6993' },
+    maps:'https://maps.google.com/maps?q=Shibuya+PARCO+Tokyo' },
   { id:'nintendo', name:'Nintendo Tokyo — Shibuya PARCO 6F', type:'shopping', day:'Fri', lat:35.6621, lng:139.6986,
     detail:'The Mario store of Japan', cost:'¥5,000–20,000+', note:'Tax-free with passport · Jump Shop + Pokémon same floor',
-    maps:'https://maps.google.com/maps?q=35.6621,139.6986' },
+    maps:'https://maps.google.com/maps?q=Nintendo+Tokyo+Shibuya+PARCO' },
   { id:'kiddyland', name:'Kiddy Land Harajuku', type:'shopping', day:'Fri', lat:35.6677, lng:139.7065,
     detail:'5-floor toy paradise', cost:'¥2,000–8,000', note:'Spider-Man · Marvel · Nintendo · Character goods',
-    maps:'https://maps.google.com/maps?q=35.6677,139.7065' },
+    maps:'https://maps.google.com/maps?q=Kiddy+Land+Harajuku+Tokyo' },
   { id:'gyumon', name:'Gyumon Halal Wagyu Ramen', type:'halal', day:'Fri', lat:35.6597, lng:139.7042,
     detail:"Tokyo's #1 halal spot · 4.9 ⭐ · 20,000 reviews", cost:'¥1,500–2,500/person', note:'Prayer room · Wagyu ramen',
-    maps:'https://maps.google.com/maps?q=35.6597,139.7042' },
+    maps:'https://maps.google.com/maps?q=Gyumon+Halal+Wagyu+Ramen+Shibuya+Tokyo' },
   { id:'isami', name:'ISAMI Combat Sports Shop', type:'shopping', day:'Fri', lat:35.689, lng:139.7033,
     detail:'Japan\'s legendary combat sports mecca', cost:'¥5,000–30,000', note:'4F via parking garage elevator · CLOSED TUES',
-    maps:'https://maps.google.com/maps?q=35.689,139.7033' },
+    maps:'https://maps.google.com/maps?q=ISAMI+Combat+Sports+Shinjuku+Tokyo' },
   { id:'montclair', name:'Mont St. Clair Patisserie', type:'attraction', day:'Fri', lat:35.6127, lng:139.6665,
     detail:'Tokyo\'s most celebrated French patisserie', cost:'¥1,500–3,000', note:'Post-training treat · CLOSED WEDNESDAY',
-    maps:'https://maps.google.com/maps?q=35.6127,139.6665' },
+    maps:'https://maps.google.com/maps?q=Mont+Saint+Clair+Patisserie+Jiyugaoka+Tokyo' },
   { id:'sky', name:'Shibuya Sky — Sunset 360°', type:'attraction', day:'Fri', lat:35.6587, lng:139.702,
     detail:'Best sunset view in Tokyo', cost:'¥1,900–2,500/person', note:'BOOK IN ADVANCE · Sunset slots sell out!',
-    maps:'https://maps.google.com/maps?q=35.6587,139.702' },
+    maps:'https://maps.google.com/maps?q=Don+Quijote+Shibuya+Tokyo' },
 
   // SATURDAY — WATCH HUNT
   { id:'jackroad', name:'Jackroad — Nakano Broadway 3F', type:'watch', day:'Sat', lat:35.7089, lng:139.6658,
     detail:'6,000+ watches · JDM Seiko specialist', cost:'¥25,000–65,000', note:'4.3 ⭐ · Ask for SARB033 / SSB033J1',
-    maps:'https://maps.google.com/maps?q=35.7089,139.6658' },
+    maps:'https://maps.google.com/maps?q=Jackroad+Watch+Shop+Nakano+Broadway+Tokyo' },
   { id:'watchnian', name:'WATCHNIAN — Nakano Broadway 3F', type:'watch', day:'Sat', lat:35.7088, lng:139.6657,
     detail:'Massive selection · English staff', cost:'¥25,000–65,000', note:'4.9 ⭐ · 1,100+ reviews · Very patient',
-    maps:'https://maps.google.com/maps?q=35.7088,139.6657' },
+    maps:'https://maps.google.com/maps?q=WATCHNIAN+Watch+Shop+Nakano+Broadway+Tokyo' },
   { id:'timewalker', name:'Time Walker — Nakano Broadway 3F', type:'watch', day:'Sat', lat:35.7089, lng:139.666,
     detail:'Perfect 5.0 ⭐ rating · Zero pressure', cost:'¥25,000–65,000', note:'3.5% card fee · Best experience',
-    maps:'https://maps.google.com/maps?q=35.7089,139.6658' },
+    maps:'https://maps.google.com/maps?q=Jackroad+Watch+Shop+Nakano+Broadway+Tokyo' },
   { id:'watchco', name:'The Watch Company — Sun Mall', type:'watch', day:'Sat', lat:35.708, lng:139.6657,
     detail:'Has stocked SARB033 before', cost:'¥25,000–65,000', note:'5 min walk from Broadway',
-    maps:'https://maps.google.com/maps?q=35.708,139.6657' },
+    maps:'https://maps.google.com/maps?q=The+Watch+Company+Nakano+Sun+Mall+Tokyo' },
   { id:'teamlab', name:'teamLab Borderless', type:'attraction', day:'Sat', lat:35.6621, lng:139.7433,
     detail:'Immersive digital art · Like Minecraft!', cost:'¥2,800–4,000/person', note:'4.6 ⭐ · BOOK IN ADVANCE at teamlab.art',
-    maps:'https://maps.google.com/maps?q=35.6621,139.7433' },
+    maps:'https://maps.google.com/maps?q=teamLab+Borderless+Azabudai+Hills+Tokyo' },
 
   // SUNDAY
   { id:'panga', name:'Halal Wagyu Yakiniku Panga', type:'halal', day:'Sun', lat:35.7049, lng:139.781,
     detail:"Champion's dinner · Wagyu grilled at table", cost:'¥4,000–7,000/person', note:'4.8 ⭐ · 3,800+ reviews · Book ahead!',
-    maps:'https://maps.google.com/maps?q=35.7049,139.781' },
+    maps:'https://maps.google.com/maps?q=Halal+Wagyu+Yakiniku+Panga+Asakusa+Tokyo' },
 
   // MONDAY
   { id:'akihabara', name:'Akihabara Gamers', type:'shopping', day:'Mon', lat:35.6983, lng:139.7717,
     detail:'Gaming · Anime · Gashapon paradise', cost:'¥3,000–10,000', note:'Budget ¥2k just for capsule machines!',
-    maps:'https://maps.google.com/maps?q=35.6983,139.7717' },
+    maps:'https://maps.google.com/maps?q=Akihabara+Electric+Town+Tokyo' },
   { id:'grit', name:'GRIT Fight Shop', type:'shopping', day:'Mon', lat:35.7013, lng:139.7534,
     detail:'Combat gear · English-speaking owner', cost:'¥3,000–15,000', note:'4.7 ⭐ · CLOSED WEDNESDAY',
-    maps:'https://maps.google.com/maps?q=35.7013,139.7534' },
+    maps:'https://maps.google.com/maps?q=Sumida+Park+Cherry+Blossom+Tokyo' },
   { id:'karemen', name:'Halal Wagyu Karemen King', type:'halal', day:'Mon', lat:35.6956, lng:139.7714,
     detail:'Spicy wagyu ramen · Heat levels 1–7', cost:'¥1,500–2,500/person', note:'4.8 ⭐ · Near Akihabara',
-    maps:'https://maps.google.com/maps?q=35.6956,139.7714' },
+    maps:'https://maps.google.com/maps?q=Halal+Wagyu+Karemen+King+Akihabara+Tokyo' },
   { id:'divercity', name:'DiverCity — Minecraft Store', type:'shopping', day:'Mon', lat:35.6248, lng:139.7759,
     detail:'Tokyo-exclusive Minecraft merch', cost:'¥2,000–8,000', note:'Odaiba · 30 min by Rinkai Line',
-    maps:'https://maps.google.com/maps?q=35.6248,139.7759' },
+    maps:'https://maps.google.com/maps?q=DiverCity+Tokyo+Plaza+Odaiba' },
   { id:'gundam', name:'Unicorn Gundam Statue — FREE', type:'attraction', day:'Mon', lat:35.6245, lng:139.7755,
     detail:'20-metre life-size transforming robot!', cost:'FREE', note:'Transforms on the hour · Stunning photos',
-    maps:'https://maps.google.com/maps?q=35.6245,139.7755' },
+    maps:'https://maps.google.com/maps?q=Unicorn+Gundam+Statue+Odaiba+Tokyo' },
   { id:'legoland', name:'LEGOLAND Discovery Center', type:'attraction', day:'Mon', lat:35.6288, lng:139.7761,
     detail:'Rides · 4D movie · LEGO Tokyo cityscape', cost:'¥2,000–2,750/person', note:'4.2 ⭐ · Book online · Closes 7pm',
-    maps:'https://maps.google.com/maps?q=35.6288,139.7761' },
+    maps:'https://maps.google.com/maps?q=LEGOLAND+Discovery+Center+Odaiba+Tokyo' },
 
   // BONSAI SHOPS
   { id:'ueno-green', name:'Ueno Green Club — Bonsai Shop', type:'bonsai', day:'Mon', lat:35.7153, lng:139.7684,
     detail:'Bonsai pots, tools, mame & shohin trees', cost:'¥2,000–50,000+', note:'4.2 ⭐ · Near Ueno Park · Professionals & beginners',
-    maps:'https://maps.google.com/maps?q=35.7153,139.7684' },
+    maps:'https://maps.google.com/maps?q=Ueno+Green+Club+Bonsai+Tokyo' },
   { id:'ginza-uchikuan', name:'Ginza Uchikuan — Bonsai', type:'bonsai', day:'Any', lat:35.6684, lng:139.7626,
     detail:'Pots · tools · live bonsai · highly rated', cost:'¥1,500–80,000+', note:'4.7 ⭐ · Kind staff · Tools & Kaneshin scissors · CLOSED SUNDAY',
-    maps:'https://maps.google.com/maps?q=35.6684,139.7626' },
+    maps:'https://maps.google.com/maps?q=Uchikuan+Bonsai+Ginza+Tokyo' },
   { id:'morimae', name:'Morimae Ginza — Bonsai', type:'bonsai', day:'Any', lat:35.6684, lng:139.7626,
     detail:'Upmarket bonsai · antique pots · tokonoma displays', cost:'¥5,000–200,000+', note:'4.6 ⭐ · Ginza 7-chome · CLOSED SUNDAY',
-    maps:'https://maps.google.com/maps?q=35.6684,139.7626' },
+    maps:'https://maps.google.com/maps?q=Uchikuan+Bonsai+Ginza+Tokyo' },
   { id:'tradmans', name:'TRADMAN\'s Bonsai — Marunouchi', type:'bonsai', day:'Any', lat:35.6777, lng:139.7623,
     detail:'Modern bonsai store · apparel · special Vans collab', cost:'¥3,000–100,000+', note:'4.0 ⭐ · Shin-Tokyo Building 1F · 11am–8pm daily',
-    maps:'https://maps.google.com/maps?q=35.6777,139.7623' },
+    maps:'https://maps.google.com/maps?q=Morimae+Bonsai+Ginza+Tokyo' },
 
   // SELVEDGE JEANS
   { id:'studio-dartisan', name:'Studio D\'Artisan Tokyo', type:'jeans', day:'Fri or Mon', lat:35.6666, lng:139.7056,
     detail:'Osaka 5 heavyweight selvedge denim', cost:'¥25,000–80,000+', note:'4.0 ⭐ · Harajuku/Omotesando · Open 11am–8pm',
-    maps:'https://maps.google.com/maps?q=35.6666,139.7056' },
+    maps:'https://maps.google.com/maps?q=KICKS+LAB+Pino+Harajuku+Tokyo' },
   { id:'japan-blue-shibuya', name:'Japan Blue Jeans — Shibuya', type:'jeans', day:'Fri or Mon', lat:35.6645, lng:139.7036,
     detail:'Best selvedge denim for foreigners · FREE hemming', cost:'¥15,000–45,000', note:'4.6 ⭐ · English staff · Same-day hemming · 11am–7pm',
-    maps:'https://maps.google.com/maps?q=35.6645,139.7036' },
+    maps:'https://maps.google.com/maps?q=Japan+Blue+Jeans+Shibuya+Tokyo' },
   { id:'japan-blue-asakusa', name:'Japan Blue Jeans — Asakusa', type:'jeans', day:'Sun (after comp)', lat:35.7123, lng:139.7961,
     detail:'Full Canadian tuxedo sets · barrel jeans · chore coats', cost:'¥15,000–45,000', note:'4.6 ⭐ · Great owner · Same-day hemming · 11am–8pm',
-    maps:'https://maps.google.com/maps?q=35.7123,139.7961' },
+    maps:'https://maps.google.com/maps?q=Japan+Blue+Jeans+Asakusa+Tokyo' },
   { id:'japan-blue-ueno', name:'Japan Blue Jeans — Ueno', type:'jeans', day:'Mon', lat:35.7091, lng:139.7757,
     detail:'Great staff · near Akihabara route', cost:'¥15,000–45,000', note:'4.4 ⭐ · Closest to Akihabara · 11am–7pm',
-    maps:'https://maps.google.com/maps?q=35.7091,139.7757' },
+    maps:'https://maps.google.com/maps?q=Japan+Blue+Jeans+Ueno+Tokyo' },
 
   // OUTLET MALLS
   { id:'mitsui-makuhari', name:'Mitsui Outlet Park Makuhari', type:'outlet', day:'Any', lat:35.6473, lng:140.0414,
     detail:'Closest outlet to Tokyo · 30min by train', cost:'30–70% off RRP', note:'3.8 ⭐ · 1 min walk Kaihin-Makuhari Stn · Nike, Adidas, New Balance',
-    maps:'https://maps.google.com/maps?q=35.6473,140.0414' },
+    maps:'https://maps.google.com/maps?q=Mitsui+Outlet+Park+Makuhari+Chiba' },
   { id:'mitsui-tama', name:'Mitsui Outlet Park Tama', type:'outlet', day:'Any', lat:35.6151, lng:139.3784,
     detail:'West Tokyo · 240+ stores · less crowded', cost:'30–70% off RRP', note:'3.8 ⭐ · Minami-Osawa Stn · Bring extra bags!',
-    maps:'https://maps.google.com/maps?q=35.6151,139.3784' },
+    maps:'https://maps.google.com/maps?q=Mitsui+Outlet+Park+Tama+Tokyo' },
   { id:'mitsui-kisarazu', name:'Mitsui Outlet Park Kisarazu', type:'outlet', day:'Any', lat:35.4356, lng:139.9346,
     detail:'Largest outlet near Tokyo · open-air · 300+ stores', cost:'30–70% off RRP', note:'4.0 ⭐ · Prayer room available · 60min by bus from Tokyo Yaesu',
-    maps:'https://maps.google.com/maps?q=35.4356,139.9346' },
+    maps:'https://maps.google.com/maps?q=Mitsui+Outlet+Park+Kisarazu+Chiba' },
 
   // EXTRA HALAL (Tabelog-backed)
   { id:'firekids', name:'FireKids — Watch Shop (1F)', type:'watch', day:'Sat', lat:35.7092, lng:139.666,
     detail:'4.9 ⭐ YouTuber pick for King Seiko & Grand Seiko', cost:'¥20,000–200,000+', note:'Ask for Anton/Kyara · CLOSED WEDNESDAY · Open 11:30am',
-    maps:'https://maps.google.com/maps?q=35.7092,139.666' },
+    maps:'https://maps.google.com/maps?q=FireKids+Watch+Shop+Nakano+Broadway+Tokyo' },
 
   // MOSQUES
   { id:'tokyo-camii', name:'Tokyo Camii — Largest Mosque in Japan', type:'mosque', day:'Fri (Jumah)', lat:35.6682, lng:139.6766,
     detail:'Stunning Ottoman architecture · Halal mart · 4.7 ⭐', cost:'FREE', note:'Jumah sermon in English+Japanese · Open 10am–6pm',
-    maps:'https://maps.google.com/maps?q=35.6682,139.6766' },
+    maps:'https://maps.google.com/maps?q=Tokyo+Camii+Grand+Mosque+Yoyogi+Uehara' },
   { id:'asakusa-mosque', name:'Asakusa Mosque', type:'mosque', day:'Sun Evening', lat:35.7218, lng:139.8015,
     detail:'Full facilities · Separate women\'s room · 4.7 ⭐', cost:'FREE', note:'Open 11am–9pm · Perfect for Maghrib/Isha',
-    maps:'https://maps.google.com/maps?q=35.7218,139.8015' },
+    maps:'https://maps.google.com/maps?q=Asakusa+Mosque+Tokyo' },
 
   // SNEAKERS
   { id:'kicks-lab', name:'KICKS LAB. Pino Harajuku', type:'jeans', day:'Fri', lat:35.6688, lng:139.7066,
     detail:'Perfect 5.0 ⭐ / 9,752 reviews · Jordan + Nike rarities', cost:'¥15,000–50,000', note:'Ask for Masashi/Aimu · Open 12–8pm',
-    maps:'https://maps.google.com/maps?q=35.6688,139.7066' },
+    maps:'https://maps.google.com/maps?q=KICKS+LAB+Harajuku+Tokyo' },
   { id:'asics-harajuku', name:'ASICS Flagship Harajuku', type:'jeans', day:'Fri', lat:35.6707, lng:139.7067,
     detail:'FREE foot scan · Full range · 4.1 ⭐', cost:'¥8,000–30,000', note:'Open 11am–7pm · English staff',
-    maps:'https://maps.google.com/maps?q=35.6707,139.7067' },
+    maps:'https://maps.google.com/maps?q=ASICS+Flagship+Store+Harajuku+Tokyo' },
   { id:'onitsuka', name:'Onitsuka Tiger Omotesando', type:'jeans', day:'Fri', lat:35.6683, lng:139.7079,
     detail:'Biggest OT in Japan · 4.2 ⭐ · Japan-exclusive colorways', cost:'¥10,000–35,000', note:'Go early! Queues by noon · Open 11am–8pm',
-    maps:'https://maps.google.com/maps?q=35.6683,139.7079' },
+    maps:'https://maps.google.com/maps?q=Onitsuka+Tiger+Omotesando+Tokyo' },
   { id:'asics-ginza', name:'Asics Tokyo Ginza', type:'jeans', day:'Mon', lat:35.6698, lng:139.7600,
     detail:'Premium ASICS · less crowded than Harajuku · 4.3 ⭐', cost:'¥8,000–30,000', note:'Open 11am–7pm (Sat/Sun 10–6) · On Monday Ginza route',
-    maps:'https://maps.google.com/maps?q=35.6698,139.76' },
+    maps:'https://maps.google.com/maps?q=ASICS+Ginza+Tokyo' },
 
   // SAKURA PARKS
   { id:'nakameguro', name:'🌸 Nakameguro River — Lantern Walk', type:'attraction', day:'Fri Evening', lat:35.6359, lng:139.7086,
     detail:'800 cherry trees · canal lanterns · illuminated until 8pm!', cost:'FREE', note:'Illumination until March 31, 5–8pm · Most romantic sakura in Tokyo',
-    maps:'https://maps.google.com/maps?q=35.6359,139.7086' },
+    maps:'https://maps.google.com/maps?q=Meguro+River+Cherry+Blossom+Promenade+Tokyo' },
   { id:'chidorigafuchi', name:'🌸 Chidorigafuchi — Imperial Palace Moat', type:'attraction', day:'Sat Morning', lat:35.69, lng:139.7479,
     detail:'700m promenade · illumination March 26–Apr 6 · row boats', cost:'FREE walk / ¥800 boat', note:'Light up 6–9pm · Go morning for smaller crowds',
-    maps:'https://maps.google.com/maps?q=35.69,139.7479' },
+    maps:'https://maps.google.com/maps?q=Chidorigafuchi+Cherry+Blossom+Tokyo' },
   { id:'shinjuku-gyoen', name:'🌸 Shinjuku Gyoen — 1,000+ Trees', type:'attraction', day:'Fri Morning', lat:35.6852, lng:139.7101,
     detail:'60+ varieties · spacious lawns · 9am–6pm', cost:'¥500/adult ¥250/child', note:'Most varieties! Go at opening · Alcohol-free = calm atmosphere',
-    maps:'https://maps.google.com/maps?q=35.6852,139.7101' },
+    maps:'https://maps.google.com/maps?q=Shibuya+Scramble+Crossing+Tokyo' },
   { id:'ueno-sakura', name:'🌸 Ueno Park — Cherry Blossom Festival', type:'attraction', day:'Mon Morning', lat:35.7144, lng:139.7713,
     detail:'1,000+ trees · 800 paper lanterns · 50+ food stalls', cost:'FREE', note:'Festival Mar 14–Apr 5 · Illumination until 11pm · Go before 9am!',
     maps:'https://maps.google.com/maps?q=Ueno+Park+Tokyo' },
@@ -2602,16 +2711,16 @@ const LOCATIONS = [
   // EXTRA HALAL (Tabelog-backed)
   { id:'ayam-ya', name:'Ayam-ya Halal Ramen — Asakusa', type:'halal', day:'Sun/Mon', lat:35.7072, lng:139.7863,
     detail:'Malaysia Halal Corp certified · soy/salt ramen', cost:'¥1,200–1,800/person', note:'4.4 ⭐ · Prayer room · Tabelog 3.11 · Queue before open!',
-    maps:'https://maps.google.com/maps?q=35.7072,139.7863' },
+    maps:'https://maps.google.com/maps?q=Ayam-ya+Halal+Ramen+Asakusa+Tokyo' },
   { id:'mazilu', name:'Mǎzilù Lanzhou Beef Noodles — Jimbocho', type:'halal', day:'Sat (near watch route)', lat:35.6958, lng:139.7601,
     detail:'Halal certified · famous Lanzhou beef noodles', cost:'¥1,000–1,500/person', note:'4.1 ⭐ · Tabelog 3.59 (top 3% ramen!) · Massive portions',
-    maps:'https://maps.google.com/maps?q=35.6958,139.7601' },
+    maps:'https://maps.google.com/maps?q=Halal+Ramen+Shibuya+Tokyo' },
   { id:'omakase-sushi', name:'Tokyo Omakase Sushi & Wagyu Halal', type:'halal', day:'Any', lat:35.7165, lng:139.7985,
     detail:'Halal omakase sushi · 13-course · Asakusa', cost:'¥6,000–15,000/person', note:'4.6 ⭐ · Free kimono · Prayer space · Book in advance',
-    maps:'https://maps.google.com/maps?q=35.7165,139.7985' },
+    maps:'https://maps.google.com/maps?q=Tokyo+Omakase+Sushi+Wagyu+Halal+Asakusa' },
   { id:'asakusa-sushi-ken', name:'Asakusa Sushi Ken — Halal Sushi', type:'halal', day:'Sun/Mon', lat:35.7139, lng:139.7926,
     detail:'Halal edomae sushi · tempura · fresh sashimi', cost:'¥2,000–5,000/person', note:'4.4 ⭐ · CLOSED WEDNESDAY ✓ · Near Senso-ji',
-    maps:'https://maps.google.com/maps?q=35.7139,139.7926' },
+    maps:'https://maps.google.com/maps?q=Asakusa+Sushi+Ken+Tokyo' },
 ];
 
 // ─── COLOURS ────────────────────────────────────────────────────────────────
@@ -2687,6 +2796,7 @@ document.addEventListener('DOMContentLoaded', function() {
   map.on('blur',  () => map.scrollWheelZoom.disable());
 
   const markers = [];
+  const mapMarkers = [];
   const cardContainer = document.getElementById('location-cards');
 
   LOCATIONS.forEach(loc => {
@@ -2712,6 +2822,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .bindPopup(popup, { maxWidth: 280 });
 
     markers.push({ marker, type: loc.type, id: loc.id });
+    mapMarkers.push({ marker, id: loc.id });
 
     // Card
     const card = document.createElement('div');
@@ -2763,6 +2874,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
+  window.map = map;
+
   // Sort cards by distance
   const allCards = [...cardContainer.children];
   allCards.sort((a, b) => {
@@ -2775,6 +2888,149 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   allCards.forEach(c => cardContainer.appendChild(c));
 });
+
+// ═══════════════════════════════════════════════════════
+//  CURRENT LOCATION + NEAREST POI + OSRM ROUTING
+// ═══════════════════════════════════════════════════════
+
+let myLocationMarker = null;
+let routeLayer = null;
+let myLat = null, myLng = null;
+let nearestLoc = null;
+
+// Pulsing blue dot for current location
+function makeMyLocationIcon() {
+  const html = `<div class="my-location-icon">
+    <div class="my-location-ring"></div>
+    <div class="my-location-dot"></div>
+  </div>`;
+  return L.divIcon({
+    html, className: '', iconSize: [20, 20], iconAnchor: [10, 10], popupAnchor: [0, -12]
+  });
+}
+
+function dismissNearest() {
+  document.getElementById('nearest-banner').classList.remove('show');
+  // Remove nearest highlight
+  document.querySelectorAll('.loc-card.nearest-card').forEach(c => c.classList.remove('nearest-card'));
+  // Remove route
+  if (routeLayer) { map.removeLayer(routeLayer); routeLayer = null; }
+}
+
+async function drawRoute(fromLat, fromLng, toLat, toLng) {
+  // Use OSRM public API (free, no key needed, walking mode)
+  const url = `https://router.project-osrm.org/route/v1/foot/${fromLng},${fromLat};${toLng},${toLat}?overview=full&geometries=geojson`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.routes && data.routes[0]) {
+      if (routeLayer) map.removeLayer(routeLayer);
+      const coords = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
+      routeLayer = L.polyline(coords, {
+        color: '#1a73e8',
+        weight: 4,
+        opacity: 0.85,
+        dashArray: '8, 6',
+        lineCap: 'round'
+      }).addTo(map);
+      return Math.round(data.routes[0].duration / 60); // minutes
+    }
+  } catch(e) {
+    // Fallback: straight dashed line
+    if (routeLayer) map.removeLayer(routeLayer);
+    routeLayer = L.polyline([[fromLat,fromLng],[toLat,toLng]], {
+      color: '#1a73e8', weight: 3, opacity: 0.7, dashArray: '6, 8'
+    }).addTo(map);
+    return null;
+  }
+  return null;
+}
+
+async function locateMe() {
+  const btn = document.getElementById('locate-btn');
+  const label = document.getElementById('locate-label');
+
+  if (!navigator.geolocation) {
+    alert('Geolocation is not supported by your browser.');
+    return;
+  }
+
+  btn.classList.add('loading');
+  label.textContent = 'Locating...';
+
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      myLat = position.coords.latitude;
+      myLng = position.coords.longitude;
+
+      // Place / update my location marker
+      if (myLocationMarker) map.removeLayer(myLocationMarker);
+      myLocationMarker = L.marker([myLat, myLng], { icon: makeMyLocationIcon(), zIndexOffset: 1000 })
+        .addTo(map)
+        .bindPopup('<div style="font-weight:700;font-size:13px;">📱 You are here</div>')
+        .openPopup();
+
+      // Find nearest POI (excluding home)
+      let minDist = Infinity;
+      LOCATIONS.forEach(loc => {
+        if (loc.id === 'home') return;
+        const d = haversine(myLat, myLng, loc.lat, loc.lng);
+        if (d < minDist) { minDist = d; nearestLoc = loc; }
+      });
+
+      // Fit map to show both me and nearest
+      const bounds = L.latLngBounds([[myLat, myLng], [nearestLoc.lat, nearestLoc.lng]]);
+      map.fitBounds(bounds.pad(0.3), { animate: true });
+
+      // Draw route
+      const walkMins = await drawRoute(myLat, myLng, nearestLoc.lat, nearestLoc.lng);
+
+      // Update banner
+      const banner = document.getElementById('nearest-banner');
+      document.getElementById('nearest-icon').textContent = (TYPE_EMOJI[nearestLoc.type] || '📍');
+      document.getElementById('nearest-name').textContent = nearestLoc.name;
+      const distStr = minDist < 1 ? Math.round(minDist * 1000) + 'm away' : minDist.toFixed(1) + 'km away';
+      const walkStr = walkMins ? ` · ~${walkMins} min walk` : '';
+      document.getElementById('nearest-detail').innerHTML =
+        `${distStr}${walkStr} &nbsp;<span class="route-pill">🗺️ Route shown on map</span>`;
+      banner.classList.add('show');
+
+      // Highlight nearest card
+      document.querySelectorAll('.loc-card').forEach((card, i) => {
+        card.classList.remove('nearest-card');
+        if (LOCATIONS[i] && LOCATIONS[i].id === nearestLoc.id) {
+          card.classList.add('nearest-card');
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+
+      // Open nearest marker popup
+      mapMarkers.forEach(({marker, id}) => {
+        if (id === nearestLoc.id) { marker.openPopup(); }
+      });
+
+      btn.classList.remove('loading');
+      btn.classList.add('active');
+      label.textContent = 'Updated ✓';
+      setTimeout(() => {
+        btn.classList.remove('active');
+        label.textContent = 'Find Me';
+      }, 3000);
+    },
+    (error) => {
+      btn.classList.remove('loading');
+      label.textContent = 'Find Me';
+      const msgs = {
+        1: 'Location access denied. Please allow location in your browser settings.',
+        2: 'Location unavailable. Make sure you have GPS/network access.',
+        3: 'Location request timed out. Try again.'
+      };
+      alert(msgs[error.code] || 'Could not get your location.');
+    },
+    { enableHighAccuracy: true, timeout: 12000, maximumAge: 30000 }
+  );
+}
+
 </script>
 
 <section id="camera"><!-- INSTA360 PHOTOGRAPHY -->
