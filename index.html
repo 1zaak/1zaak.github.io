@@ -2784,30 +2784,26 @@ function makeIcon(type) {
   });
 }
 
+
 // ─── MAP INIT ───────────────────────────────────────────────────────────────
 window.addEventListener('load', function() {
   const map = L.map('tokyo-map', { zoomControl: true, scrollWheelZoom: false })
     .setView([35.645, 139.720], 12);
 
-  // Primary: CartoDB Positron (reliable, fast, HTTPS everywhere)
-  const tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
-  });
-  tileLayer.addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 19
+  }).addTo(map);
 
-  // Force tile refresh after layout settles
-  setTimeout(() => { map.invalidateSize(true); }, 200);
-  setTimeout(() => { map.invalidateSize(true); }, 800);
+  setTimeout(() => map.invalidateSize(true), 300);
 
-  // Enable scroll zoom on click
   map.on('focus', () => map.scrollWheelZoom.enable());
   map.on('blur',  () => map.scrollWheelZoom.disable());
 
+  window.map = map;
+
   const markers = [];
   window.mapMarkers = [];
-  const mapMarkers = window.mapMarkers;
   const cardContainer = document.getElementById('location-cards');
 
   LOCATIONS.forEach(loc => {
@@ -2816,10 +2812,9 @@ window.addEventListener('load', function() {
     const transit = loc.id === 'home' ? 'Your base' : transitTime(km);
     const color = TYPE_COLOR[loc.type] || '#555';
 
-    // Popup
     const popup = `
       <div style="min-width:200px;">
-        <div class="popup-title">${TYPE_EMOJI[loc.type]} ${loc.name}</div>
+        <div class="popup-title">${TYPE_EMOJI[loc.type] || '📍'} ${loc.name}</div>
         <div class="popup-type">${loc.type.charAt(0).toUpperCase()+loc.type.slice(1)} · ${loc.day}</div>
         <div class="popup-row"><span>Distance from Airbnb</span><span>${loc.id==='home'?'Home base':dist+' away'}</span></div>
         <div class="popup-row"><span>Transit</span><span>${transit}</span></div>
@@ -2833,16 +2828,15 @@ window.addEventListener('load', function() {
       .bindPopup(popup, { maxWidth: 280 });
 
     markers.push({ marker, type: loc.type, id: loc.id });
-    mapMarkers.push({ marker, id: loc.id });
+    window.mapMarkers.push({ marker, id: loc.id });
 
-    // Card
     const card = document.createElement('div');
     card.className = 'loc-card';
     card.style.borderLeftColor = color;
     card.dataset.type = loc.type;
     card.innerHTML = `
       <div class="loc-card-head">
-        <div class="loc-card-name">${TYPE_EMOJI[loc.type]} ${loc.name}</div>
+        <div class="loc-card-name">${TYPE_EMOJI[loc.type] || '📍'} ${loc.name}</div>
         <div class="loc-card-dist" style="color:${color}">${loc.id==='home'?'🏠 Base':dist}</div>
       </div>
       <div class="loc-card-type">${loc.detail}</div>
@@ -2860,7 +2854,8 @@ window.addEventListener('load', function() {
   // Filter
   window.filterMarkers = function(type) {
     document.querySelectorAll('.map-filter-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('btn-'+type).classList.add('active');
+    const btn = document.getElementById('btn-'+type);
+    if (btn) btn.classList.add('active');
 
     markers.forEach(({ marker, type: t }) => {
       if (type === 'all' || t === type) {
@@ -2880,195 +2875,125 @@ window.addEventListener('load', function() {
       const visible = LOCATIONS.filter(l => l.type === type);
       if (visible.length) {
         const lats = visible.map(l=>l.lat), lngs = visible.map(l=>l.lng);
-        map.fitBounds([[Math.min(...lats)-0.01, Math.min(...lngs)-0.01],[Math.max(...lats)+0.01, Math.max(...lngs)+0.01]], { animate: true, padding:[30,30] });
+        map.fitBounds([[Math.min(...lats)-0.01,Math.min(...lngs)-0.01],[Math.max(...lats)+0.01,Math.max(...lngs)+0.01]], { animate:true, padding:[30,30] });
       }
     }
   };
 
-  window.map = map;
-
-  // Sort cards by distance
+  // Sort cards by distance from Airbnb
   const allCards = [...cardContainer.children];
   allCards.sort((a, b) => {
-    const locA = LOCATIONS[Array.from(cardContainer.children).indexOf(a)];
-    const locB = LOCATIONS[Array.from(cardContainer.children).indexOf(b)];
+    const ia = Array.from(cardContainer.children).indexOf(a);
+    const ib = Array.from(cardContainer.children).indexOf(b);
+    const locA = LOCATIONS[ia], locB = LOCATIONS[ib];
     if (!locA || !locB) return 0;
     const da = locA.id === 'home' ? -1 : haversine(AIRBNB.lat, AIRBNB.lng, locA.lat, locA.lng);
     const db = locB.id === 'home' ? -1 : haversine(AIRBNB.lat, AIRBNB.lng, locB.lat, locB.lng);
     return da - db;
   });
-  allCards.forEach(
-// Invalidate map size when it scrolls into view (fixes blank map on tab/nav click)
-if (typeof IntersectionObserver !== 'undefined') {
-  const mapEl = document.getElementById('tokyo-map');
-  if (mapEl) {
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting && window.map) {
-          setTimeout(() => window.map.invalidateSize(true), 100);
-        }
-      });
-    }, { threshold: 0.1 }).observe(mapEl);
-  }
-}
+  allCards.forEach(c => cardContainer.appendChild(c));
+});
 
-// ═══════════════════════════════════════════════════════
-//  CURRENT LOCATION + NEAREST POI + OSRM ROUTING
-// ═══════════════════════════════════════════════════════
-
+// ─── GEOLOCATION + NEAREST POI + ROUTING ────────────────────────────────────
 let myLocationMarker = null;
 let routeLayer = null;
-let myLat = null, myLng = null;
-let nearestLoc = null;
 
-// Pulsing blue dot for current location
 function makeMyLocationIcon() {
-  const html = `<div class="my-location-icon">
-    <div class="my-location-ring"></div>
-    <div class="my-location-dot"></div>
-  </div>`;
   return L.divIcon({
-    html, className: '', iconSize: [20, 20], iconAnchor: [10, 10], popupAnchor: [0, -12]
+    html: '<div class="my-location-icon"><div class="my-location-ring"></div><div class="my-location-dot"></div></div>',
+    className: '', iconSize: [20,20], iconAnchor: [10,10], popupAnchor: [0,-12]
   });
 }
 
 function dismissNearest() {
   document.getElementById('nearest-banner').classList.remove('show');
-  // Remove nearest highlight
   document.querySelectorAll('.loc-card.nearest-card').forEach(c => c.classList.remove('nearest-card'));
-  // Remove route
-  if (routeLayer) { window.map.removeLayer(routeLayer); routeLayer = null; }
+  if (routeLayer && window.map) { window.map.removeLayer(routeLayer); routeLayer = null; }
 }
 
 async function drawRoute(fromLat, fromLng, toLat, toLng) {
-  // Use OSRM public API (free, no key needed, walking mode)
-  const url = `https://router.project-osrm.org/route/v1/foot/${fromLng},${fromLat};${toLng},${toLat}?overview=full&geometries=geojson`;
+  const url = 'https://router.project-osrm.org/route/v1/foot/'+fromLng+','+fromLat+';'+toLng+','+toLat+'?overview=full&geometries=geojson';
   try {
     const res = await fetch(url);
     const data = await res.json();
     if (data.routes && data.routes[0]) {
       if (routeLayer) window.map.removeLayer(routeLayer);
       const coords = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
-      routeLayer = L.polyline(coords, {
-        color: '#1a73e8',
-        weight: 4,
-        opacity: 0.85,
-        dashArray: '8, 6',
-        lineCap: 'round'
-      }).addTo(window.map);
-      return Math.round(data.routes[0].duration / 60); // minutes
+      routeLayer = L.polyline(coords, { color:'#1a73e8', weight:4, opacity:0.85, dashArray:'8,6', lineCap:'round' }).addTo(window.map);
+      return Math.round(data.routes[0].duration / 60);
     }
   } catch(e) {
-    // Fallback: straight dashed line
     if (routeLayer) window.map.removeLayer(routeLayer);
-    routeLayer = L.polyline([[fromLat,fromLng],[toLat,toLng]], {
-      color: '#1a73e8', weight: 3, opacity: 0.7, dashArray: '6, 8'
-    }).addTo(window.map);
-    return null;
+    routeLayer = L.polyline([[fromLat,fromLng],[toLat,toLng]], { color:'#1a73e8', weight:3, opacity:0.7, dashArray:'6,8' }).addTo(window.map);
   }
   return null;
 }
 
 async function locateMe() {
+  if (!navigator.geolocation) { alert('Geolocation not supported by your browser.'); return; }
   const btn = document.getElementById('locate-btn');
   const label = document.getElementById('locate-label');
-
-  if (!window.map) {
-    alert('Map not ready yet — please wait a moment and try again.');
-    return;
-  }
-  if (!navigator.geolocation) {
-    alert('Geolocation is not supported by your browser.');
-    return;
-  }
-
   btn.classList.add('loading');
   label.textContent = 'Locating...';
 
-  navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      myLat = position.coords.latitude;
-      myLng = position.coords.longitude;
+  navigator.geolocation.getCurrentPosition(async (position) => {
+    const myLat = position.coords.latitude;
+    const myLng = position.coords.longitude;
 
-      // Place / update my location marker
-      if (myLocationMarker) window.map.removeLayer(myLocationMarker);
-      myLocationMarker = L.marker([myLat, myLng], { icon: makeMyLocationIcon(), zIndexOffset: 1000 })
-        .addTo(window.map)
-        .bindPopup('<div style="font-weight:700;font-size:13px;">📱 You are here</div>')
-        .openPopup();
+    if (myLocationMarker) window.map.removeLayer(myLocationMarker);
+    myLocationMarker = L.marker([myLat, myLng], { icon: makeMyLocationIcon(), zIndexOffset: 1000 })
+      .addTo(window.map)
+      .bindPopup('<div style="font-weight:700;font-size:13px;">📱 You are here</div>')
+      .openPopup();
 
-      // Find nearest POI (excluding home)
-      let minDist = Infinity;
-      LOCATIONS.forEach(loc => {
-        if (loc.id === 'home') return;
-        const d = haversine(myLat, myLng, loc.lat, loc.lng);
-        if (d < minDist) { minDist = d; nearestLoc = loc; }
-      });
+    // Find nearest POI
+    let minDist = Infinity, nearestLoc = null;
+    LOCATIONS.forEach(loc => {
+      if (loc.id === 'home') return;
+      const d = haversine(myLat, myLng, loc.lat, loc.lng);
+      if (d < minDist) { minDist = d; nearestLoc = loc; }
+    });
 
-      // Fit window.map to show both me and nearest
-      const bounds = L.latLngBounds([[myLat, myLng], [nearestLoc.lat, nearestLoc.lng]]);
-      window.map.fitBounds(bounds.pad(0.3), { animate: true });
+    if (!nearestLoc) { btn.classList.remove('loading'); label.textContent = 'Find Me'; return; }
 
-      // Draw route
-      const walkMins = await drawRoute(myLat, myLng, nearestLoc.lat, nearestLoc.lng);
+    window.map.fitBounds(L.latLngBounds([[myLat,myLng],[nearestLoc.lat,nearestLoc.lng]]).pad(0.3), { animate: true });
 
-      // Update banner
-      const banner = document.getElementById('nearest-banner');
-      document.getElementById('nearest-icon').textContent = (TYPE_EMOJI[nearestLoc.type] || '📍');
-      document.getElementById('nearest-name').textContent = nearestLoc.name;
-      const distStr = minDist < 1 ? Math.round(minDist * 1000) + 'm away' : minDist.toFixed(1) + 'km away';
-      const walkStr = walkMins ? ` · ~${walkMins} min walk` : '';
-      document.getElementById('nearest-detail').innerHTML =
-        `${distStr}${walkStr} &nbsp;<span class="route-pill">🗺️ Route shown on window.map</span>`;
-      banner.classList.add('show');
+    const walkMins = await drawRoute(myLat, myLng, nearestLoc.lat, nearestLoc.lng);
 
-      // Highlight nearest card
-      document.querySelectorAll('.loc-card').forEach((card, i) => {
-        card.classList.remove('nearest-card');
-        if (LOCATIONS[i] && LOCATIONS[i].id === nearestLoc.id) {
-          card.classList.add('nearest-card');
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
+    const distStr = minDist < 1 ? Math.round(minDist*1000)+'m away' : minDist.toFixed(1)+'km away';
+    const walkStr = walkMins ? ' · ~'+walkMins+' min walk' : '';
+    document.getElementById('nearest-icon').textContent = TYPE_EMOJI[nearestLoc.type] || '📍';
+    document.getElementById('nearest-name').textContent = nearestLoc.name;
+    document.getElementById('nearest-detail').innerHTML = distStr + walkStr + ' &nbsp;<span class="route-pill">🗺️ Route shown on map</span>';
+    document.getElementById('nearest-banner').classList.add('show');
 
-      // Open nearest marker popup
+    document.querySelectorAll('.loc-card').forEach((card, i) => {
+      card.classList.remove('nearest-card');
+      if (LOCATIONS[i] && LOCATIONS[i].id === nearestLoc.id) {
+        card.classList.add('nearest-card');
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+
+    if (window.mapMarkers) {
       window.mapMarkers.forEach(({marker, id}) => {
-        if (id === nearestLoc.id) { marker.openPopup(); }
+        if (id === nearestLoc.id) marker.openPopup();
       });
+    }
 
-      btn.classList.remove('loading');
-      btn.classList.add('active');
-      label.textContent = 'Updated ✓';
-      setTimeout(() => {
-        btn.classList.remove('active');
-        label.textContent = 'Find Me';
-      }, 3000);
-    },
-    (error) => {
-      btn.classList.remove('loading');
-      label.textContent = 'Find Me';
-      const msgs = {
-        1: 'Location access denied. Please allow location in your browser settings.',
-        2: 'Location unavailable. Make sure you have GPS/network access.',
-        3: 'Location request timed out. Try again.'
-      };
-      alert(msgs[error.code] || 'Could not get your location.');
-    },
-    { enableHighAccuracy: true, timeout: 12000, maximumAge: 30000 }
-  );
-}
-meout: 12000, maximumAge: 30000 }
-  );
+    btn.classList.remove('loading');
+    btn.classList.add('active');
+    label.textContent = 'Updated ✓';
+    setTimeout(() => { btn.classList.remove('active'); label.textContent = 'Find Me'; }, 3000);
+
+  }, (error) => {
+    btn.classList.remove('loading');
+    label.textContent = 'Find Me';
+    const msgs = { 1:'Location access denied. Allow location in browser settings.', 2:'Location unavailable.', 3:'Request timed out.' };
+    alert(msgs[error.code] || 'Could not get location.');
+  }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 30000 });
 }
 
-
-// Re-invalidate map whenever #map section is navigated to
-document.querySelectorAll('a[href="#map"]').forEach(a => {
-  a.addEventListener('click', () => {
-    setTimeout(() => { if (window.map) window.map.invalidateSize(true); }, 150);
-    setTimeout(() => { if (window.map) window.map.invalidateSize(true); }, 400);
-  });
-});
 </script>
 
 <section id="camera"><!-- INSTA360 PHOTOGRAPHY -->
