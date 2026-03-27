@@ -2454,7 +2454,12 @@
     </div>
 
     <!-- Map -->
-    <div id="tokyo-map" style="position:relative;" style="height:520px;width:100%;"></div>
+    <div id="tokyo-map-wrapper" style="position:relative;">
+      <div id="tokyo-map" style="height:520px;width:100%;"></div>
+      <button class="locate-btn" id="locate-btn" onclick="locateMe()">
+        📍 <span id="locate-label">Find Me</span>
+      </button>
+    </div>
 
     <!-- Legend -->
     <div style="padding:10px 16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px;background:var(--paper);">
@@ -2796,7 +2801,8 @@ document.addEventListener('DOMContentLoaded', function() {
   map.on('blur',  () => map.scrollWheelZoom.disable());
 
   const markers = [];
-  const mapMarkers = [];
+  window.mapMarkers = [];
+  const mapMarkers = window.mapMarkers;
   const cardContainer = document.getElementById('location-cards');
 
   LOCATIONS.forEach(loc => {
@@ -2886,10 +2892,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const db = locB.id === 'home' ? -1 : haversine(AIRBNB.lat, AIRBNB.lng, locB.lat, locB.lng);
     return da - db;
   });
-  allCards.forEach(c => cardContainer.appendChild(c));
-});
-
-// ═══════════════════════════════════════════════════════
+  allCards.forEach(// ═══════════════════════════════════════════════════════
 //  CURRENT LOCATION + NEAREST POI + OSRM ROUTING
 // ═══════════════════════════════════════════════════════
 
@@ -2914,7 +2917,7 @@ function dismissNearest() {
   // Remove nearest highlight
   document.querySelectorAll('.loc-card.nearest-card').forEach(c => c.classList.remove('nearest-card'));
   // Remove route
-  if (routeLayer) { map.removeLayer(routeLayer); routeLayer = null; }
+  if (routeLayer) { window.map.removeLayer(routeLayer); routeLayer = null; }
 }
 
 async function drawRoute(fromLat, fromLng, toLat, toLng) {
@@ -2924,7 +2927,7 @@ async function drawRoute(fromLat, fromLng, toLat, toLng) {
     const res = await fetch(url);
     const data = await res.json();
     if (data.routes && data.routes[0]) {
-      if (routeLayer) map.removeLayer(routeLayer);
+      if (routeLayer) window.map.removeLayer(routeLayer);
       const coords = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
       routeLayer = L.polyline(coords, {
         color: '#1a73e8',
@@ -2932,15 +2935,15 @@ async function drawRoute(fromLat, fromLng, toLat, toLng) {
         opacity: 0.85,
         dashArray: '8, 6',
         lineCap: 'round'
-      }).addTo(map);
+      }).addTo(window.map);
       return Math.round(data.routes[0].duration / 60); // minutes
     }
   } catch(e) {
     // Fallback: straight dashed line
-    if (routeLayer) map.removeLayer(routeLayer);
+    if (routeLayer) window.map.removeLayer(routeLayer);
     routeLayer = L.polyline([[fromLat,fromLng],[toLat,toLng]], {
       color: '#1a73e8', weight: 3, opacity: 0.7, dashArray: '6, 8'
-    }).addTo(map);
+    }).addTo(window.map);
     return null;
   }
   return null;
@@ -2964,9 +2967,9 @@ async function locateMe() {
       myLng = position.coords.longitude;
 
       // Place / update my location marker
-      if (myLocationMarker) map.removeLayer(myLocationMarker);
+      if (myLocationMarker) window.map.removeLayer(myLocationMarker);
       myLocationMarker = L.marker([myLat, myLng], { icon: makeMyLocationIcon(), zIndexOffset: 1000 })
-        .addTo(map)
+        .addTo(window.map)
         .bindPopup('<div style="font-weight:700;font-size:13px;">📱 You are here</div>')
         .openPopup();
 
@@ -2978,9 +2981,9 @@ async function locateMe() {
         if (d < minDist) { minDist = d; nearestLoc = loc; }
       });
 
-      // Fit map to show both me and nearest
+      // Fit window.map to show both me and nearest
       const bounds = L.latLngBounds([[myLat, myLng], [nearestLoc.lat, nearestLoc.lng]]);
-      map.fitBounds(bounds.pad(0.3), { animate: true });
+      window.map.fitBounds(bounds.pad(0.3), { animate: true });
 
       // Draw route
       const walkMins = await drawRoute(myLat, myLng, nearestLoc.lat, nearestLoc.lng);
@@ -2992,7 +2995,7 @@ async function locateMe() {
       const distStr = minDist < 1 ? Math.round(minDist * 1000) + 'm away' : minDist.toFixed(1) + 'km away';
       const walkStr = walkMins ? ` · ~${walkMins} min walk` : '';
       document.getElementById('nearest-detail').innerHTML =
-        `${distStr}${walkStr} &nbsp;<span class="route-pill">🗺️ Route shown on map</span>`;
+        `${distStr}${walkStr} &nbsp;<span class="route-pill">🗺️ Route shown on window.map</span>`;
       banner.classList.add('show');
 
       // Highlight nearest card
@@ -3005,7 +3008,7 @@ async function locateMe() {
       });
 
       // Open nearest marker popup
-      mapMarkers.forEach(({marker, id}) => {
+      window.mapMarkers.forEach(({marker, id}) => {
         if (id === nearestLoc.id) { marker.openPopup(); }
       });
 
@@ -3028,6 +3031,9 @@ async function locateMe() {
       alert(msgs[error.code] || 'Could not get your location.');
     },
     { enableHighAccuracy: true, timeout: 12000, maximumAge: 30000 }
+  );
+}
+meout: 12000, maximumAge: 30000 }
   );
 }
 
