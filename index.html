@@ -2791,10 +2791,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const map = L.map('tokyo-map', { zoomControl: true, scrollWheelZoom: false })
     .setView([35.645, 139.720], 12);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  // Primary: CartoDB Positron (reliable, fast, HTTPS everywhere)
+  const tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd',
     maxZoom: 19
-  }).addTo(map);
+  });
+  tileLayer.addTo(map);
+
+  // Force tile refresh after layout settles
+  setTimeout(() => { map.invalidateSize(true); }, 200);
+  setTimeout(() => { map.invalidateSize(true); }, 800);
 
   // Enable scroll zoom on click
   map.on('focus', () => map.scrollWheelZoom.enable());
@@ -2892,7 +2899,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const db = locB.id === 'home' ? -1 : haversine(AIRBNB.lat, AIRBNB.lng, locB.lat, locB.lng);
     return da - db;
   });
-  allCards.forEach(// ═══════════════════════════════════════════════════════
+  allCards.forEach(
+// Invalidate map size when it scrolls into view (fixes blank map on tab/nav click)
+if (typeof IntersectionObserver !== 'undefined') {
+  const mapEl = document.getElementById('tokyo-map');
+  if (mapEl) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && window.map) {
+          setTimeout(() => window.map.invalidateSize(true), 100);
+        }
+      });
+    }, { threshold: 0.1 }).observe(mapEl);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
 //  CURRENT LOCATION + NEAREST POI + OSRM ROUTING
 // ═══════════════════════════════════════════════════════
 
@@ -2953,6 +2975,10 @@ async function locateMe() {
   const btn = document.getElementById('locate-btn');
   const label = document.getElementById('locate-label');
 
+  if (!window.map) {
+    alert('Map not ready yet — please wait a moment and try again.');
+    return;
+  }
   if (!navigator.geolocation) {
     alert('Geolocation is not supported by your browser.');
     return;
@@ -3037,6 +3063,14 @@ meout: 12000, maximumAge: 30000 }
   );
 }
 
+
+// Re-invalidate map whenever #map section is navigated to
+document.querySelectorAll('a[href="#map"]').forEach(a => {
+  a.addEventListener('click', () => {
+    setTimeout(() => { if (window.map) window.map.invalidateSize(true); }, 150);
+    setTimeout(() => { if (window.map) window.map.invalidateSize(true); }, 400);
+  });
+});
 </script>
 
 <section id="camera"><!-- INSTA360 PHOTOGRAPHY -->
