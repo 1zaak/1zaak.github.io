@@ -2449,6 +2449,7 @@
       <button onclick="filterMarkers('competition')" id="btn-competition" class="map-filter-btn">🏆 Competition</button>
       <button onclick="filterMarkers('halal')" id="btn-halal" class="map-filter-btn">🕌 Halal Food</button>
       <button onclick="filterMarkers('shopping')" id="btn-shopping" class="map-filter-btn">🛍️ Shopping</button>
+      <button onclick="filterMarkers('flea')" id="btn-flea" class="map-filter-btn">🛒 Flea &amp; Thrift</button>
       <button onclick="filterMarkers('watch')" id="btn-watch" class="map-filter-btn">⌚ Watch Hunt</button>
       <button onclick="filterMarkers('sakura')" id="btn-sakura" class="map-filter-btn">🌸 Cherry Blossoms</button>
       <button onclick="filterMarkers('attraction')" id="btn-attraction" class="map-filter-btn">🎡 Attractions</button>
@@ -2478,6 +2479,7 @@
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4a7c59;display:inline-block;"></span> Bonsai Shops</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#1e6091;display:inline-block;"></span> Selvedge Jeans</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#6c3483;display:inline-block;"></span> Outlet Malls</span>
+      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#e67e22;display:inline-block;"></span> Flea &amp; Thrift</span>
     </div>
   </div>
 
@@ -2599,6 +2601,75 @@ const LOCATIONS = [
   { id:'kiddyland', name:'Kiddy Land Harajuku', type:'shopping', day:'Fri', lat:35.6677, lng:139.7065,
     detail:'5-floor toy paradise', cost:'¥2,000–8,000', note:'Spider-Man · Marvel · Nintendo · Character goods',
     maps:'https://maps.google.com/maps?q=Kiddy+Land+Harajuku+Tokyo' },
+
+  // ── SOUVENIR SHOPPING ─────────────────────────────────────────────────────
+
+  // ── 100-YEN SHOPS ────────────────────────────────────────────────────────
+  { id:'daiso-asakusa', name:'Daiso — Asakusa ROX', type:'shopping', day:'Sun', lat:35.7130, lng:139.7928,
+    detail:'100¥ shop · 4F Asakusa ROX · household, food, stationery', cost:'¥100–500', note:'Open 10:30am–9pm · Cash only · Good combo with Nakamise Street · multilingual signs',
+    maps:'https://maps.google.com/maps?q=Daiso+Asakusa+ROX+Tokyo' },
+
+  { id:'seria-daikanyama', name:'Seria — Daikanyama', type:'shopping', day:'Any', lat:35.6491, lng:139.7034,
+    detail:'100¥ shop · stylish white/natural tone design · kitchenware, stationery', cost:'¥100', note:'Open 11am–8pm · Cash only · More elegant than Daiso · great for adult gifts',
+    maps:'https://maps.google.com/maps?q=Seria+Daikanyama+Address+Dice+Tokyo' },
+
+  // ── LIFESTYLE & VARIETY ───────────────────────────────────────────────────
+  { id:'three-coins', name:'3COINS — Yaesu Underground (Tokyo Station)', type:'shopping', day:'Any', lat:35.6796, lng:139.7684,
+    detail:'¥300 trendy accessories, smartphone goods, kitchenware · Tokyo Station', cost:'¥300', note:'Open 10am–9pm · Great last-minute stop at Tokyo Station · everything ¥300',
+    maps:'https://maps.google.com/maps?q=3COINS+Yaesu+Underground+Mall+Tokyo+Station' },
+
+  // ── DRUGSTORES ────────────────────────────────────────────────────────────
+  { id:'matsumoto-kiyoshi', name:'Matsumoto Kiyoshi — Shibuya', type:'shopping', day:'Any', lat:35.6598, lng:139.6998,
+    detail:'Japan\u2019s biggest drugstore chain · cosmetics, medicine, skincare · tax-free', cost:'¥500–5,000', note:'Open 9am–11pm · Japan-exclusive skincare · multilingual staff · bring passport',
+    maps:'https://maps.google.com/maps?q=Matsumoto+Kiyoshi+Shibuya+Tokyo' },
+
+  // ── FASHION BRANDS ────────────────────────────────────────────────────────
+  { id:'uniqlo-ginza', name:'Uniqlo — Ginza Flagship (12 floors)', type:'shopping', day:'Any', lat:35.6702, lng:139.7635,
+    detail:'12 floors · basics, collab lines, Japan exclusives · rooftop café', cost:'¥1,000–10,000', note:'4.2 ⭐ · Open 11am–9pm · Tax-free with passport · ~30% cheaper than overseas · café on 12F',
+    maps:'https://maps.google.com/maps?q=Uniqlo+Ginza+Flagship+Store+Tokyo' },
+
+  { id:'gu-shibuya', name:'GU — Shibuya (Uniqlo cheaper sister)', type:'shopping', day:'Any', lat:35.6610, lng:139.6976,
+    detail:'Trendy fashion at ¥1,000 · B1F–3F · youth styles, basics, seasonal', cost:'¥990–3,000', note:'4.1 ⭐ · Open 11am–9pm · Tax-free · Much cheaper than Uniqlo · good for kids clothes',
+    maps:'https://maps.google.com/maps?q=GU+Shibuya+Tokyo' },
+  { id:'hands-shibuya', name:'HANDS — Shibuya Scramble Square', type:'shopping', day:'Any', lat:35.6583, lng:139.7019,
+    detail:'Lifestyle, stationery, cosmetics, crafts · 10F Scramble Square', cost:'¥100–10,000', note:'4.0 ⭐ · Open 10am–9pm · Tax-free counter 3F · Quiet & organised vs Donki',
+    maps:'https://maps.google.com/maps?q=Hands+Shibuya+Scramble+Square+Tokyo' },
+
+  { id:'loft-shibuya', name:'Loft Shibuya', type:'shopping', day:'Any', lat:35.6609, lng:139.6997,
+    detail:'6 floors · stationery, skincare, homeware, hobby goods', cost:'¥200–5,000', note:'4.2 ⭐ · Open 11am–9pm · B1=stationery, 1F=gifts, 2F=beauty, 5F=travel gear',
+    maps:'https://maps.google.com/maps?q=Loft+Shibuya+Tokyo' },
+
+  { id:'daiso-harajuku', name:'Daiso Harajuku — Takeshita St', type:'shopping', day:'Any', lat:35.6716, lng:139.7038,
+    detail:'¥100 shop · Sanrio, washi tape, snacks, chopsticks, everything', cost:'¥100–300', note:'4.2 ⭐ · Open 9:30am–9pm · No tax-free · Busiest Daiso in Tokyo · Kids love it',
+    maps:'https://maps.google.com/maps?q=Daiso+Harajuku+Takeshita+Street+Tokyo' },
+
+  { id:'muji-ginza', name:'MUJI Ginza — Flagship', type:'shopping', day:'Any', lat:35.6732, lng:139.7654,
+    detail:'Biggest MUJI in Japan · clothes, stationery, snacks, skincare, bakery', cost:'¥150–5,000', note:'4.3 ⭐ · Open 11am–9pm · Tax-free · Has café & bakery on 1F · Hotel next door',
+    maps:'https://maps.google.com/maps?q=MUJI+Ginza+Tokyo' },
+
+  { id:'beams-japan', name:'Beams Japan — Shinjuku', type:'shopping', day:'Any', lat:35.6904, lng:139.7040,
+    detail:'6 floors of Japan-branded crafts, fashion, gifts · non-kitsch', cost:'¥500–20,000', note:'4.3 ⭐ · Open 11am–8pm · Tax-free · 1F = best souvenirs · lucky cats, knives, mugs',
+    maps:'https://maps.google.com/maps?q=Beams+Japan+Shinjuku+Tokyo' },
+
+  { id:'nakamise', name:'Nakamise Shopping Street — Asakusa', type:'shopping', day:'Sun', lat:35.7118, lng:139.7965,
+    detail:'250m historic street · traditional sweets, kimonos, crafts', cost:'¥200–3,000', note:'4.3 ⭐ · Open 9am–8pm · 89 shops · leads to Senso-ji temple · oldest shopping street in Japan',
+    maps:'https://maps.google.com/maps?q=Nakamise+Shopping+Street+Asakusa+Tokyo' },
+
+  { id:'kappabashi', name:'Kappabashi Kitchen Town', type:'shopping', day:'Mon', lat:35.7106, lng:139.7880,
+    detail:'800m street · Japanese knives, ceramics, plastic food models, baking tools', cost:'¥500–30,000', note:'4.3 ⭐ · Open 10am–5pm · CLOSED SUNDAY · Best Japanese knives in Tokyo · Ask for tax-free',
+    maps:'https://maps.google.com/maps?q=Kappabashi+Kitchen+Supply+Town+Asakusa+Tokyo' },
+
+  { id:'2k540', name:'2k540 Aki-Oka Artisan', type:'shopping', day:'Mon', lat:35.7032, lng:139.7740,
+    detail:'Under JR tracks · 50+ artisan studios · leather, ceramics, hats, fabric', cost:'¥1,000–15,000', note:'4.0 ⭐ · Open 11am–7pm · CLOSED WEDNESDAY · Hidden gem · handmade Japan goods only',
+    maps:'https://maps.google.com/maps?q=2k540+Aki-Oka+Artisan+Akihabara+Tokyo' },
+
+  { id:'village-vanguard', name:'Village Vanguard — Shibuya', type:'shopping', day:'Any', lat:35.6598, lng:139.6996,
+    detail:'Quirky novelty store · anime, snacks, books, bizarre gifts', cost:'¥300–3,000', note:'Open 11am–9pm · Tax-free · Good for fun/weird gifts · B1F & B2F underground',
+    maps:'https://maps.google.com/maps?q=Village+Vanguard+Shibuya+Tokyo' },
+
+  { id:'ameyoko', name:'Ameyoko Market — Ueno', type:'shopping', day:'Mon', lat:35.7090, lng:139.7746,
+    detail:'Outdoor street market · bargain cosmetics, snacks, seafood, clothing', cost:'¥100–5,000', note:'4.3 ⭐ · Open 10am–5pm · CLOSED SAT/SUN · Haggle-friendly · next to Ueno Park',
+    maps:'https://maps.google.com/maps?q=Ameyoko+Market+Ueno+Tokyo' },
   { id:'gyumon', name:'Gyumon Halal Wagyu Ramen', type:'halal', day:'Fri', lat:35.6597, lng:139.7042,
     detail:"Tokyo's #1 halal spot · 4.9 ⭐ · 20,000 reviews", cost:'¥1,500–2,500/person', note:'Prayer room · Wagyu ramen',
     maps:'https://maps.google.com/maps?q=Gyumon+Halal+Wagyu+Ramen+Shibuya+Tokyo' },
@@ -2694,6 +2765,52 @@ const LOCATIONS = [
     maps:'https://maps.google.com/maps?q=Mitsui+Outlet+Park+Kisarazu+Chiba' },
 
   // EXTRA HALAL (Tabelog-backed)
+
+  // ── WATCH HUNTING — FLEA MARKETS ─────────────────────────────────────────
+  { id:'tokyo-city-flea', name:'Tokyo City Flea Market — Oi Racecourse', type:'flea', day:'Sat/Sun', lat:35.5950, lng:139.7430,
+    detail:'Largest flea market in Tokyo · vintage Seiko, Citizen from ¥1,000', cost:'Free entry', note:'4.2 ⭐ · Open 9am–2:30pm SAT/SUN ONLY · Go early · cash only · bargain friendly',
+    maps:'https://maps.google.com/maps?q=Tokyo+City+Flea+Market+Oi+Racecourse+Shinagawa' },
+
+  // ── WATCH HUNTING — THRIFT / HARD OFF ────────────────────────────────────
+  { id:'hardoff-akihabara', name:'Hard Off — Akihabara', type:'flea', day:'Mon', lat:35.7005, lng:139.7706,
+    detail:'Thrift chain · used Seiko/Citizen from ¥500 · junk bin hunting', cost:'¥500–30,000', note:'3.6 ⭐ · Open 11am–8pm · Bring cash · condition varies · junk floor = bargain paradise',
+    maps:'https://maps.google.com/maps?q=Hard+Off+Akihabara+Tokyo' },
+
+  // ── WATCH HUNTING — NAKANO BROADWAY (supplements existing entries) ────────
+  { id:'nakano-vintage-mall', name:'Nakano Broadway Vintage Mall', type:'flea', day:'Sat', lat:35.7090, lng:139.6659,
+    detail:'Multi-vendor vintage mall · bargain hunting · condition varies', cost:'¥3,000–100,000', note:'Open 11am–8pm · Several small dealers · good for browsing unknown refs',
+    maps:'https://maps.google.com/maps?q=Nakano+Broadway+Vintage+Watch+Tokyo' },
+
+  // ── WATCH HUNTING — GINZA ────────────────────────────────────────────────
+  { id:'ginza-wako', name:'Ginza Wako — Seiko Clock Tower', type:'watch', day:'Any', lat:35.6717, lng:139.7650,
+    detail:'Iconic Seiko HQ · Grand Seiko + Credor exclusives · flagship experience', cost:'¥100,000–2,000,000+', note:'4.3 ⭐ · Open 11am–7pm · The most prestigious Seiko address in Japan · tax-free',
+    maps:'https://maps.google.com/maps?q=Ginza+Wako+Seiko+Clock+Tower+Tokyo' },
+
+  { id:'grand-seiko-ginza', name:'Grand Seiko Boutique Flagship Ginza', type:'watch', day:'Any', lat:35.6717, lng:139.7650,
+    detail:'Full GS lineup · Snowflake, Spring Drive exclusives · Namiki Street', cost:'¥200,000–3,000,000', note:'4.6 ⭐ · Open 11am–7pm · Tax-free · English-speaking staff · passport required',
+    maps:'https://maps.google.com/maps?q=Grand+Seiko+Boutique+Flagship+Ginza+Tokyo' },
+
+  { id:'seiko-dream-square', name:'Seiko Dream Square — Ginza', type:'watch', day:'Any', lat:35.6718, lng:139.7646,
+    detail:'4 floors · Seiko / Prospex / Presage / Astron · full current lineup', cost:'¥30,000–500,000', note:'4.5 ⭐ · Open 11am–7pm · Tax-free · Note: Yodobashi ~20% cheaper for same models',
+    maps:'https://maps.google.com/maps?q=Seiko+Dream+Square+Ginza+Tokyo' },
+
+  { id:'ginza-rasin', name:'Ginza Rasin — Pre-Owned Luxury', type:'watch', day:'Any', lat:35.6679, lng:139.7606,
+    detail:'Pre-owned Rolex, Patek, AP, Grand Seiko · 4.8 ⭐ · English staff', cost:'¥50,000–5,000,000', note:'4.8 ⭐ · Open 11am–7:30pm · Tax-free · Highly reputable · Ask for Lin or Mr Shiraishi',
+    maps:'https://maps.google.com/maps?q=Ginza+Rasin+pre-owned+watches+Tokyo' },
+
+  { id:'citizen-ginza', name:'Citizen Flagship Store — Ginza', type:'watch', day:'Any', lat:35.6691, lng:139.7640,
+    detail:'Full Eco-Drive / Campanola / Promaster lineup · Japan exclusives', cost:'¥20,000–300,000', note:'4.1 ⭐ · Open 10:30am–8:30pm · Tax-free · Japan-exclusive models · Ginza Six nearby',
+    maps:'https://maps.google.com/maps?q=Citizen+Flagship+Store+Ginza+Tokyo' },
+
+  // ── WATCH HUNTING — UENO ────────────────────────────────────────────────
+  { id:'mizutani-camera', name:'Mizutani Camera — Ueno (Vintage JDM)', type:'watch', day:'Mon', lat:35.7100, lng:139.7755,
+    detail:'Hidden gem · King Seiko, JDM rarities · owner Yuta speaks English', cost:'¥5,000–200,000', note:'4.8 ⭐ · Open Tue/Wed/Fri/Sat/Sun 10am–5pm · CLOSED MON/THU · Cash preferred · owner will guide you',
+    maps:'https://maps.google.com/maps?q=Mizutani+Camera+Ueno+vintage+watches+Tokyo' },
+
+  // ── WATCH HUNTING — OUTLET ──────────────────────────────────────────────
+  { id:'granberry-watch', name:'Granberry Park — Seiko/Citizen Outlet', type:'watch', day:'Any', lat:35.5100, lng:139.4709,
+    detail:'Outlet mall near Haneda · discounted Seiko, Casio, microbrands', cost:'¥10,000–100,000', note:'3.3 ⭐ · Open 10am–8pm · Minami-Machida station · Worth combining with airport day',
+    maps:'https://maps.google.com/maps?q=Grandberry+Park+Minami+Machida+Tokyo+watch' },
   { id:'firekids', name:'FireKids — Watch Shop (1F)', type:'watch', day:'Sat', lat:35.7092, lng:139.666,
     detail:'4.9 ⭐ YouTuber pick for King Seiko & Grand Seiko', cost:'¥20,000–200,000+', note:'Ask for Anton/Kyara · CLOSED WEDNESDAY · Open 11:30am',
     maps:'https://maps.google.com/maps?q=FireKids+Watch+Shop+Nakano+Broadway+Tokyo' },
@@ -2763,10 +2880,11 @@ const TYPE_COLOR = {
   outlet:      '#6c3483',
   mosque:      '#1d6b1d',
   sakura:      '#e83e8c',
+  flea:        '#e67e22',
 };
 const TYPE_EMOJI = {
   home:'🏠', training:'🥋', competition:'🏆', halal:'🕌', shopping:'🛍️', watch:'⌚', attraction:'🎡',
-  bonsai:'🎋', jeans:'👖', outlet:'🏬', sakura:'🌸'
+  bonsai:'🎋', jeans:'👖', outlet:'🏬', sakura:'🌸', flea:'🛒'
 };
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
