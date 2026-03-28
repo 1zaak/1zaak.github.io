@@ -2448,7 +2448,11 @@
       <button onclick="filterMarkers('training')" id="btn-training" class="map-filter-btn">🥋 Training</button>
       <button onclick="filterMarkers('competition')" id="btn-competition" class="map-filter-btn">🏆 Competition</button>
       <button onclick="filterMarkers('halal')" id="btn-halal" class="map-filter-btn">🕌 Halal Food</button>
-      <button onclick="filterMarkers('shopping')" id="btn-shopping" class="map-filter-btn">🛍️ Shopping</button>
+      <button onclick="filterMarkers('budget')" id="btn-budget" class="map-filter-btn">🪙 Budget</button>
+      <button onclick="filterMarkers('lifestyle')" id="btn-lifestyle" class="map-filter-btn">🏷️ Lifestyle</button>
+      <button onclick="filterMarkers('gaming')" id="btn-gaming" class="map-filter-btn">🎮 Gaming</button>
+      <button onclick="filterMarkers('crafts')" id="btn-crafts" class="map-filter-btn">🎨 Design</button>
+      <button onclick="filterMarkers('markets')" id="btn-markets" class="map-filter-btn">🏮 Markets</button>
       <button onclick="filterMarkers('flea')" id="btn-flea" class="map-filter-btn">🛒 Flea &amp; Thrift</button>
       <button onclick="filterMarkers('watch')" id="btn-watch" class="map-filter-btn">⌚ Watch Hunt</button>
       <button onclick="filterMarkers('sakura')" id="btn-sakura" class="map-filter-btn">🌸 Cherry Blossoms</button>
@@ -2473,7 +2477,11 @@
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#1a4a7a;display:inline-block;"></span> BJJ Training</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#FFD700;display:inline-block;"></span> Competition</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#2D6A4F;display:inline-block;"></span> Halal Food</span>
-      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#9333ea;display:inline-block;"></span> Shopping</span>
+      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#27ae60;display:inline-block;"></span> Budget</span>
+      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#2980b9;display:inline-block;"></span> Lifestyle</span>
+      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#7c3aed;display:inline-block;"></span> Gaming</span>
+      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#c0392b;display:inline-block;"></span> Design &amp; Crafts</span>
+      <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#d4a017;display:inline-block;"></span> Markets</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#B8860B;display:inline-block;"></span> Watch Hunt</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#C45C1A;display:inline-block;"></span> Attractions</span>
       <span style="font-size:11px;display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4a7c59;display:inline-block;"></span> Bonsai Shops</span>
@@ -2595,85 +2603,89 @@ const LOCATIONS = [
   { id:'meiji', name:'Meiji Jingu Shrine', type:'attraction', day:'Fri', lat:35.6764, lng:139.6993,
     detail:'Sacred Shinto shrine · FREE', cost:'FREE + ¥500–1,000 ema', note:'Ancient cedar forest · Pre-competition prayer',
     maps:'https://maps.google.com/maps?q=Shibuya+PARCO+Tokyo' },
-  { id:'nintendo', name:'Nintendo Tokyo — Shibuya PARCO 6F', type:'shopping', day:'Fri', lat:35.6621, lng:139.6986,
+  { id:'nintendo', name:'Nintendo Tokyo — Shibuya PARCO 6F', type:'gaming', day:'Fri', lat:35.6621, lng:139.6986,
     detail:'The Mario store of Japan', cost:'¥5,000–20,000+', note:'Tax-free with passport · Jump Shop + Pokémon same floor',
     maps:'https://maps.google.com/maps?q=Nintendo+Tokyo+Shibuya+PARCO' },
-  { id:'kiddyland', name:'Kiddy Land Harajuku', type:'shopping', day:'Fri', lat:35.6677, lng:139.7065,
+  { id:'kiddyland', name:'Kiddy Land Harajuku', type:'gaming', day:'Fri', lat:35.6677, lng:139.7065,
     detail:'5-floor toy paradise', cost:'¥2,000–8,000', note:'Spider-Man · Marvel · Nintendo · Character goods',
     maps:'https://maps.google.com/maps?q=Kiddy+Land+Harajuku+Tokyo' },
 
   // ── SOUVENIR SHOPPING ─────────────────────────────────────────────────────
 
   // ── 100-YEN SHOPS ────────────────────────────────────────────────────────
-  { id:'daiso-asakusa', name:'Daiso — Asakusa ROX', type:'shopping', day:'Sun', lat:35.7130, lng:139.7928,
+
+  { id:'donki-shibuya', name:'Don Quijote Mega — Shibuya', type:'budget', day:'Any', lat:35.6597, lng:139.7004,
+    detail:'Mega Donki · 24hrs · snacks, KitKat flavours, cosmetics, electronics, souvenirs', cost:'¥100–50,000', note:'Open 24 hours · Tax-free · 7 floors · Most famous Donki in Tokyo · cash or card',
+    maps:'https://maps.google.com/maps?q=Mega+Don+Quijote+Shibuya+Tokyo' },
+  { id:'daiso-asakusa', name:'Daiso — Asakusa ROX', type:'budget', day:'Sun', lat:35.7130, lng:139.7928,
     detail:'100¥ shop · 4F Asakusa ROX · household, food, stationery', cost:'¥100–500', note:'Open 10:30am–9pm · Cash only · Good combo with Nakamise Street · multilingual signs',
     maps:'https://maps.google.com/maps?q=Daiso+Asakusa+ROX+Tokyo' },
 
-  { id:'seria-daikanyama', name:'Seria — Daikanyama', type:'shopping', day:'Any', lat:35.6491, lng:139.7034,
+  { id:'seria-daikanyama', name:'Seria — Daikanyama', type:'budget', day:'Any', lat:35.6491, lng:139.7034,
     detail:'100¥ shop · stylish white/natural tone design · kitchenware, stationery', cost:'¥100', note:'Open 11am–8pm · Cash only · More elegant than Daiso · great for adult gifts',
     maps:'https://maps.google.com/maps?q=Seria+Daikanyama+Address+Dice+Tokyo' },
 
   // ── LIFESTYLE & VARIETY ───────────────────────────────────────────────────
-  { id:'three-coins', name:'3COINS — Yaesu Underground (Tokyo Station)', type:'shopping', day:'Any', lat:35.6796, lng:139.7684,
+  { id:'three-coins', name:'3COINS — Yaesu Underground (Tokyo Station)', type:'budget', day:'Any', lat:35.6796, lng:139.7684,
     detail:'¥300 trendy accessories, smartphone goods, kitchenware · Tokyo Station', cost:'¥300', note:'Open 10am–9pm · Great last-minute stop at Tokyo Station · everything ¥300',
     maps:'https://maps.google.com/maps?q=3COINS+Yaesu+Underground+Mall+Tokyo+Station' },
 
   // ── DRUGSTORES ────────────────────────────────────────────────────────────
-  { id:'matsumoto-kiyoshi', name:'Matsumoto Kiyoshi — Shibuya', type:'shopping', day:'Any', lat:35.6598, lng:139.6998,
+  { id:'matsumoto-kiyoshi', name:'Matsumoto Kiyoshi — Shibuya', type:'budget', day:'Any', lat:35.6598, lng:139.6998,
     detail:'Japan\u2019s biggest drugstore chain · cosmetics, medicine, skincare · tax-free', cost:'¥500–5,000', note:'Open 9am–11pm · Japan-exclusive skincare · multilingual staff · bring passport',
     maps:'https://maps.google.com/maps?q=Matsumoto+Kiyoshi+Shibuya+Tokyo' },
 
   // ── FASHION BRANDS ────────────────────────────────────────────────────────
-  { id:'uniqlo-ginza', name:'Uniqlo — Ginza Flagship (12 floors)', type:'shopping', day:'Any', lat:35.6702, lng:139.7635,
+  { id:'uniqlo-ginza', name:'Uniqlo — Ginza Flagship (12 floors)', type:'lifestyle', day:'Any', lat:35.6702, lng:139.7635,
     detail:'12 floors · basics, collab lines, Japan exclusives · rooftop café', cost:'¥1,000–10,000', note:'4.2 ⭐ · Open 11am–9pm · Tax-free with passport · ~30% cheaper than overseas · café on 12F',
     maps:'https://maps.google.com/maps?q=Uniqlo+Ginza+Flagship+Store+Tokyo' },
 
-  { id:'gu-shibuya', name:'GU — Shibuya (Uniqlo cheaper sister)', type:'shopping', day:'Any', lat:35.6610, lng:139.6976,
+  { id:'gu-shibuya', name:'GU — Shibuya (Uniqlo cheaper sister)', type:'lifestyle', day:'Any', lat:35.6610, lng:139.6976,
     detail:'Trendy fashion at ¥1,000 · B1F–3F · youth styles, basics, seasonal', cost:'¥990–3,000', note:'4.1 ⭐ · Open 11am–9pm · Tax-free · Much cheaper than Uniqlo · good for kids clothes',
     maps:'https://maps.google.com/maps?q=GU+Shibuya+Tokyo' },
-  { id:'hands-shibuya', name:'HANDS — Shibuya Scramble Square', type:'shopping', day:'Any', lat:35.6583, lng:139.7019,
+  { id:'hands-shibuya', name:'HANDS — Shibuya Scramble Square', type:'crafts', day:'Any', lat:35.6583, lng:139.7019,
     detail:'Lifestyle, stationery, cosmetics, crafts · 10F Scramble Square', cost:'¥100–10,000', note:'4.0 ⭐ · Open 10am–9pm · Tax-free counter 3F · Quiet & organised vs Donki',
     maps:'https://maps.google.com/maps?q=Hands+Shibuya+Scramble+Square+Tokyo' },
 
-  { id:'loft-shibuya', name:'Loft Shibuya', type:'shopping', day:'Any', lat:35.6609, lng:139.6997,
+  { id:'loft-shibuya', name:'Loft Shibuya', type:'crafts', day:'Any', lat:35.6609, lng:139.6997,
     detail:'6 floors · stationery, skincare, homeware, hobby goods', cost:'¥200–5,000', note:'4.2 ⭐ · Open 11am–9pm · B1=stationery, 1F=gifts, 2F=beauty, 5F=travel gear',
     maps:'https://maps.google.com/maps?q=Loft+Shibuya+Tokyo' },
 
-  { id:'daiso-harajuku', name:'Daiso Harajuku — Takeshita St', type:'shopping', day:'Any', lat:35.6716, lng:139.7038,
+  { id:'daiso-harajuku', name:'Daiso Harajuku — Takeshita St', type:'budget', day:'Any', lat:35.6716, lng:139.7038,
     detail:'¥100 shop · Sanrio, washi tape, snacks, chopsticks, everything', cost:'¥100–300', note:'4.2 ⭐ · Open 9:30am–9pm · No tax-free · Busiest Daiso in Tokyo · Kids love it',
     maps:'https://maps.google.com/maps?q=Daiso+Harajuku+Takeshita+Street+Tokyo' },
 
-  { id:'muji-ginza', name:'MUJI Ginza — Flagship', type:'shopping', day:'Any', lat:35.6732, lng:139.7654,
+  { id:'muji-ginza', name:'MUJI Ginza — Flagship', type:'lifestyle', day:'Any', lat:35.6732, lng:139.7654,
     detail:'Biggest MUJI in Japan · clothes, stationery, snacks, skincare, bakery', cost:'¥150–5,000', note:'4.3 ⭐ · Open 11am–9pm · Tax-free · Has café & bakery on 1F · Hotel next door',
     maps:'https://maps.google.com/maps?q=MUJI+Ginza+Tokyo' },
 
-  { id:'beams-japan', name:'Beams Japan — Shinjuku', type:'shopping', day:'Any', lat:35.6904, lng:139.7040,
+  { id:'beams-japan', name:'Beams Japan — Shinjuku', type:'lifestyle', day:'Any', lat:35.6904, lng:139.7040,
     detail:'6 floors of Japan-branded crafts, fashion, gifts · non-kitsch', cost:'¥500–20,000', note:'4.3 ⭐ · Open 11am–8pm · Tax-free · 1F = best souvenirs · lucky cats, knives, mugs',
     maps:'https://maps.google.com/maps?q=Beams+Japan+Shinjuku+Tokyo' },
 
-  { id:'nakamise', name:'Nakamise Shopping Street — Asakusa', type:'shopping', day:'Sun', lat:35.7118, lng:139.7965,
+  { id:'nakamise', name:'Nakamise Shopping Street — Asakusa', type:'markets', day:'Sun', lat:35.7118, lng:139.7965,
     detail:'250m historic street · traditional sweets, kimonos, crafts', cost:'¥200–3,000', note:'4.3 ⭐ · Open 9am–8pm · 89 shops · leads to Senso-ji temple · oldest shopping street in Japan',
     maps:'https://maps.google.com/maps?q=Nakamise+Shopping+Street+Asakusa+Tokyo' },
 
-  { id:'kappabashi', name:'Kappabashi Kitchen Town', type:'shopping', day:'Mon', lat:35.7106, lng:139.7880,
+  { id:'kappabashi', name:'Kappabashi Kitchen Town', type:'crafts', day:'Mon', lat:35.7106, lng:139.7880,
     detail:'800m street · Japanese knives, ceramics, plastic food models, baking tools', cost:'¥500–30,000', note:'4.3 ⭐ · Open 10am–5pm · CLOSED SUNDAY · Best Japanese knives in Tokyo · Ask for tax-free',
     maps:'https://maps.google.com/maps?q=Kappabashi+Kitchen+Supply+Town+Asakusa+Tokyo' },
 
-  { id:'2k540', name:'2k540 Aki-Oka Artisan', type:'shopping', day:'Mon', lat:35.7032, lng:139.7740,
+  { id:'2k540', name:'2k540 Aki-Oka Artisan', type:'crafts', day:'Mon', lat:35.7032, lng:139.7740,
     detail:'Under JR tracks · 50+ artisan studios · leather, ceramics, hats, fabric', cost:'¥1,000–15,000', note:'4.0 ⭐ · Open 11am–7pm · CLOSED WEDNESDAY · Hidden gem · handmade Japan goods only',
     maps:'https://maps.google.com/maps?q=2k540+Aki-Oka+Artisan+Akihabara+Tokyo' },
 
-  { id:'village-vanguard', name:'Village Vanguard — Shibuya', type:'shopping', day:'Any', lat:35.6598, lng:139.6996,
+  { id:'village-vanguard', name:'Village Vanguard — Shibuya', type:'gaming', day:'Any', lat:35.6598, lng:139.6996,
     detail:'Quirky novelty store · anime, snacks, books, bizarre gifts', cost:'¥300–3,000', note:'Open 11am–9pm · Tax-free · Good for fun/weird gifts · B1F & B2F underground',
     maps:'https://maps.google.com/maps?q=Village+Vanguard+Shibuya+Tokyo' },
 
-  { id:'ameyoko', name:'Ameyoko Market — Ueno', type:'shopping', day:'Mon', lat:35.7090, lng:139.7746,
+  { id:'ameyoko', name:'Ameyoko Market — Ueno', type:'markets', day:'Mon', lat:35.7090, lng:139.7746,
     detail:'Outdoor street market · bargain cosmetics, snacks, seafood, clothing', cost:'¥100–5,000', note:'4.3 ⭐ · Open 10am–5pm · CLOSED SAT/SUN · Haggle-friendly · next to Ueno Park',
     maps:'https://maps.google.com/maps?q=Ameyoko+Market+Ueno+Tokyo' },
   { id:'gyumon', name:'Gyumon Halal Wagyu Ramen', type:'halal', day:'Fri', lat:35.6597, lng:139.7042,
     detail:"Tokyo's #1 halal spot · 4.9 ⭐ · 20,000 reviews", cost:'¥1,500–2,500/person', note:'Prayer room · Wagyu ramen',
     maps:'https://maps.google.com/maps?q=Gyumon+Halal+Wagyu+Ramen+Shibuya+Tokyo' },
-  { id:'isami', name:'ISAMI Combat Sports Shop', type:'shopping', day:'Fri', lat:35.689, lng:139.7033,
+  { id:'isami', name:'ISAMI Combat Sports Shop', type:'training', day:'Fri', lat:35.689, lng:139.7033,
     detail:'Japan\'s legendary combat sports mecca', cost:'¥5,000–30,000', note:'4F via parking garage elevator · CLOSED TUES',
     maps:'https://maps.google.com/maps?q=ISAMI+Combat+Sports+Shinjuku+Tokyo' },
   { id:'montclair', name:'Mont St. Clair Patisserie', type:'attraction', day:'Fri', lat:35.6127, lng:139.6665,
@@ -2681,7 +2693,7 @@ const LOCATIONS = [
     maps:'https://maps.google.com/maps?q=Mont+Saint+Clair+Patisserie+Jiyugaoka+Tokyo' },
   { id:'sky', name:'Shibuya Sky — Sunset 360°', type:'attraction', day:'Fri', lat:35.6587, lng:139.702,
     detail:'Best sunset view in Tokyo', cost:'¥1,900–2,500/person', note:'BOOK IN ADVANCE · Sunset slots sell out!',
-    maps:'https://maps.google.com/maps?q=Don+Quijote+Shibuya+Tokyo' },
+    maps:'https://maps.google.com/maps?q=Shibuya+Sky+Observation+Deck+Tokyo' },
 
   // SATURDAY — WATCH HUNT
   { id:'jackroad', name:'Jackroad — Nakano Broadway 3F', type:'watch', day:'Sat', lat:35.7089, lng:139.6658,
@@ -2706,16 +2718,16 @@ const LOCATIONS = [
     maps:'https://maps.google.com/maps?q=Halal+Wagyu+Yakiniku+Panga+Asakusa+Tokyo' },
 
   // MONDAY
-  { id:'akihabara', name:'Akihabara Gamers', type:'shopping', day:'Mon', lat:35.6983, lng:139.7717,
+  { id:'akihabara', name:'Akihabara Gamers', type:'gaming', day:'Mon', lat:35.6983, lng:139.7717,
     detail:'Gaming · Anime · Gashapon paradise', cost:'¥3,000–10,000', note:'Budget ¥2k just for capsule machines!',
     maps:'https://maps.google.com/maps?q=Akihabara+Electric+Town+Tokyo' },
-  { id:'grit', name:'GRIT Fight Shop', type:'shopping', day:'Mon', lat:35.7013, lng:139.7534,
+  { id:'grit', name:'GRIT Fight Shop', type:'training', day:'Mon', lat:35.7013, lng:139.7534,
     detail:'Combat gear · English-speaking owner', cost:'¥3,000–15,000', note:'4.7 ⭐ · CLOSED WEDNESDAY',
     maps:'https://maps.google.com/maps?q=Sumida+Park+Cherry+Blossom+Tokyo' },
   { id:'karemen', name:'Halal Wagyu Karemen King', type:'halal', day:'Mon', lat:35.6956, lng:139.7714,
     detail:'Spicy wagyu ramen · Heat levels 1–7', cost:'¥1,500–2,500/person', note:'4.8 ⭐ · Near Akihabara',
     maps:'https://maps.google.com/maps?q=Halal+Wagyu+Karemen+King+Akihabara+Tokyo' },
-  { id:'divercity', name:'DiverCity — Minecraft Store', type:'shopping', day:'Mon', lat:35.6248, lng:139.7759,
+  { id:'divercity', name:'DiverCity — Minecraft Store', type:'gaming', day:'Mon', lat:35.6248, lng:139.7759,
     detail:'Tokyo-exclusive Minecraft merch', cost:'¥2,000–8,000', note:'Odaiba · 30 min by Rinkai Line',
     maps:'https://maps.google.com/maps?q=DiverCity+Tokyo+Plaza+Odaiba' },
   { id:'gundam', name:'Unicorn Gundam Statue — FREE', type:'attraction', day:'Mon', lat:35.6245, lng:139.7755,
@@ -2772,6 +2784,18 @@ const LOCATIONS = [
     maps:'https://maps.google.com/maps?q=Tokyo+City+Flea+Market+Oi+Racecourse+Shinagawa' },
 
   // ── WATCH HUNTING — THRIFT / HARD OFF ────────────────────────────────────
+
+  { id:'bookoff-plus', name:'Book Off Plus — Nishigotanda', type:'flea', day:'Any', lat:35.6244, lng:139.7208,
+    detail:'Book Off + clothing + watches + luxury · 7 floors · Shinagawa', cost:'¥500–50,000', note:'3.7 ⭐ · Open 10am–10pm · Tax-free with passport · Best for: watches, manga, used games, branded clothing',
+    maps:'https://maps.google.com/maps?q=BOOKOFF+PLUS+Nishigotanda+Shinagawa+Tokyo' },
+
+  { id:'bookoff-superbazaar', name:'Book Off Super Bazaar — Omori', type:'flea', day:'Any', lat:35.5883, lng:139.7303,
+    detail:'Massive store · watches, clothes, games, figures, books, bags · near Airbnb', cost:'¥300–30,000', note:'3.8 ⭐ · Open 10am–10pm · 3F in Seiyu Omori · Tax-free · Closest thrift to your Airbnb',
+    maps:'https://maps.google.com/maps?q=BOOKOFF+SUPER+BAZAAR+Omori+Tokyo' },
+
+  { id:'modeoff-ueno', name:'Mode Off — Ueno', type:'flea', day:'Mon', lat:35.7081, lng:139.7739,
+    detail:'Used fashion, accessories, watches, bags · 5 floors · branded items', cost:'¥500–10,000', note:'3.3 ⭐ · Open 10am–9pm · Good for branded bags at discount · walk to Mizutani Camera from here',
+    maps:'https://maps.google.com/maps?q=Mode+Off+Ueno+Tokyo' },
   { id:'hardoff-akihabara', name:'Hard Off — Akihabara', type:'flea', day:'Mon', lat:35.7005, lng:139.7706,
     detail:'Thrift chain · used Seiko/Citizen from ¥500 · junk bin hunting', cost:'¥500–30,000', note:'3.6 ⭐ · Open 11am–8pm · Bring cash · condition varies · junk floor = bargain paradise',
     maps:'https://maps.google.com/maps?q=Hard+Off+Akihabara+Tokyo' },
@@ -2881,10 +2905,15 @@ const TYPE_COLOR = {
   mosque:      '#1d6b1d',
   sakura:      '#e83e8c',
   flea:        '#e67e22',
+  budget:      '#27ae60',
+  lifestyle:   '#2980b9',
+  gaming:      '#7c3aed',
+  crafts:      '#c0392b',
+  markets:     '#d4a017',
 };
 const TYPE_EMOJI = {
   home:'🏠', training:'🥋', competition:'🏆', halal:'🕌', shopping:'🛍️', watch:'⌚', attraction:'🎡',
-  bonsai:'🎋', jeans:'👖', outlet:'🏬', sakura:'🌸', flea:'🛒'
+  bonsai:'🎋', jeans:'👖', outlet:'🏬', sakura:'🌸', flea:'🛒', budget:'🪙', lifestyle:'🏷️'
 };
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
