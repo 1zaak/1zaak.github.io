@@ -654,6 +654,8 @@
 <nav class="desktop-nav" role="navigation" aria-label="Page sections">
   <div class="nav-header">TOKYO GUIDE</div>
   <a href="#airbnb"><span class="nav-icon">🏠</span><span class="nav-label">Airbnb &amp; Info</span></a>
+  <a href="#map"><span class="nav-icon">🗺️</span><span class="nav-label">Interactive Map</span></a>
+  <div class="nav-divider"></div>
   <a href="#bookings"><span class="nav-icon">⚡</span><span class="nav-label">Book Now</span></a>
   <a href="#itinerary"><span class="nav-icon">📅</span><span class="nav-label">Daily Itinerary</span></a>
   <div class="nav-divider"></div>
@@ -668,7 +670,6 @@
   <a href="#bonsai"><span class="nav-icon">🎋</span><span class="nav-label">Bonsai Shops</span></a>
   <a href="#outlets"><span class="nav-icon">🏬</span><span class="nav-label">Outlet Malls</span></a>
   <div class="nav-divider"></div>
-  <a href="#map"><span class="nav-icon">🗺️</span><span class="nav-label">Interactive Map</span></a>
   <a href="#camera"><span class="nav-icon">📸</span><span class="nav-label">Insta360 Guide</span></a>
   <a href="#budget"><span class="nav-icon">💴</span><span class="nav-label">Budget</span></a>
   <a href="#emergency"><span class="nav-icon">🆘</span><span class="nav-label">Emergency</span></a>
@@ -678,14 +679,14 @@
 <nav class="mobile-nav" role="navigation" aria-label="Page sections">
   <div class="mobile-nav-tabs">
     <a href="#airbnb"><span class="m-icon">🏠</span>Home</a>
+    <a href="#map"><span class="m-icon">🗺️</span>Map</a>
     <a href="#itinerary"><span class="m-icon">📅</span>Days</a>
-    <a href="#konbini"><span class="m-icon">🏪</span>Konbini</a>
-    <a href="#halal"><span class="m-icon">🕌</span>Halal</a>
     <a href="#sakura"><span class="m-icon">🌸</span>Sakura</a>
+    <a href="#halal"><span class="m-icon">🕌</span>Halal</a>
+    <a href="#konbini"><span class="m-icon">🏪</span>Konbini</a>
     <a href="#watch"><span class="m-icon">⌚</span>Watch</a>
     <a href="#sneakers"><span class="m-icon">👟</span>Sneakers</a>
     <a href="#bonsai"><span class="m-icon">🎋</span>Bonsai</a>
-    <a href="#map"><span class="m-icon">🗺️</span>Map</a>
     <a href="#camera"><span class="m-icon">📸</span>Camera</a>
     <a href="#mosques"><span class="m-icon">🕌</span>Mosque</a>
     <a href="#emergency"><span class="m-icon">🆘</span>SOS</a>
@@ -2449,6 +2450,7 @@
       <button onclick="filterMarkers('halal')" id="btn-halal" class="map-filter-btn">🕌 Halal Food</button>
       <button onclick="filterMarkers('shopping')" id="btn-shopping" class="map-filter-btn">🛍️ Shopping</button>
       <button onclick="filterMarkers('watch')" id="btn-watch" class="map-filter-btn">⌚ Watch Hunt</button>
+      <button onclick="filterMarkers('sakura')" id="btn-sakura" class="map-filter-btn">🌸 Cherry Blossoms</button>
       <button onclick="filterMarkers('attraction')" id="btn-attraction" class="map-filter-btn">🎡 Attractions</button>
       <button onclick="filterMarkers('bonsai')" id="btn-bonsai" class="map-filter-btn">🎋 Bonsai</button>
       <button onclick="filterMarkers('jeans')" id="btn-jeans" class="map-filter-btn">👖 Selvedge Jeans</button>
@@ -2546,15 +2548,36 @@ const LOCATIONS = [
   { id:'grocery', name:'Chandra Surya Halal Grocery', type:'halal', day:'Thu', lat:35.5796, lng:139.6845,
     detail:'Closest halal grocery to Airbnb', cost:'¥3,000–6,000', note:'CLOSED SATURDAY — go Thursday!',
     maps:'https://maps.google.com/maps?q=Chandra+Surya+Halal+Grocery+Ota+City+Tokyo' },
-  { id:'sakura', name:'Sakura-zaka Cherry Blossoms', type:'attraction', day:'Thu', lat:35.5857, lng:139.6751,
+  { id:'sakura', name:'Sakura-zaka Cherry Blossoms', type:'sakura', day:'Thu', lat:35.5857, lng:139.6751,
     detail:'Evening sakura walk, FREE', cost:'FREE', note:'20 cherry trees, red pedestrian bridge',
     maps:'https://maps.google.com/maps?q=Sakurazaka+Red+Bridge+Ota+City+Tokyo' },
   { id:'zaika', name:'Zaika Pakistani Restaurant', type:'halal', day:'Thu', lat:35.5547, lng:139.728,
     detail:'Closest halal restaurant', cost:'¥800–1,500/person', note:'Authentic Pakistani · Kamata',
     maps:'https://maps.google.com/maps?q=Zaika+Pakistani+Restaurant+Ota+City+Tokyo' },
-  { id:'tamagawa', name:'Tamagawadai Park', type:'attraction', day:'Tue', lat:35.5894, lng:139.6666,
+
+  // ── SAKURA SPOTS ──────────────────────────────────────────────────────────
+  { id:'monument-sakura', name:'🌸 Monument of 21st Century Sakura Tree', type:'sakura', day:'Thu–Tue', lat:35.565013, lng:139.680883,
+    detail:'⭐ CLOSEST to Airbnb · 15 min walk · Tama River embankment', cost:'FREE', note:'~120 trees along Gasubashi levee · zero tourists · open 24hrs · Ota City official spot',
+    maps:'https://maps.google.com/maps?q=Monument+of+21+Century+Sakura+Tree+Shimomaruko+Ota+City+Tokyo' },
+
+  { id:'sakura-square', name:'🌸 Sakura Square — Senzoku Pond', type:'sakura', day:'Thu–Mon', lat:35.602326, lng:139.691251,
+    detail:'Compact Ota City park · Skytree backdrop', cost:'FREE', note:'4.5 ⭐ · Minamisenzoku · 10 min from Airbnb · benches provided',
+    maps:'https://maps.google.com/maps?q=Sakura+Square+Minamisenzoku+Ota+City+Tokyo' },
+
+  { id:'shukugawara', name:'🌸 Shukugawara Nikaryo Waterway', type:'sakura', day:'Any', lat:35.6143, lng:139.5790,
+    detail:'Hidden gem · 30 min walk along river canal · 4.7 ⭐', cost:'FREE', note:'Virtually no tourists · Kuji station to Tama River · locals picnic here',
+    maps:'https://maps.google.com/maps?q=Shukugawara+Nikaryo+Waterway+Cherry+Blossom+Kawasaki' },
+
+  { id:'sumida-park', name:'🌸 Sumida Park — Asakusa', type:'sakura', day:'Sun Evening', lat:35.7137, lng:139.8014,
+    detail:'Competition day celebration · Skytree backdrop', cost:'FREE', note:'600+ trees · festival stalls · lanterns · next to Senso-ji',
+    maps:'https://maps.google.com/maps?q=Sumida+Park+Cherry+Blossom+Asakusa+Tokyo' },
+
+  { id:'yoyogi-sakura', name:'🌸 Yoyogi Park Cherry Blossoms', type:'sakura', day:'Any', lat:35.6694, lng:139.6947,
+    detail:'Spacious lawns · picnic-friendly · no crowds vs Ueno', cost:'FREE', note:'4.4 ⭐ · Harajuku Gate entrance · open 24hrs · great for families',
+    maps:'https://maps.google.com/maps?q=Yoyogi+Park+Cherry+Blossom+Garden+Harajuku+Tokyo' },
+  { id:'tamagawa', name:'Tamagawadai Park', type:'sakura', day:'Tue', lat:35.5894, lng:139.6666,
     detail:'Final morning cherry blossoms', cost:'FREE', note:'15 min from Airbnb · Open 24hrs',
-    maps:'https://maps.google.com/maps?q=Tamagawa+Tama+River+Ota+City+Tokyo' },
+    maps:'https://maps.google.com/maps?q=Tamagawadai+Park+Denenchofu+Ota+City+Tokyo' },
 
   // TRAINING
   { id:'carpe', name:'Carpe Diem BJJ — Jiyugaoka', type:'training', day:'Fri & Sat', lat:35.6082, lng:139.6708,
@@ -2698,16 +2721,16 @@ const LOCATIONS = [
     maps:'https://maps.google.com/maps?q=ASICS+Ginza+Tokyo' },
 
   // SAKURA PARKS
-  { id:'nakameguro', name:'🌸 Nakameguro River — Lantern Walk', type:'attraction', day:'Fri Evening', lat:35.6359, lng:139.7086,
+  { id:'nakameguro', name:'🌸 Nakameguro River — Lantern Walk', type:'sakura', day:'Fri Evening', lat:35.6359, lng:139.7086,
     detail:'800 cherry trees · canal lanterns · illuminated until 8pm!', cost:'FREE', note:'Illumination until March 31, 5–8pm · Most romantic sakura in Tokyo',
     maps:'https://maps.google.com/maps?q=Meguro+River+Cherry+Blossom+Promenade+Tokyo' },
-  { id:'chidorigafuchi', name:'🌸 Chidorigafuchi — Imperial Palace Moat', type:'attraction', day:'Sat Morning', lat:35.69, lng:139.7479,
+  { id:'chidorigafuchi', name:'🌸 Chidorigafuchi — Imperial Palace Moat', type:'sakura', day:'Sat Morning', lat:35.69, lng:139.7479,
     detail:'700m promenade · illumination March 26–Apr 6 · row boats', cost:'FREE walk / ¥800 boat', note:'Light up 6–9pm · Go morning for smaller crowds',
     maps:'https://maps.google.com/maps?q=Chidorigafuchi+Cherry+Blossom+Tokyo' },
-  { id:'shinjuku-gyoen', name:'🌸 Shinjuku Gyoen — 1,000+ Trees', type:'attraction', day:'Fri Morning', lat:35.6852, lng:139.7101,
+  { id:'shinjuku-gyoen', name:'🌸 Shinjuku Gyoen — 1,000+ Trees', type:'sakura', day:'Fri Morning', lat:35.6852, lng:139.7101,
     detail:'60+ varieties · spacious lawns · 9am–6pm', cost:'¥500/adult ¥250/child', note:'Most varieties! Go at opening · Alcohol-free = calm atmosphere',
-    maps:'https://maps.google.com/maps?q=Shibuya+Scramble+Crossing+Tokyo' },
-  { id:'ueno-sakura', name:'🌸 Ueno Park — Cherry Blossom Festival', type:'attraction', day:'Mon Morning', lat:35.7144, lng:139.7713,
+    maps:'https://maps.google.com/maps?q=Shinjuku+Gyoen+National+Garden+Tokyo' },
+  { id:'ueno-sakura', name:'🌸 Ueno Park — Cherry Blossom Festival', type:'sakura', day:'Mon Morning', lat:35.7144, lng:139.7713,
     detail:'1,000+ trees · 800 paper lanterns · 50+ food stalls', cost:'FREE', note:'Festival Mar 14–Apr 5 · Illumination until 11pm · Go before 9am!',
     maps:'https://maps.google.com/maps?q=Ueno+Park+Tokyo' },
 
@@ -2739,10 +2762,11 @@ const TYPE_COLOR = {
   jeans:       '#1e6091',
   outlet:      '#6c3483',
   mosque:      '#1d6b1d',
+  sakura:      '#e83e8c',
 };
 const TYPE_EMOJI = {
   home:'🏠', training:'🥋', competition:'🏆', halal:'🕌', shopping:'🛍️', watch:'⌚', attraction:'🎡',
-  bonsai:'🎋', jeans:'👖', outlet:'🏬'
+  bonsai:'🎋', jeans:'👖', outlet:'🏬', sakura:'🌸'
 };
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
